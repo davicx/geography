@@ -7,61 +7,63 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.support import expected_conditions as EC
 
 import pandas as pd
 import time
 
-logged_in = True
+options = Options()
+options.page_load_strategy = 'normal'
+options.add_argument("--start-maximized")
+options.add_argument("user-data-dir=/tmp/david")
+
+PATH = "/Users/david/Desktop/David/www/development/geography/chromedriver.exe"
+driver = webdriver.Chrome(PATH, options=options)
+
 
 def main():
-    if logged_in == False:
-        login_user()
-    else:   
-        first_level_search()
-        second_level_search()
-        download_results()
- 
-def login_user():
-    print("Opening login screen, please login with Duo")
-    
+    login()
+    first_level_search()
+    second_level_search()
+    download_results()
+
+def login():
+    print("STEP 1: Login") 
+    driver.get("https://library.oregonstate.edu/")
+    time.sleep(5)
+
+    element = driver.find_element(By.ID,"term-1search")
+    element.send_keys("nexis uni")
+    element.send_keys(Keys.RETURN)
+    time.sleep(15)
+    driver.find_element(By.CSS_SELECTOR, "#SEARCH_RESULT_RECORDID_alma99492178701865 mark").click()
+    time.sleep(8)
+    driver.find_element(By.CSS_SELECTOR, ".item-title:nth-child(1)").click()
+    time.sleep(12)
+    driver.switch_to.window(driver.window_handles[1])
+    time.sleep(12)
+    driver.find_element(By.CSS_SELECTOR, ".advanced-search").click()
+    print("login: was run moving to first level search")
+    time.sleep(12)
+
 def first_level_search():
-    print("STEP 1: First Level Search") 
-    data = pd.read_csv('data/firstLevelSearch.csv')
+    print("STEP 2: First Level Search") 
+    searchLink = "https://advance-lexis-com.oregonstate.idm.oclc.org/search/?pdmfid=1516831&crid=1c45062b-b31a-4c69-ac7d-2d5c3c7c33b5&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(box1)+and+hlead(box2)+and+not+hlead(box3)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=12%2F08%2F2000to12%2F08%2F2022%7Cdatebetween&pdfromadvancedsearchpage=true&ecomp=3xLg9kk&earg=pdpsf&prid=ed3fc566-6534-4898-8343-4763b6de7c5f"
 
-    for index, row in data.iterrows():
-        field_one_search_terms = row['field_one'].replace(" ", "+")
-        field_two_search_terms = row['field_two'].replace(" ", "+")
-        field_three_search_terms = row['field_three'].replace(" ", "+")
+    driver.get(searchLink)
+    time.sleep(12)
 
-    print(field_one_search_terms)
-    print("")
-    print(field_two_search_terms)
-    print("")
-    print(field_three_search_terms)
-    first_search_url = "https://advance-lexis-com.oregonstate.idm.oclc.org/search/?pdmfid=1516831&crid=c753d4b1-4bcb-4d62-bc2b-e5488b2cca1d&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(" + field_one_search_terms + ")+and+hlead(" + field_two_search_terms + ")+and+not+hlead(" + field_three_search_terms + ")&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=06%2F30%2F2008to01%2F10%2F2023%7Cdatebetween&pdfromadvancedsearchpage=true&ecomp=3xLg9kk&earg=pdpsf&prid=3c1ebaf8-b772-4481-a033-9d93018ce1b8"
-    #print(first_search_url)
-
+    #Turn duplicates on 
+    driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
+    print("custom-control-indicator clicked")
+    time.sleep(12)
 
 def second_level_search():							
-    print("Second Level")
-    dataSecondLevel = pd.read_csv('data/secondLevelSearch.csv')
-
-    for index, row in dataSecondLevel.iterrows():
-        basin_count = row['basin_count']
-        search_type = row['search_type']
-        search_terms = row['search_terms'].replace(" ", "+")
-        basin_code = row['basin_code']
-        basin_name = row['basin_name']
-        ra_name = row['ra_name']
-        search_completed = row['search_completed']
-        preliminary_search = row['preliminary_search']
-        notes = row['notes']
-        print("BASIN NAME " + basin_name)
-        print(search_terms)
-        print("")
+    print("STEP 3: Second Level Search") 
 
 def download_results():
-    print("Download results") 
+    print("STEP 4: Download results") 
+    time.sleep(360)
 
 
 if __name__ == "__main__":

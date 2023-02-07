@@ -25,7 +25,7 @@ time.sleep(3)
 element = driver.find_element(By.ID,"term-1search")
 element.send_keys("nexis uni")
 element.send_keys(Keys.RETURN)
-time.sleep(12)
+time.sleep(15)
 driver.find_element(By.CSS_SELECTOR, "#SEARCH_RESULT_RECORDID_alma99492178701865 mark").click()
 time.sleep(8)
 driver.find_element(By.CSS_SELECTOR, ".item-title:nth-child(1)").click()
@@ -51,21 +51,47 @@ driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
 
 time.sleep(5)
 driver.execute_script("window.scrollTo(0,103)")
+time.sleep(12)
 
+searchTwo = "https://advance-lexis-com.oregonstate.idm.oclc.org/search/?pdmfid=1516831&crid=dfca90be-2320-4005-97b3-337ac56fe08b&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%E2%80%9Cwater+resistant%E2%80%9D+OR+%E2%80%9Cwater+bath%E2%80%9D)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=01%2F05%2F2010to01%2F09%2F2023%7Cdatebetween&pdfromadvancedsearchpage=true&ecomp=3xLg9kk&earg=pdpsf&prid=84f3e3e3-ce91-480a-aedd-83533dee11e3"
+driver.get(searchTwo)
 #second Level Search 
 #secondSearchTerm = "IB_FDDBasinNames"
+#Can we skip this 
+'''
 secondSearchTerm = "box1"
-driver.find_element(By.ID, "zz2yk_search").click()
-driver.find_element(By.ID, "zz2yk_search").send_keys(secondSearchTerm)
+driver.find_element(By.ID, "podfiltersbuttonsearch").click()
+driver.find_element(By.ID, "podfiltersbuttonsearch").click()
+time.sleep(5)
+driver.find_element(By.ID, "zznyk_search").click()
+driver.find_element(By.ID, "zznyk_search").send_keys("box2")
+time.sleep(2)
+driver.find_element(By.CSS_SELECTOR, ".src-submit").click()
+time.sleep(2)
+driver.execute_script("window.scrollTo(0,0)")
+'''
+#driver.find_element(By.ID, "zz2yk_search").click()
+#driver.find_element(By.ID, "zz2yk_search").send_keys(secondSearchTerm)
 
 #driver.find_element(By.ID, "zz2yk_search").click()
 #driver.find_element(By.ID, "zz2yk_search").send_keys("startsearchwithinresults")
-time.sleep(5)
-
-driver.find_element(By.CSS_SELECTOR, ".src-submit").click()
-
 time.sleep(12)
 
+driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
+time.sleep(12)
+driver.find_element(By.CSS_SELECTOR, ".DeliveryItemType > .row:nth-child(3) > label").click()
+time.sleep(8)
+driver.find_element(By.CSS_SELECTOR, ".nested:nth-child(3) #SelectedRange").click()
+time.sleep(8)
+driver.find_element(By.CSS_SELECTOR, ".nested:nth-child(3) #SelectedRange").send_keys("1-10")
+driver.find_element(By.CSS_SELECTOR, ".Format > .row:nth-child(4)").click()
+time.sleep(2)
+driver.find_element(By.ID, "FileName").click()
+time.sleep(2)
+driver.find_element(By.ID, "FileName").send_keys("put the file name here")
+time.sleep(2)
+driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
+'''
 driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
 time.sleep(12)
 driver.find_element(By.ID, "SelectedRange").click()
@@ -76,6 +102,8 @@ driver.find_element(By.ID, "FileName").send_keys("myname")
 time.sleep(12)
 driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
 time.sleep(120)
+
+'''
 
 
 

@@ -11,7 +11,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import pandas as pd
 import time
 
-logged_in = False
+logged_in = True
 
 def main():
     if logged_in == False:
