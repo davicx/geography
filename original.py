@@ -15,7 +15,8 @@ options.page_load_strategy = 'normal'
 options.add_argument("--start-maximized")
 options.add_argument("user-data-dir=/tmp/david")
 
-PATH = "/Users/david/Desktop/David/www/development/geography/chromedriver.exe"
+#PATH = "/Users/david/Desktop/David/www/development/geography/chromedriver.exe"
+PATH = "/Users/david/Desktop/David/www/geography/drivers/chromedriver.exe"
 #driver = webdriver.Chrome(options=options)
 #browser = webdriver.Chrome(chrome_path, chrome_options=options)
 driver = webdriver.Chrome(PATH, options=options)
