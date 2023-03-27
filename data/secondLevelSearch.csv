@@ -1,5 +1,4 @@
 basin_count,search_type,search_terms,basin_code,basin_name,ra_name,search_completed,preliminary_search,notes
-G. Basin specific searches,Narrow by > Search within results (AND),"The above rows are the terms used for every search. The following rows are the 314 individual searches that need to be run. We found in manual searching the search within results yielded better results than having the basin specific searches within the primary search function. In addition, we found that the Group Duplicate function was also helpful in reducing the number of results.",BCODE,Basin_Name,RA Name,Has search been completed and all files downloaded? (Y/N/Issues),Has preliminary review been completed? (Y/N/Issues),"Search Notes, Identify any issues"
 1,Narrow by > Search within results (AND),Adige,ADIG,Adige,Raunaq (only need to do the preliminary review for meeting criteria),N,N,
 2,Narrow by > Search within results (AND),Akpa,AKPA,Akpa,Raunaq,Y,N,
 3,Narrow by > Search within results (AND),Alakol,ALKL,Alakol,Raunaq,Y,N,
