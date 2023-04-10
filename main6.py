@@ -34,25 +34,6 @@ def main():
     else: 
         run_search()
 
-#MAIN: Login 
-def login():
-    print("Login") 
-    driver.get("https://library.oregonstate.edu/")
-    time.sleep(5)
-
-    element = driver.find_element(By.ID,"term-1search")
-    element.send_keys("nexis uni")
-    element.send_keys(Keys.RETURN)
-    time.sleep(15)
-    driver.find_element(By.CSS_SELECTOR, "#SEARCH_RESULT_RECORDID_alma99492178701865 mark").click()
-    time.sleep(8)
-    driver.find_element(By.CSS_SELECTOR, ".item-title:nth-child(1)").click()
-    time.sleep(12)
-    driver.switch_to.window(driver.window_handles[1])
-    time.sleep(720)
-    driver.find_element(By.CSS_SELECTOR, ".advanced-search").click()
-    print("login: was run you can now start the search")
-    time.sleep(720)
 
 #MAIN: Run full Search 
 def run_search():
@@ -116,13 +97,74 @@ def second_level_search(search_terms):
     print("STEP 2: Finished") 
 
 
-#STEP 4: Download PDF
+#STEP 3: Download First Results of Excel Files
+def download_results_one_excel(basin_code, basin_result_count):
+    max_downloads = 250
+    print("STEP 3: Starting to Download all excel Results for Basin Code ", basin_code) 
+    paginate_downloads_one(basin_code, basin_result_count, max_downloads)
+    print("STEP 3: Finished") 
+    time.sleep(5)
+
+#STEP 4: Download First Results of Excel Files
 def download_results_two_pdf(basin_code, basin_result_count):
     max_downloads = 100
     print("STEP 4: Starting to Download all pdf Results for Basin Code ", basin_code) 
     paginate_downloads_two(basin_code, basin_result_count, max_downloads)
     print("STEP 4: Finished") 
     time.sleep(5)
+
+
+
+#FUNCTIONS
+def paginate_downloads_one(basin_code, basin_result_count, max_downloads):
+    basin_result_count = int(basin_result_count)
+
+    for i in range(0, basin_result_count, max_downloads):
+        min = i
+        max = 0
+
+        #Get Min
+        if i != 0:
+            min = min + 1
+        else:
+            min = 1
+
+        #Get max
+        if i + max_downloads > basin_result_count:
+            max = basin_result_count
+        else:
+            max = i + max_downloads
+
+        min_string = str(min)
+        max_string = str(max)
+
+        download_results_one(basin_code, min_string, max_string)
+
+        
+def download_results_one(basin_code, min, max):
+    print("Starting Downloads 1: Excel files for ", basin_code, ": from ", min, " to ", max)
+    download_start_stop = min + "-" + max
+    download_file_name = "ResultsList_" + basin_code + "_202207_" + min + "_" + max
+    driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
+    time.sleep(8)
+    driver.find_element(By.CSS_SELECTOR, ".DeliveryItemType > .row:nth-child(3) > label").click()
+    time.sleep(4)
+    driver.find_element(By.CSS_SELECTOR, ".nested:nth-child(3) #SelectedRange").click()
+    time.sleep(4)
+    driver.find_element(By.CSS_SELECTOR, ".nested:nth-child(3) #SelectedRange").send_keys(download_start_stop)
+    time.sleep(4)
+    driver.find_element(By.ID, "XLSX").click()
+    time.sleep(5)
+    driver.find_element(By.ID, "FileName").click()
+    time.sleep(5)
+    driver.find_element(By.ID, "FileName").send_keys("fileName")
+    driver.find_element(By.ID, "FileName").clear()
+    time.sleep(5)
+    driver.find_element(By.ID, "FileName").send_keys(download_file_name)
+    time.sleep(5)
+    driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
+    print("Finished downloads from ", min, " to ", max)
+    time.sleep(12)
 
 
 def paginate_downloads_two(basin_code, basin_result_count, max_downloads):
@@ -148,14 +190,14 @@ def paginate_downloads_two(basin_code, basin_result_count, max_downloads):
         max_string = str(max)
 
         download_results_two(basin_code, min_string, max_string)
-        
+        time.sleep(60)
         #print("Starting downloads from ", min_string, " to ", max_string)
 
 def download_results_two(basin_code, min, max):
     print("Starting Downloads 2: Get pdf files for ", basin_code, ": from ", min, " to ", max)
     download_start_stop = min + "-" + max
     #download_file_name = "ResultsList_adige_202207"
-    download_file_name = "ResultsList2_" + basin_code + "_202207_" + min + "_" + max + ".PDF"
+    download_file_name = "ResultsList2_" + basin_code + "_202207_" + min + "_" + max
 
     driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
     time.sleep(5)
@@ -172,20 +214,132 @@ def download_results_two(basin_code, min, max):
     driver.find_element(By.ID, "FileName").send_keys(download_file_name)
     time.sleep(2)
     driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
-    print("Pausing for download to finish")
-    time.sleep(60)
-    #Rename file 
-    #Files (100).PDF
-    path = "/Users/david/Desktop/David/www/geography/downloads/"
-    fileName = "Files (100).PDF"
-    #newFileName = "hi.PDF"
-    fileBegin = path + fileName
-    fileNew= path + download_file_name
-    os.rename(fileBegin, fileNew)
+    
+
+
+#CLEAN
+
+#STEP 3: Download Results
+'''
+def download_(basin_code):
+
+    #Step 3A: Get total results to download
+    basin_result_count = get_result_count()
+    print("The count for " + basin_code + " is " + basin_result_count)
     time.sleep(5)
 
+    #paginate_downloads_one(basin_code, basin_result_count, 100)
+'''
+
+
+
+'''
+def paginate_downloads_one(basin_code, basin_result_count, max_downloads):
+    basin_result_count = int(basin_result_count)
+
+    for i in range(0, basin_result_count, max_downloads):
+        min = i
+        max = 0
+
+        #Get Min
+        if i != 0:
+            min = min + 1
+        else:
+            min = 1
+
+        #Get max
+        if i + 100 > basin_result_count:
+            max = basin_result_count
+        else:
+            max = i + 100
+
+        min_string = str(min)
+        max_string = str(max)
+
+        download_results_one(basin_code, min_string, max_string)
 
         
+def download_results_one(basin_code, min, max):
+    download_start_stop = min + "-" + max
+    download_file_name = "ResultsList_" + basin_code + "_202207_" + min + "_" + max
+    driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
+    time.sleep(12)
+    driver.find_element(By.CSS_SELECTOR, ".DeliveryItemType > .row:nth-child(3) > label").click()
+    time.sleep(8)
+    driver.find_element(By.CSS_SELECTOR, ".nested:nth-child(3) #SelectedRange").click()
+    time.sleep(8)
+
+    driver.find_element(By.CSS_SELECTOR, ".nested:nth-child(3) #SelectedRange").send_keys(download_start_stop)
+    driver.find_element(By.CSS_SELECTOR, ".Format > .row:nth-child(4)").click()
+    time.sleep(5)
+    driver.find_element(By.ID, "FileName").click()
+    time.sleep(5)
+    driver.find_element(By.ID, "FileName").send_keys("fileName")
+    driver.find_element(By.ID, "FileName").clear()
+    time.sleep(5)
+    driver.find_element(By.ID, "FileName").send_keys(download_file_name)
+    #driver.find_element(By.ID, "FileName").send_keys("fileName")
+
+    time.sleep(5)
+    driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
+    time.sleep(30)
+
+'''
+
+        
+def download_results_one_broke(basin_code, min, max):
+    download_start_stop = min + "-" + max
+    download_file_name = "ResultsList_" + basin_code + "_202207_" + min + "_" + max
+    print("Downloading from " + min + " to " + max)
+    driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
+    time.sleep(4)
+    driver.find_element(By.ID, "SelectedRange").click()
+    time.sleep(2)
+    
+    #download_start_stop = str(download_start_stop_temp)
+    driver.find_element(By.ID, "SelectedRange").send_keys(download_start_stop)
+    time.sleep(4)
+
+    #Name the File 
+    driver.find_element(By.ID, "FileName").click()
+    time.sleep(4)
+
+    driver.find_element(By.ID, "FileName").send_keys("file_name")
+    driver.find_element(By.ID, "FileName").clear()
+    time.sleep(3)
+    driver.find_element(By.ID, "FileName").send_keys(download_file_name)
+
+    time.sleep(4)
+    driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
+    time.sleep(4)
+    driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
+
+    time.sleep(30)
+
+        
+    
+
+    '''
+    def download_results_one():
+        driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
+        time.sleep(12)
+        driver.find_element(By.ID, "SelectedRange").click()
+        time.sleep(2)
+        driver.find_element(By.ID, "SelectedRange").send_keys("1-10")
+        time.sleep(12)
+        driver.find_element(By.ID, "FileName").click()
+        time.sleep(2)
+        driver.find_element(By.ID, "FileName").send_keys("files_1")
+        time.sleep(12)
+        driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
+        time.sleep(12)
+        driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
+        time.sleep(12)
+
+    '''
+
+
+
 
 #HELPER FUNCTIONS
 def get_result_count():
