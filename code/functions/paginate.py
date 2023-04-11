@@ -1,6 +1,7 @@
 result_count = 440
+max_downloads = 100
 
-for i in range(0, result_count, 100):
+for i in range(0, result_count, max_downloads):
     min = i
     max = 0
 
@@ -11,9 +12,9 @@ for i in range(0, result_count, 100):
         min = 1
 
     #Get max
-    if i + 100 > result_count:
+    if i + max_downloads > result_count:
         max = result_count
     else:
-        max = i + 100
+        max = i + max_downloads
         
     print(min, max)

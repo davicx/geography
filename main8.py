@@ -41,11 +41,11 @@ def run_search():
         search_terms = row['search_terms']
         basin_code = row['basin_code']
 
-        print("START FULL SEARCH: Starting a search for the basin " + basin_code)
+        print("START SINGLE BASIN SEARCH: Starting a search for the basin " + basin_code)
         single_basin_search(basin_code, search_terms)
-        print("FINISH SEARCH")
+        print("FINISH SINGLE BASIN SEARCH")
         print("_________________________________________")
-
+        print(" ")
         time.sleep(30)
 
 
@@ -65,8 +65,8 @@ def single_basin_search(basin_code, search_term):
         driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
         time.sleep(5)    
 
-    print("COUNT 1 ", basin_result_count_one)
-    print("COUNT 2 ", basin_result_count_two)
+    print("Count 1 ", basin_result_count_one)
+    print("Count 2 ", basin_result_count_two)
     basin_result_count = min(basin_result_count_one, basin_result_count_two)
     time.sleep(5)
 
@@ -75,7 +75,7 @@ def single_basin_search(basin_code, search_term):
     #download_results_one_excel(basin_code, basin_result_count)
     download_results_two_pdf(basin_code, basin_result_count)
 
-    time.sleep(8)
+    time.sleep(5)
 
 #SINGLE SEARCH
 #STEP 1: Navigate to first level search 
@@ -168,6 +168,14 @@ def download_results_one(basin_code, min, max):
     driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
     print("Finished downloads from ", min, " to ", max)
     time.sleep(12)
+    
+    path = "/Users/david/Desktop/David/www/geography/downloads/"
+
+    fileNameOriginal = path + download_file_name + ".ZIP"
+    fileNameNew = path + basin_code + "/" + download_file_name + ".ZIP"
+    os.rename(fileNameOriginal, fileNameNew)
+    time.sleep(5)
+    
 
 
 #STEP 4: Download First Results of Excel Files (this can be slow)
@@ -228,14 +236,32 @@ def download_results_two(basin_code, min, max):
     driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
 
     print("Pausing for download to finish")
-    time.sleep(60)
-
+    time.sleep(120)
     path = "/Users/david/Desktop/David/www/geography/downloads/"
     fileName = "Files (100).PDF"
 
     fileNameOriginal = path + fileName
     fileNameNew = path + basin_code + "/" + download_file_name + ".PDF"
+
     os.rename(fileNameOriginal, fileNameNew)
+
+    '''
+    try_file_download = True
+    try_times = 3
+
+    while try_file_download and try_times < 3:
+        try:
+            os.rename(fileNameOriginal, fileNameNew)
+            print("Download and move sucessfull")
+        except FileNotFoundError:
+            print("File not downloaded yet, total tries remaining " + try_times)
+            time.sleep(30)
+            try_times = try_times - 1
+        else:
+            try_file_download = False
+            break
+    '''
+
     time.sleep(5)
 
 #HELPER FUNCTIONS
