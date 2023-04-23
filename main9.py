@@ -24,7 +24,7 @@ options.add_experimental_option('prefs', prefs)
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-logged_in = False
+logged_in = True  
 
 #MAIN:
 def main():
@@ -40,9 +40,11 @@ def run_search():
     for index, row in data.iterrows():
         search_terms = row['search_terms']
         basin_code = row['basin_code']
+        search_completed = row['search_completed']
 
         print("START SINGLE BASIN SEARCH: Starting a search for the basin " + basin_code)
-        single_basin_search(basin_code, search_terms)
+        print("Status: ", search_completed)
+        #single_basin_search(basin_code, search_terms)
         print("FINISH SINGLE BASIN SEARCH")
         print("_________________________________________")
         print(" ")
