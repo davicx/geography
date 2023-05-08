@@ -46,6 +46,7 @@ def run_search():
         basin_count = count_basins(basin_code, search_terms)
         basin_code_array.append(basin_code)
         basin_count_array.append(basin_count)
+        print(basin_code, basin_count)
 
         time.sleep(6)
 
@@ -70,11 +71,13 @@ def count_basins(basin_code, search_term):
     #Make sure that we group results
     time.sleep(10)
     basin_result_count_one = get_result_count()
+    time.sleep(10)
     driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
     time.sleep(10)
     basin_result_count_two = get_result_count()
     
     if basin_result_count_two > basin_result_count_one:
+        time.sleep(10)
         driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
         time.sleep(8)    
 
@@ -110,8 +113,10 @@ def second_level_search(search_terms):
 
     driver.find_element(By.CSS_SELECTOR, ".excludeContainer input").click()
     driver.find_element(By.NAME, "includeExcludeSearchTerm").click()
-    driver.find_element(By.ID, "zznyk_search").click()
-    driver.find_element(By.ID, "zznyk_search").send_keys(second_search_term)
+    time.sleep(1)
+    driver.find_element(By.ID, "-znyk_search").click()
+    driver.find_element(By.ID, "-znyk_search").send_keys(second_search_term)
+    time.sleep(1)
     driver.find_element(By.CSS_SELECTOR, ".src-submit").click()
     
     time.sleep(5)

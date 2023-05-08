@@ -18,7 +18,7 @@ for index, row in data.iterrows():
     data.loc[index, ['finished']] = ["True"]
     
     if index == 2: 
-        data.loc[index, ['finished']] = ["True"]
+        data.loc[index, ['finished']] = ["Location2"]
         error = True
 
     if error == True:
