@@ -57,15 +57,14 @@ def run_search():
 
 #MAIN: Run Search for a Single Basin 
 def single_basin_search(basin_code, search_term, basin_count):
-    #first_level_search()
-    #second_level_search(search_term)
-    #current_basin_count = check_result_count(basin_count, basin_code)
+    first_level_search()
+    second_level_search(search_term)
+    current_basin_count = check_result_count(basin_count, basin_code)
 
     download_results_one_excel(basin_code, basin_count)
-    download_results_two_pdf(basin_code, basin_count)
+    #download_results_two_pdf(basin_code, basin_count)
 
     time.sleep(5)
-
 
 #STEP 1: Navigate to first level search 
 def first_level_search():
@@ -111,18 +110,22 @@ def check_result_count(basin_count, basin_code):
         driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
         time.sleep(5)    
 
-    print("Count 1 ", basin_count)
-    print("Count 2 ", basin_result_count_two)
-    print("Count 3 ", basin_result_count_two)
+    print("Count 1- Input Basin Count: ", basin_count)
+    print("Count 2- Current Page Count ", basin_result_count_two)
+    print("Count 3- Current Page Count ", basin_result_count_two)
     basin_result_count = min(basin_result_count_one, basin_result_count_two)
     time.sleep(5)
+    if basin_count == basin_result_count:
+        print("Count Matches: basin result count ", basin_code, basin_result_count)
+    else:
+        print("Count Does not Match: this could cause an error it means the count has changed since we first checked")
+        print("basin result count ", basin_code, basin_result_count)
 
-    print(basin_code, " basin result count ", basin_result_count)
     print("STEP 3: Finished ")
 
 
 ##DOWNLOAD DATA##
-#STEP 4: Download Excel Results (Up to 1000)
+#STEP 4: Download Excel Results (Up to 1000) Naming file download works 
 def download_results_one_excel(basin_code, basin_count):
     individualBasinToDoFile = 'data/singleBasinToDo/excel/' + basin_code + '.csv'
     
@@ -137,7 +140,7 @@ def download_results_one_excel(basin_code, basin_count):
         finished = row['finished']
         
         if finished != 1:
-            #run_search(index)
+            download_single_result_excel(basin_code, min, max)
             excelData.loc[index, ['finished']] = [1] 
             print("The data was downloaded marking complete")
             df = pd.DataFrame(excelData)  
@@ -152,6 +155,61 @@ def download_results_one_excel(basin_code, basin_count):
 
     print("STEP 4: Finished") 
     #time.sleep(5)
+
+
+#STEP 4A: Single Download a set of 1000 for Excel files
+#/Users/david/Desktop/David/www/geography/downloads/excel/ARAL
+def download_single_result_excel(basin_code, min, max):
+    #max is 999
+    max = max - 800
+    min_int = int(min)
+    min_int = int(max)
+    min = str(min)
+    max = str(max)
+    print("Starting Downloads 1: Excel files for ", basin_code, ": from ", min, " to ", max)
+    path = "/Users/david/Desktop/David/www/geography/downloads/excel/"
+
+    download_start_stop = min + "-" + max
+    download_file_name = "ResultsList_" + basin_code + "_202207_" + min + "_" + max
+    driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
+    time.sleep(8)
+    driver.find_element(By.ID, "ResultsListOnly").click()
+    time.sleep(5)
+    driver.find_element(By.ID, "XLSX").click()
+    time.sleep(5)  
+
+    #Send the total amount to download 
+    driver.find_element(By.CSS_SELECTOR, ".nested:nth-child(3) #SelectedRange").click()
+    time.sleep(4)
+    driver.find_element(By.CSS_SELECTOR, ".nested:nth-child(3) #SelectedRange").send_keys(download_start_stop)
+    time.sleep(8)
+
+    #Type in the Filename 
+    driver.find_element(By.ID, "FileName").click()
+    time.sleep(5)
+    driver.find_element(By.ID, "FileName").send_keys("fileName")
+    driver.find_element(By.ID, "FileName").clear()
+    time.sleep(5)
+    driver.find_element(By.ID, "FileName").send_keys(download_file_name)
+    time.sleep(5)
+
+    driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
+    print("Finished downloads from ", min, " to ", max)
+    time.sleep(20)
+    
+    fileNameOriginal = path + download_file_name + ".ZIP"
+    fileNameNew = path + basin_code + "/" + download_file_name + ".ZIP"
+    os.rename(fileNameOriginal, fileNameNew)
+    time.sleep(5)
+
+    '''
+    
+
+    driver.find_element(By.CSS_SELECTOR, ".DeliveryItemType > .row:nth-child(3) > label").click()
+    time.sleep(4)
+
+
+    '''
 
 #STEP 5: Download PDF Files (Up to 100)
 def download_results_two_pdf(basin_code, basin_count):
@@ -183,48 +241,15 @@ def download_results_two_pdf(basin_code, basin_count):
 
     print("STEP 5: Finished") 
 
+
+
+
 #NOT DONE BELOW
-#Single Download 
-def download_results_one(basin_code, min, max):
-    print("Starting Downloads 1: Excel files for ", basin_code, ": from ", min, " to ", max)
-    download_start_stop = min + "-" + max
-    download_file_name = "ResultsList_" + basin_code + "_202207_" + min + "_" + max
-    driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
-    time.sleep(8)
-    driver.find_element(By.CSS_SELECTOR, ".DeliveryItemType > .row:nth-child(3) > label").click()
-    time.sleep(4)
-    driver.find_element(By.CSS_SELECTOR, ".nested:nth-child(3) #SelectedRange").click()
-    time.sleep(4)
-    driver.find_element(By.CSS_SELECTOR, ".nested:nth-child(3) #SelectedRange").send_keys(download_start_stop)
-    time.sleep(4)
-    driver.find_element(By.ID, "XLSX").click()
-    time.sleep(5)
-    driver.find_element(By.ID, "FileName").click()
-    time.sleep(5)
-    driver.find_element(By.ID, "FileName").send_keys("fileName")
-    driver.find_element(By.ID, "FileName").clear()
-    time.sleep(5)
-    driver.find_element(By.ID, "FileName").send_keys(download_file_name)
-    time.sleep(5)
-    driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
-    print("Finished downloads from ", min, " to ", max)
-    time.sleep(20)
-    
-    #Set path correctly
-    path = "/Users/david/Desktop/David/www/geography/downloads/"
 
-    fileNameOriginal = path + download_file_name + ".ZIP"
-    fileNameNew = path + basin_code + "/" + download_file_name + ".ZIP"
-    os.rename(fileNameOriginal, fileNameNew)
-    time.sleep(5)
 
-#STEP 4: Download PDF Files (Up to 100)
+
 
 #CLEAN BELOW
-
-
-
-
 #Step 3A: 
 def paginate_downloads_one(basin_code, basin_result_count, max_downloads):
     basin_result_count = int(basin_result_count)
