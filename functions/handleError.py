@@ -26,8 +26,6 @@ options.add_experimental_option('prefs', prefs)
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 
-
-
 def try_to_do(elementID):
     landing_page = "file:///Users/david/Desktop/David/www/geography/test.html"
     time.sleep(1) 
@@ -48,11 +46,10 @@ def try_to_do(elementID):
             count = count + 1
             pass
 
-    send_element = driver.find_element(By.ID, "name")
-    send_element.clear()
-    send_element.send_keys("say hi!")
+    #send_element = driver.find_element(By.ID, "name")
+    #send_element.clear()
+    #send_element.send_keys("say hi!")
     time.sleep(1)
-
 
 
 def first_level_search():
@@ -87,14 +84,18 @@ def first_level_search():
 
 
 #first_level_search()
-for x in range(4):
+for x in range(5):
+    print("Trying ", x)
     
-    if x >= 2:
-        elementID = "hiya"
-    else: 
+    if x < 3:
         elementID = "hiyaOH"
-    try_to_do(elementID)
+    else: 
+        elementID = "hiya"
 
+    try_to_do(elementID)
+    #send_element.send_keys("say hi!")
+
+time.sleep(60)
 
 '''
 from selenium.common.exceptions import NoSuchElementException

@@ -79,6 +79,7 @@ def first_level_search():
     print("STEP 1: Finished") 
     time.sleep(5)
 
+
 #STEP 2: Navigate to first level search 
 def second_level_search(search_terms):							
     print("STEP 2: Second Level Search") 
@@ -368,24 +369,3 @@ def create_download_folder(basin_code):
     if not os.path.exists(newpath):
         os.makedirs(newpath)
 
-def login():
-    print("Login") 
-    driver.get("https://library.oregonstate.edu/")
-    time.sleep(5)
-
-    element = driver.find_element(By.ID,"term-1search")
-    element.send_keys("nexis uni")
-    element.send_keys(Keys.RETURN)
-    time.sleep(15)
-    driver.find_element(By.CSS_SELECTOR, "#SEARCH_RESULT_RECORDID_alma99492178701865 mark").click()
-    time.sleep(8)
-    driver.find_element(By.CSS_SELECTOR, ".item-title:nth-child(1)").click()
-    time.sleep(12)
-    driver.switch_to.window(driver.window_handles[1])
-    time.sleep(720)
-    driver.find_element(By.CSS_SELECTOR, ".advanced-search").click()
-    print("login: was run you can now start the search")
-    time.sleep(720)
-
-if __name__ == "__main__":
-    main()
