@@ -1,5 +1,5 @@
 ,index,basin_number,search_terms,basin_code,basin_name,basin_count,search_completed,preliminary_review,search_notes,over_ten_thousand,finished
-0,1,1,Adige,ADIG,Adige,,Y,N,,,0
+0,1,1,Adige,ADIG,Adige,,Y,N,,,1
 1,2,2,Akpa,AKPA,Akpa,,Y,N,,,1
 2,3,3,Alakol,ALKL,Alakol,,Y,N,,,1
 3,4,4,Alsek OR Bates Lake,ALSK,Alsek,,Y,N,,,1
@@ -9,7 +9,7 @@
 7,8,8,An Nahr Al Kabir OR Nahr Ibrahim,ANAK,An Nahr Al Kabir,,Y,N,,,1
 8,9,9,Angerman,ANGE,Angerman,,Y,N,,,1
 9,10,10,Annole,ANNL,Annole,,N,N,No Results,,1
-10,11,11,Aral OR Syr Daria OR Naryn OR Amu Daria OR Syr Darya OR Amu Darya OR Akhangaran OR Chirchik,ARAL,Aral Sea,,N,N,,,1
+10,11,11,Aral OR Syr Daria OR Naryn OR Amu Daria OR Syr Darya OR Amu Darya OR Akhangaran OR Chirchik,ARAL,Aral Sea,,N,N,,,0
 11,12,12,Asi OR Orontes OR Amik Golu,ASIX,Asi/Orontes,,N,N,,,0
 12,13,13,Artibonite OR Depeligre,ATBN,Artibonite,,Y,N,,,0
 13,14,14,Astara Chay,ATCY,Astara Chay,,Y,N,,,1

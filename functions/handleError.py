@@ -84,6 +84,7 @@ def first_level_search():
 
 
 #first_level_search()
+'''
 for x in range(5):
     print("Trying ", x)
     
@@ -95,6 +96,45 @@ for x in range(5):
     try_to_do(elementID)
     #send_element.send_keys("say hi!")
 
+'''
+
+def click_button():
+    landing_page = "file:///Users/david/Desktop/David/www/geography/test.html"
+    driver.get(landing_page)
+    print("made it to landing page")
+    #time.sleep(4)
+    
+    
+
+    #Find Element
+    count = 0
+
+    while count < 2:
+        try:
+            button = driver.find_element("xpath", "//ul[@class='filters-used']/li[2]/button")
+            button.click()
+            print("Found!")
+            time.sleep(1)  
+            count = 2
+        except NoSuchElementException:  
+            print("didnt work ", count)
+            count = count + 1
+            time.sleep(1)
+            pass
+
+
+
+            '''
+            element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "ul#ulBirthYear a[data-value='2002']")))
+            element.click()
+            '''
+
+    #send_element = driver.find_element(By.ID, "name")
+    #send_element.clear()
+    #send_element.send_keys("say hi!")
+    time.sleep(1)
+
+click_button()
 time.sleep(60)
 
 '''

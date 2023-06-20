@@ -14,11 +14,27 @@
     <button id = "click" onclick="myFunction()">Click me</button>
 </form> 
 
+<ul class = "filters-used">
+  <li> 
+    <button type="button" onclick="place()" class = "toremove">Place</button> 
+  </li>
+  <li> 
+    <button type="button" onclick="date()" class = "toremove">Date</button> 
+  </li>
+
+</ul> 
+
 
 <script>
 function myFunction() {
   let text = document.getElementById('name').value
   alert(text)
+}
+function place() {
+  alert("place")
+}
+function date() {
+  alert("date")
 }
 </script>
 
