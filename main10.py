@@ -26,19 +26,13 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 
 logged_in = True  
 
-#Need to fix basin code and search term
-date_one = "https://advance-lexis-com.oregonstate.idm.oclc.org/search/?pdmfid=1516831&crid=aeca1622-8061-4f65-b8df-644573d56486&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole+)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+not+ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=07%2F15%2F2009to07%2F14%2F2010%7Cdatebetween&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=1a75d902-74df-40ac-9801-7493b8a82332"
-date_two = "https://advance-lexis-com.oregonstate.idm.oclc.org/search/?pdmfid=1516831&crid=74b80034-c505-4e16-a204-de4d4f1a9b16&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole+)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=07%2F15%2F2010to07%2F14%2F2011%7Cdatebetween&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=1a75d902-74df-40ac-9801-7493b8a82332"
-date_three = "https://advance-lexis-com.oregonstate.idm.oclc.org/search/?pdmfid=1516831&crid=ddefc9ae-24ea-4edc-be89-b22b4a798adc&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole+)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum+)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=07%2F15%2F2011to07%2F14%2F2012%7Cdatebetween&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=f7b30bbb-acc8-445f-bcaa-9d91cc9630ec"
 
-dates = [date_one, date_two, date_three]
-
-#MAIN 
+#MAIN:
 def main():
     if logged_in == False:
         login()
     else: 
-        login_inside()
+        #login_inside()
         basin_code = "Aral"
         search_terms = "Aral OR Syr Daria OR Naryn OR Amu Daria OR Syr Darya OR Amu Darya OR Akhangaran OR Chirchik"
         print("START SINGLE BASIN SEARCH: Starting a search for the basin " + basin_code)
@@ -56,7 +50,6 @@ def single_basin_search(basin_code, search_terms):
         start_date = row['start_date']
         end_date = row['end_date']
         finished = row['finished']
-        #over_thousand = row['over_thousand']
 
         if finished != 1:
             landing_page = 'https://advance-lexis-com.oregonstate.idm.oclc.org/bisacademicresearchhome/?pdmfid=1516831&crid=0f1105ae-7bcf-49e0-b0bd-1f5d6657e6ec&ecomp=zxryk&prid=86dd402e-b3c1-43d7-a5b0-308dbc0270c9'
@@ -64,9 +57,9 @@ def single_basin_search(basin_code, search_terms):
             time.sleep(4)
             driver.get(search_link)
             time.sleep(4)
-            basin_result_count = search_by_year(basin_code, search_terms)
+            basin_result_count = search_by_year(basin_code, search_terms, start_date, end_date)
 
-            #Mark Completed 
+            #Mark Completed
             masterToDo.loc[index, ['finished']] = [1] 
             masterToDo.loc[index, ['basin_count']] = [basin_result_count] 
 
@@ -75,7 +68,7 @@ def single_basin_search(basin_code, search_terms):
 
             df = pd.DataFrame(masterToDo)  
             df.to_csv(masterToDoFile)
-            print("STEP 1: Finished a single year from ", start_date, " to ", end_date) 
+            print("STEP 1: Finished a single year from ", start_date, " to ", end_date, " and marking completed") 
             time.sleep(30)
 
         else:     
@@ -83,16 +76,16 @@ def single_basin_search(basin_code, search_terms):
             time.sleep(.2)
 
 #SINGLE SEARCH: Navigate through everything for a given year 
-def search_by_year(basin_code, search_terms):
+def search_by_year(basin_code, search_terms, start_date, end_date):
 
     #Step 1: Navigate to the second search terms that are basin specific 
     second_level_search(basin_code, search_terms)
 
     #Step 2: Get the basin count and write to excel 
-    basin_result_count = check_excel_result_count(basin_code)
+    basin_result_count = check_excel_result_count(basin_code, start_date, end_date)
 
     #Step 3: Download all excel results
-    download_excel(basin_code, basin_result_count)
+    download_excel(basin_code, basin_result_count, start_date, end_date)
 
     return basin_result_count
 
@@ -114,7 +107,7 @@ def second_level_search(basin_code, search_terms):
 
 #DOWNLOAD: EXCEL 
 #STEP 3: Check Result and Group Duplicates
-def check_excel_result_count(basin_code):
+def check_excel_result_count(basin_code, start_date, end_date):
     print("FUNCTION A3: Check the Basin Count") 
     
     #Make sure that we group results
@@ -138,7 +131,7 @@ def check_excel_result_count(basin_code):
         
     elif basin_result_count > 0 and basin_result_count < 1000:
         print("We can just download") 
-        download_excel(basin_code, basin_result_count)
+        download_excel(basin_code, basin_result_count, start_date, end_date)
 
     else: 
         print("Skip")
@@ -150,19 +143,23 @@ def check_excel_result_count(basin_code):
 
 
 #STEP 5: Download Excel (1000)
-def download_excel(basin_code, basin_result_count):
+def download_excel(basin_code, basin_result_count, start_date, end_date):
     min = str(1)
     max = str(basin_result_count)
 
     print("STEP 5: Start Downloading Excel")
 
     print("Starting Downloads 1: Excel files for ", min, ": from ", 0, " to ", max)
-    #/Users/david/Desktop/David/www/geography/downloads/excel/ARAL
-
-    path = "/Users/david/Desktop/David/www/geography/downloads/excel/"
 
     download_start_stop = min + "-" + max
-    download_file_name = "ResultsList_" + basin_code + "_202207_" + min + "_" + max
+    #download_file_name = "ResultsList_" + basin_code + "_202207_" + min + "_" + max
+    s = "6/30/2008"
+    start_date_array = start_date.split('/')
+    end_date_array = end_date.split('/')
+    start_year = start_date_array[2]
+    end_year = end_date_array[2]
+
+    download_file_name = "ResultsList_" + basin_code + "_202207_" + start_year + "_" + end_year
 
     driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
     time.sleep(8)
@@ -191,10 +188,12 @@ def download_excel(basin_code, basin_result_count):
     time.sleep(20)
  
     #MOVE FILE: Set the File Name (Need to add in the dates for this)
+    download_wait = 0
+
     while download_wait < 20:
         try:
             #ResultsList_Aral_202207_1_60.ZIP
-            print("File downloaded and moved to /Users/david/Desktop/David/www/geography/downloads/excel/", basin_code)
+            print("File downloaded and trying to move")
 
             original_path = "/Users/david/Desktop/David/www/geography/downloads/"
             fileNameOriginal = original_path + download_file_name + ".ZIP"
@@ -203,7 +202,12 @@ def download_excel(basin_code, basin_result_count):
             fileNameNew = final_path + basin_code + "/" + download_file_name + ".ZIP"
 
             os.rename(fileNameOriginal, fileNameNew)
-            download_wait = 12
+
+            print("File downloaded and moved from")
+            print(fileNameOriginal)
+            print("to")
+            print(fileNameNew)
+            download_wait = 40
             time.sleep(5)
 
         except FileNotFoundError:
@@ -213,6 +217,10 @@ def download_excel(basin_code, basin_result_count):
 
     print("STEP 3: Excel Downloads for ", basin_code, " FINISHED")
     time.sleep(1)
+
+
+
+
 
 
 
@@ -290,20 +298,4 @@ if __name__ == "__main__":
 
 
 
-    '''
-    '''
-
-    '''
-
-    for first_level_link in dates:
-        landing_page = 'https://advance-lexis-com.oregonstate.idm.oclc.org/bisacademicresearchhome/?pdmfid=1516831&crid=0f1105ae-7bcf-49e0-b0bd-1f5d6657e6ec&ecomp=zxryk&prid=86dd402e-b3c1-43d7-a5b0-308dbc0270c9'
-        driver.get(landing_page)
-        time.sleep(4)
-        driver.get(first_level_link)
-        time.sleep(4)
-        search_by_year(basin_code, search_terms)
-        time.sleep(360)
-
-    print("STEP 1: Finished year") 
-    time.sleep(5)
-    '''
+   
