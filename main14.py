@@ -129,7 +129,6 @@ def second_level_search(search_terms):
     print("STEP 2: Finished Second Level Search") 
     print(" ")
 
-#DOWNLOAD: EXCEL 
 #STEP 3: Check Result and Group Duplicates
 def check_excel_result_count(basin_code, start_date, end_date):
     print("STEP 3: Check Result and Group Duplicates")
@@ -230,6 +229,8 @@ def download_excel(basin_code, basin_result_count, start_date, end_date):
     time.sleep(1)
 
 #STEP 6: Download PDF (250)
+
+
 
 
 #STEP 1: Navigate to Single Search (Includes Dates)
