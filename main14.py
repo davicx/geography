@@ -24,7 +24,7 @@ options.add_experimental_option('prefs', prefs)
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-logged_in = True  
+logged_in = True   
 
 
 #MAIN:
@@ -39,6 +39,34 @@ def main():
         print("START SINGLE BASIN SEARCH: Starting a search for the basin " + basin_code)
         print("__________________________________________________________________________")
         single_basin_search(basin_code, search_terms)
+
+
+
+def datething(): 
+    driver.get("https://advance-lexis-com.oregonstate.idm.oclc.org/search/?pdmfid=1516831&crid=9d8fabd9-8f3b-497a-a360-f452b84b7850&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(box1)+and+hlead(box2)+and+hlead(box3)+and+not+hlead(box4)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=48ae1ecb-5c25-4586-ba5b-d8d9c0b4ca5a")
+    driver.set_window_size(550, 691)
+    element = driver.find_element(By.CSS_SELECTOR, ".gnslanguagebutton > span")
+    actions = ActionChains(driver)
+    actions.move_to_element(element).perform()
+    element = driver.find_element(By.CSS_SELECTOR, "body")
+    actions = ActionChains(driver)
+    actions.move_to_element(element, 0, 0).perform()
+    driver.execute_script("window.scrollTo(0,114)")
+    driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
+    driver.find_element(By.CSS_SELECTOR, ".min-val").click()
+    driver.find_element(By.CSS_SELECTOR, ".min-val").send_keys("01/01/2004")
+    driver.find_element(By.CSS_SELECTOR, ".max-val").click()
+    driver.find_element(By.CSS_SELECTOR, ".max-val").send_keys("01/01/2023")
+    driver.find_element(By.CSS_SELECTOR, ".save").click()
+    element = driver.find_element(By.CSS_SELECTOR, ".save")
+    actions = ActionChains(driver)
+    actions.move_to_element(element).perform()
+    element = driver.find_element(By.CSS_SELECTOR, "body")
+    actions = ActionChains(driver)
+    actions.move_to_element(element, 0, 0).perform()
+    driver.execute_script("window.scrollTo(0,0)")
+  
+
 
 #SINGLE BASIN SEARCH
 def single_basin_search(basin_code, search_terms):
@@ -55,7 +83,7 @@ def single_basin_search(basin_code, search_terms):
 
         if finished != 1:
             first_level_search(search_link)
-            basin_result_count = -1
+            #basin_result_count = -1
             basin_result_count = search_by_year(basin_code, search_terms, start_date, end_date)
 
             #Mark Completed
@@ -100,7 +128,6 @@ def search_by_year(basin_code, search_terms, start_date, end_date):
 
     return basin_result_count
 
-
 #STEP 1: Navigate to First Level Search
 def first_level_search(search_link):	
     print("STEP 1: Starting First Level Search") 
@@ -111,7 +138,6 @@ def first_level_search(search_link):
     time.sleep(4)
     print("STEP 1: Finished First Level Search") 
     print(" ")
-
 
 #STEP 2: Navigate to Second Level Search 
 def second_level_search(search_terms):	
