@@ -1,0 +1,6 @@
+,basin,start,stop,finished
+0,hi,1,10,True
+1,hi,11,20,True
+2,hello,1,10,Location2
+3,hello,11,20,False
+4,hello,21,30,False

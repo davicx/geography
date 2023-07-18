@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h4 id = "main" class = "hi">This is a Heading</h4>
+<p id = "hiya">Say hi</p>
+
+<form action="">
+    <input type="text" id="name" name="name" value="frodo"><br>
+    <input id = "submitButton" type="submit" value="Submit">
+    <button id = "click" onclick="myFunction()">Click me</button>
+</form> 
+
+<ul class = "filters-used">
+  <li> 
+    <button type="button" onclick="place()" class = "toremove">Place</button> 
+  </li>
+  <li> 
+    <button type="button" onclick="date()" class = "toremove">Date</button> 
+  </li>
+
+</ul> 
+
+
+<script>
+function myFunction() {
+  let text = document.getElementById('name').value
+  alert(text)
+}
+function place() {
+  alert("place")
+}
+function date() {
+  alert("date")
+}
+</script>
+
+</body>
+</html> 
