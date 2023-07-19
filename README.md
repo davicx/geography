@@ -25,7 +25,7 @@
     │   ├── Facility.py             
     │   ├── Loan.py           
     ├── data 							 
-    ├── Intuit- Discussion Questions     
+    ├── Discussion Questions     
     ├── Main.py 						 
     ├── README.MD
     └── ...
@@ -40,7 +40,7 @@
     │   ├── Facility.py             
     │   ├── Loan.py           
     ├── data 							 
-    ├── Intuit- Discussion Questions     
+    ├── Discussion Questions     
     ├── Main.py 						 
     ├── README.MD
     └── ...
