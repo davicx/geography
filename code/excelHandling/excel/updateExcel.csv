@@ -6,10 +6,10 @@ index,basin,start_date,end_date,basin_count,finished
 4,basin_name,7/15/12,7/14/13,200,1
 5,basin_name,7/15/13,7/14/14,200,1
 6,basin_name,7/15/14,7/14/15,200,1
-7,basin_name,7/15/15,7/14/16,200,1
-8,basin_name,7/15/16,7/14/17,200,1
-9,basin_name,7/15/17,7/14/18,200,1
-10,basin_name,7/15/18,7/14/19,200,1
-11,basin_name,7/15/19,7/14/20,200,1
+7,basin_name,7/15/15,7/14/16,200,0
+8,basin_name,7/15/16,7/14/17,200,0
+9,basin_name,7/15/17,7/14/18,200,0
+10,basin_name,7/15/18,7/14/19,200,0
+11,basin_name,7/15/19,7/14/20,200,0
 12,basin_name,7/15/20,7/14/21,200,0
 13,basin_name,7/15/21,7/14/22,200,0

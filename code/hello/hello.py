@@ -23,12 +23,9 @@ prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geograp
 options.add_experimental_option('prefs', prefs)
 
 
-
 driver = webdriver.Chrome()
 
-#driver.get("https://www.google.com/")
-
-landing_page = "file:///Users/dvas22/Desktop/David/www/geography/test.html"
+landing_page = "https://www.google.com/"
 driver.get(landing_page)
 
 print("hi")
@@ -37,6 +34,9 @@ time.sleep(60)
 
 
 '''
+#driver.get("https://www.google.com/")
+
+landing_page = "file:///Users/dvas22/Desktop/David/www/geography/test.html"
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -68,10 +68,6 @@ driver = webdriver.Chrome('Users/dvas22/Desktop/David/www/geography/drivers/chro
 
 
 
-
-
-
-''' 
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -87,6 +83,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
-'''
+
 
 '''

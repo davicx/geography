@@ -1,3 +1,4 @@
+import time
 result_count = 440
 max_downloads = 100
 
@@ -18,3 +19,4 @@ for i in range(0, result_count, max_downloads):
         max = i + max_downloads
         
     print(min, max)
+    time.sleep(.1)

@@ -2,7 +2,6 @@ import pandas as pd
 import time
 
 
-
 #File Location: /Users/david/Desktop/David/www/geography/code/excelHandling/openCSV.py
 data = pd.read_csv('/Users/david/Desktop/David/www/geography/code/excelHandling/excel/basinData.csv')
 

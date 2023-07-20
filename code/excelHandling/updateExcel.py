@@ -8,7 +8,6 @@ data = pd.read_csv('/Users/david/Desktop/David/www/geography/code/excelHandling/
 def main():
     for index, row in data.iterrows():
         basin = row['basin']
-        basin_count = row['basin_count']
         start_date = row['start_date']
         end_date = row['end_date']
         finished = row['finished']

@@ -21,13 +21,7 @@ options.add_argument("--start-maximized")
 options.add_argument("user-data-dir=/tmp/david")
 prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geography/downloads'}
 options.add_experimental_option('prefs', prefs)
-'''
-///Users/dvas22/Desktop/David/www/geography/drivers/chromedriver
-options = webdriver.ChromeOptions()
-options.binary_location = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-chrome_driver_binary = "/usr/local/bin/chromedriver"
-driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
-'''
+
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
@@ -302,7 +296,7 @@ def login_inside():
     driver.find_element(By.CSS_SELECTOR, "#SEARCH_RESULT_RECORDID_alma99492178701865 mark").click()
     time.sleep(6)
     driver.find_element(By.CSS_SELECTOR, ".item-title:nth-child(1)").click()
-    time.sleep(12)
+    time.sleep(8)
     driver.switch_to.window(driver.window_handles[1])
     time.sleep(20)
     #driver.find_element(By.CSS_SELECTOR, ".advanced-search").click()
@@ -318,3 +312,12 @@ def get_result_count():
 
 if __name__ == "__main__":
     main()
+
+
+'''
+///Users/dvas22/Desktop/David/www/geography/drivers/chromedriver
+options = webdriver.ChromeOptions()
+options.binary_location = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+chrome_driver_binary = "/usr/local/bin/chromedriver"
+driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
+'''

@@ -1,14 +1,13 @@
 # importing pandas as pd
 import pandas as pd
- 
-# list of name, degree, score
-name = ["david", "frodo"]
-location = ["shire", "Shire"]
+
+name = ["david", "davey"]
+location = ["corvallis", "corvallis"]
 
 # dictionary of lists
-shire = {'name': name, 'location': location}
+names = {'name': name, 'location': location}
      
-df = pd.DataFrame(shire)
+df = pd.DataFrame(names)
  
 print(df)
 df.to_csv('names.csv')

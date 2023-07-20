@@ -33,11 +33,11 @@ def main():
     text_id = "text-id"
     alert_id = "alert-id"
     
-    find_element(element_id)
-    send_text(text_id)
+    #find_element(element_id)
+    #send_text(text_id)
     click_button(alert_id)
-    find_item()
-    print("Finished!")
+    #find_item()
+    #print("Finished!")
     time.sleep(30)
 
 
@@ -46,18 +46,18 @@ def find_element(element_id):
     print("TYPE 1: Find an Element")
     count = 0
 
-    while count < 2:
+    while count < 5:
         try:
             text_element = driver.find_element(By.ID, element_id).text
             print("We found the element with the text: ")
             print(text_element)
-            time.sleep(2)  
+            time.sleep(30)  
             count = 2
         except NoSuchElementException:  
             print("didnt work ", count)
             count = count + 1
+            time.sleep(2)
             pass
-    print("Finished 1")
 
 #TYPE 2: Send Text
 def send_text(text_id): 
