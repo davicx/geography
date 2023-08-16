@@ -28,6 +28,24 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 logged_in = True  
 
 #Need to fix basin code and search term
+
+#STEP 1: Navigate to Single Search (Includes Dates)
+#STEP 2: Navigate to Second Level Search 
+#STEP 3: Check Group Duplicates
+#STEP 4: Check Sort by Oldest to Newest 
+#STEP 5: Download Excel (1000)
+    #Step 5A: Get Result Count (for the specific basin and time frame)
+    #Step 5B: Paginate the Results
+    #Step 5C: Download These to the correct folder
+#STEP 6: Download PDF (250)
+    #Step 6A: Get Result Count (for the specific basin and time frame)
+    #Step 6B: Paginate the Results
+    #Step 6C: Download These to the correct folder
+
+
+
+
+
 date_one = "https://advance-lexis-com.oregonstate.idm.oclc.org/search/?pdmfid=1516831&crid=aeca1622-8061-4f65-b8df-644573d56486&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole+)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+not+ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=07%2F15%2F2009to07%2F14%2F2010%7Cdatebetween&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=1a75d902-74df-40ac-9801-7493b8a82332"
 date_two = "https://advance-lexis-com.oregonstate.idm.oclc.org/search/?pdmfid=1516831&crid=74b80034-c505-4e16-a204-de4d4f1a9b16&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole+)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=07%2F15%2F2010to07%2F14%2F2011%7Cdatebetween&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=1a75d902-74df-40ac-9801-7493b8a82332"
 date_three = "https://advance-lexis-com.oregonstate.idm.oclc.org/search/?pdmfid=1516831&crid=ddefc9ae-24ea-4edc-be89-b22b4a798adc&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole+)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum+)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=07%2F15%2F2011to07%2F14%2F2012%7Cdatebetween&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=f7b30bbb-acc8-445f-bcaa-9d91cc9630ec"
@@ -262,56 +280,6 @@ def download_excel(basin_code, basin_result_count):
 
 
 
-#FUNCTIONS
-#Function 1: Login a User
-def login():
-    print("Login") 
-    driver.get("https://library.oregonstate.edu/")
-    time.sleep(3)
-
-    element = driver.find_element(By.ID,"term-1search")
-    element.send_keys("nexis uni")
-    element.send_keys(Keys.RETURN)
-    time.sleep(10)
-    driver.find_element(By.CSS_SELECTOR, "#SEARCH_RESULT_RECORDID_alma99492178701865 mark").click()
-    time.sleep(6)
-    driver.find_element(By.CSS_SELECTOR, ".item-title:nth-child(1)").click()
-    time.sleep(12)
-    driver.switch_to.window(driver.window_handles[1])
-    time.sleep(720)
-    driver.find_element(By.CSS_SELECTOR, ".advanced-search").click()
-    print("login: was run you can now start the search")
-    time.sleep(720)
-
-#Function 1: Login a User
-def login_inside():
-    print("Login") 
-    driver.get("https://library.oregonstate.edu/")
-    time.sleep(3)
-
-    element = driver.find_element(By.ID,"term-1search")
-    element.send_keys("nexis uni")
-    element.send_keys(Keys.RETURN)
-    time.sleep(10)
-    driver.find_element(By.CSS_SELECTOR, "#SEARCH_RESULT_RECORDID_alma99492178701865 mark").click()
-    time.sleep(6)
-    driver.find_element(By.CSS_SELECTOR, ".item-title:nth-child(1)").click()
-    time.sleep(8)
-    driver.switch_to.window(driver.window_handles[1])
-    time.sleep(20)
-    #driver.find_element(By.CSS_SELECTOR, ".advanced-search").click()
-    print("login: was run you can now start the search")
-  
-def get_result_count():
-    result_count_raw = driver.find_element(By.CSS_SELECTOR, ".countrendered")
-    result_count = result_count_raw.text
-
-    time.sleep(6)
-    
-    return result_count
-
-if __name__ == "__main__":
-    main()
 
 
 '''

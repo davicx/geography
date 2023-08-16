@@ -20,26 +20,59 @@ options = Options()
 options.page_load_strategy = 'normal'
 options.add_argument("--start-maximized")
 options.add_argument("user-data-dir=/tmp/david")
-prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geography/downloads'}
+#prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geography/web_page/downloads'}
+prefs = {'download.default_directory' : '/Users/david/Desktop/David/www/geography/web_page/downloads'}
 options.add_experimental_option('prefs', prefs)
 
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=options)
 
 landing_page = "file:///Users/david/Desktop/David/www/geography/web_page/index.html"
 driver.get(landing_page)
 
+'''
+chrome_options = webdriver.ChromeOptions()
+prefs = {'download.default_directory' : '/path/to/dir'}
+chrome_options.add_experimental_option('prefs', prefs)
+driver = webdriver.Chrome(chrome_options=chrome_options)
+'''
+
 def main():
-    element_id = "element-id"
-    text_id = "text-id"
-    alert_id = "alert-id"
+    #element_id = "element-id"
+    #text_id = "text-id"
+    #alert_id = "alert-id"
     
     #find_element(element_id)
     #send_text(text_id)
-    click_button(alert_id)
+    #click_button(alert_id)
     #find_item()
     #print("Finished!")
+    #for x in range(6):
+    #    print(x)
+
+    download_files()
     time.sleep(30)
 
+def download_files():
+    print("TYPE 3: Click a button")
+    count = 0
+
+    while count < 2:
+        try:
+            time.sleep(1)
+            click_element = driver.find_element(By.ID, "download-zip")
+            time.sleep(1)  
+            click_element.click()
+            time.sleep(2)  
+            count = 2
+
+        except NoSuchElementException:  
+            print("didnt work ", count)
+            time.sleep(2)
+            count = count + 1
+            pass
+        
+    print("Finished 3")
+    
 
 #TYPE 1: Find an Element
 def find_element(element_id): 

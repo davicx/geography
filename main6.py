@@ -21,7 +21,8 @@ options.add_argument("user-data-dir=/tmp/david")
 prefs = {'download.default_directory' : '/Users/david/Desktop/David/www/geography/downloads'}
 options.add_experimental_option('prefs', prefs)
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+#driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+driver = webdriver.Chrome(service=Service(ChromeDriverManager(version='114.0.5735.90').install()), options=options)
 
 logged_in = True 
 
