@@ -1,0 +1,250 @@
+1692398818252	geckodriver	INFO	Listening on 127.0.0.1:50060
+1692398818259	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofilehsDExY"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692398818629	Marionette	INFO	Marionette enabled
+2023-08-18 15:46:58.752 plugin-container[1227:18690] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:46:58.752 plugin-container[1227:18690] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+2023-08-18 15:46:58.755 plugin-container[1227:18690] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:46:58.755 plugin-container[1227:18690] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 15:46:58.755 plugin-container[1227:18692] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:46:58.755 plugin-container[1227:18692] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1692398818783	Marionette	INFO	Listening on port 50068
+Read port: 50068
+WebDriver BiDi listening on ws://127.0.0.1:50061
+1692398818953	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:50061/devtools/browser/038bb617-2756-407f-a146-e9dc7374ea35
+1692398858358	geckodriver	INFO	Listening on 127.0.0.1:50122
+1692398858364	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofileuUj5nF"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692398858726	Marionette	INFO	Marionette enabled
+2023-08-18 15:47:38.836 plugin-container[1287:19501] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:47:38.837 plugin-container[1287:19501] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 15:47:38.840 plugin-container[1287:19501] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:47:38.840 plugin-container[1287:19501] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 15:47:38.840 plugin-container[1287:19506] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:47:38.840 plugin-container[1287:19506] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1692398858978	Marionette	INFO	Listening on port 50128
+WebDriver BiDi listening on ws://127.0.0.1:50123
+Read port: 50128
+1692398859162	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:50123/devtools/browser/38be7ef0-ae91-450f-bd21-5899bd7c4f2e
+1692398884402	Marionette	INFO	Stopped listening on port 50128
+1692398895249	geckodriver	INFO	Listening on 127.0.0.1:50172
+1692398895256	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofilehDUt3t"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692398895626	Marionette	INFO	Marionette enabled
+2023-08-18 15:48:15.738 plugin-container[1335:20332] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:48:15.739 plugin-container[1335:20332] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 15:48:15.741 plugin-container[1335:20332] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:48:15.741 plugin-container[1335:20332] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 15:48:15.741 plugin-container[1335:20337] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:48:15.742 plugin-container[1335:20337] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1692398895881	Marionette	INFO	Listening on port 50179
+WebDriver BiDi listening on ws://127.0.0.1:50173
+Read port: 50179
+1692398896063	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:50173/devtools/browser/05623f73-184d-40f7-a163-99b57845a171
+1692398902454	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1692398997549	geckodriver	INFO	Listening on 127.0.0.1:50247
+1692398997556	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofileTNcqRy"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692398997921	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+2023-08-18 15:49:58.034 plugin-container[1430:21694] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:49:58.035 plugin-container[1430:21694] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 15:49:58.038 plugin-container[1430:21694] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:49:58.038 plugin-container[1430:21694] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 15:49:58.038 plugin-container[1430:21696] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:49:58.038 plugin-container[1430:21696] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1692398998060	Marionette	INFO	Listening on port 50253
+Read port: 50253
+WebDriver BiDi listening on ws://127.0.0.1:50248
+1692398998214	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:50248/devtools/browser/4b60d335-688f-4568-8999-c7c5d176befc
+1692399056932	geckodriver	INFO	Listening on 127.0.0.1:50310
+1692399057449	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofilexnAYNF"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692399057817	Marionette	INFO	Marionette enabled
+2023-08-18 15:50:57.927 plugin-container[1497:22595] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:50:57.927 plugin-container[1497:22595] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+2023-08-18 15:50:57.930 plugin-container[1497:22595] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:50:57.930 plugin-container[1497:22595] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 15:50:57.930 plugin-container[1497:22598] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:50:57.930 plugin-container[1497:22598] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1692399057954	Marionette	INFO	Listening on port 50316
+Read port: 50316
+WebDriver BiDi listening on ws://127.0.0.1:50311
+1692399058106	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:50311/devtools/browser/bb014933-3936-459e-9004-d459121414b6
+1692399082246	geckodriver	INFO	Listening on 127.0.0.1:50365
+1692399082761	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofilewBGwit"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692399083133	Marionette	INFO	Marionette enabled
+2023-08-18 15:51:23.243 plugin-container[1545:23220] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:51:23.243 plugin-container[1545:23220] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+2023-08-18 15:51:23.246 plugin-container[1545:23220] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:51:23.246 plugin-container[1545:23220] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 15:51:23.246 plugin-container[1545:23224] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 15:51:23.246 plugin-container[1545:23224] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1692399083275	Marionette	INFO	Listening on port 50371
+Read port: 50371
+WebDriver BiDi listening on ws://127.0.0.1:50366
+1692399083425	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:50366/devtools/browser/42b6ca4a-8491-4680-8c65-c5ef123f2a6e
+1692400673602	geckodriver	INFO	Listening on 127.0.0.1:51464
+1692400674118	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofile6BD5r3"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692400674482	Marionette	INFO	Marionette enabled
+2023-08-18 16:17:54.592 plugin-container[2520:41310] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:17:54.592 plugin-container[2520:41310] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:17:54.595 plugin-container[2520:41310] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:17:54.595 plugin-container[2520:41310] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:17:54.595 plugin-container[2520:41312] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:17:54.595 plugin-container[2520:41312] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1692400674732	Marionette	INFO	Listening on port 51473
+Read port: 51473
+WebDriver BiDi listening on ws://127.0.0.1:51465
+1692400674772	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:51465/devtools/browser/35a1cbcc-17de-4201-9c81-1aa4dbb4ec30
+1692400709492	geckodriver	INFO	Listening on 127.0.0.1:51529
+1692400710009	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofileceLX2I"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692400710381	Marionette	INFO	Marionette enabled
+2023-08-18 16:18:30.492 plugin-container[2575:41997] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:18:30.492 plugin-container[2575:41997] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:18:30.495 plugin-container[2575:41997] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:18:30.495 plugin-container[2575:41997] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:18:30.495 plugin-container[2575:42000] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:18:30.495 plugin-container[2575:42000] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1692400710632	Marionette	INFO	Listening on port 51535
+WebDriver BiDi listening on ws://127.0.0.1:51530
+Read port: 51535
+1692400710816	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:51530/devtools/browser/78f3cb13-6def-4ecb-8ead-09f9a2fcf1e4
+1692400755255	geckodriver	INFO	Listening on 127.0.0.1:51602
+1692400755262	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofileToAZfM"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692400755619	Marionette	INFO	Marionette enabled
+2023-08-18 16:19:15.730 plugin-container[2637:42809] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:19:15.730 plugin-container[2637:42809] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:19:15.732 plugin-container[2637:42809] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:19:15.732 plugin-container[2637:42809] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:19:15.733 plugin-container[2637:42812] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:19:15.733 plugin-container[2637:42812] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1692400755872	Marionette	INFO	Listening on port 51606
+WebDriver BiDi listening on ws://127.0.0.1:51603
+Read port: 51606
+1692400756059	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:51603/devtools/browser/f5b16061-d381-4ccb-8c80-ce2baefc1713
+1692400778403	geckodriver	INFO	Listening on 127.0.0.1:51657
+1692400778921	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofile7VNp3b"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692400779289	Marionette	INFO	Marionette enabled
+2023-08-18 16:19:39.400 plugin-container[2687:43550] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:19:39.400 plugin-container[2687:43550] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:19:39.403 plugin-container[2687:43550] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:19:39.403 plugin-container[2687:43550] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:19:39.403 plugin-container[2687:43556] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:19:39.403 plugin-container[2687:43556] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1692400779539	Marionette	INFO	Listening on port 51663
+WebDriver BiDi listening on ws://127.0.0.1:51658
+Read port: 51663
+1692400779580	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:51658/devtools/browser/a0c9d67e-7b6f-43ee-b2f3-bd1f3c8b4e9e
+1692400814312	Marionette	INFO	Stopped listening on port 50316
+1692400820406	Marionette	INFO	Stopped listening on port 50371
+1692400823002	Marionette	INFO	Stopped listening on port 51473
+1692400825414	Marionette	INFO	Stopped listening on port 51535
+1692400827556	Marionette	INFO	Stopped listening on port 51606
+1692400829696	Marionette	INFO	Stopped listening on port 51663
+1692400885663	geckodriver	INFO	Listening on 127.0.0.1:51883
+1692400886179	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofileaRIpVz"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692400886554	Marionette	INFO	Marionette enabled
+2023-08-18 16:21:26.666 plugin-container[2787:45458] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:21:26.666 plugin-container[2787:45458] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:21:26.669 plugin-container[2787:45458] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:21:26.669 plugin-container[2787:45458] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:21:26.669 plugin-container[2787:45462] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:21:26.669 plugin-container[2787:45462] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1692400886807	Marionette	INFO	Listening on port 51890
+WebDriver BiDi listening on ws://127.0.0.1:51884
+Read port: 51890
+1692400886990	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:51884/devtools/browser/3e7f708c-8270-4c41-9fdd-0fa7a8e0dbc1
+1692400933116	geckodriver	INFO	Listening on 127.0.0.1:51957
+1692400933631	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofilegHMBiW"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692400934005	Marionette	INFO	Marionette enabled
+2023-08-18 16:22:14.117 plugin-container[2850:46360] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:22:14.117 plugin-container[2850:46360] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+2023-08-18 16:22:14.120 plugin-container[2850:46360] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:22:14.120 plugin-container[2850:46360] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:22:14.120 plugin-container[2850:46365] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:22:14.120 plugin-container[2850:46365] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1692400934144	Marionette	INFO	Listening on port 51963
+Read port: 51963
+WebDriver BiDi listening on ws://127.0.0.1:51958
+1692400934297	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:51958/devtools/browser/2e9f4652-dbbe-4cb6-ac85-97df184795aa
+1692400966815	geckodriver	INFO	Listening on 127.0.0.1:52023
+1692400967327	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofileEkKZXp"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692400967700	Marionette	INFO	Marionette enabled
+2023-08-18 16:22:47.809 plugin-container[2903:47123] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:22:47.809 plugin-container[2903:47123] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:22:47.812 plugin-container[2903:47123] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:22:47.812 plugin-container[2903:47123] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:22:47.812 plugin-container[2903:47125] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:22:47.812 plugin-container[2903:47125] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1692400967950	Marionette	INFO	Listening on port 52029
+WebDriver BiDi listening on ws://127.0.0.1:52024
+Read port: 52029
+1692400968141	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:52024/devtools/browser/38607386-8542-49f1-a1db-b92df1051972
+1692401079907	geckodriver	INFO	Listening on 127.0.0.1:52117
+1692401080423	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/st/gpw1ps417mn_p9t19gf5gjw80000gp/T/rust_mozprofileI2TeEY"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1692401080795	Marionette	INFO	Marionette enabled
+2023-08-18 16:24:40.903 plugin-container[2975:49151] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:24:40.904 plugin-container[2975:49151] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:24:40.906 plugin-container[2975:49151] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:24:40.906 plugin-container[2975:49151] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2023-08-18 16:24:40.906 plugin-container[2975:49149] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2023-08-18 16:24:40.906 plugin-container[2975:49149] nil host used in call to allowsAnyHTTPSCertificateForHost:
+console.error: "Warning: unrecognized command line flag" "-remote-allow-hosts"
+1692401081044	Marionette	INFO	Listening on port 52125
+WebDriver BiDi listening on ws://127.0.0.1:52118
+Read port: 52125
+1692401081234	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:52118/devtools/browser/028a738c-45e4-4ce5-a5e5-567e506a4e65
+1692401264000	Marionette	INFO	Stopped listening on port 51890
+1692401267824	Marionette	INFO	Stopped listening on port 51963
+1692401269713	Marionette	INFO	Stopped listening on port 52029
+1692401272184	Marionette	INFO	Stopped listening on port 52125

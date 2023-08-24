@@ -16,7 +16,7 @@ import os
 import pandas as pd
 import time
 
-import HelloClass as hello
+#import HelloClass as hello
 
 
 options = Options()
@@ -26,9 +26,9 @@ options.add_argument("user-data-dir=/tmp/david")
 prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geography/downloads'}
 options.add_experimental_option('prefs', prefs)
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager(version='114.0.5735.90').install()), options=options)
+#driver = webdriver.Chrome(service=Service(ChromeDriverManager(version='114.0.5735.90').install()), options=options)
 
-logged_in = True  
+logged_in = False  
 
 #MAIN 
 def main():
