@@ -1,0 +1,20 @@
+Alex and David follow these instructions and use the associated library access numbers, they will expire on 12/31/23.
+
+https://tufts.primo.exlibrisgroup.com/discovery/search?sortby=rank&vid=01TUN_INST:01TUN&lang=en
+
+
+    Log into JumboSearch, Tufts’ university catalog, in the top right corner.
+    Select login via email and enter the address affiliated with your account.
+    Check your email – you should have received an email with a link to access JumboSearch. If not, check your spam folder.
+        Note: Access to JumboSearch through this link will only last up to 1 hour. You will need to log in through JumboSearch again after this timeframe.
+    Once you’ve clicked the link, search for any resource you need. If at any point the system asks you to enter your LAN (Library Access Number), type in the digits and click Enter.
+
+ 
+
+Library Access Numbers:
+
+ 
+
+Alexandra Caplan: 861350766
+
+David Charles: 862295360

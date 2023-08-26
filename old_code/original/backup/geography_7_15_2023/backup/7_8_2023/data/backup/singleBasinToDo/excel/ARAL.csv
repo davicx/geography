@@ -1,0 +1,6 @@
+,Unnamed: 0,index,basin_code,min,max,finished
+0,0,0,ARAL,1,1000,1
+1,1,1000,ARAL,1001,2000,0
+2,2,2000,ARAL,2001,3000,0
+3,3,3000,ARAL,3001,4000,0
+4,4,4000,ARAL,4001,4418,0
