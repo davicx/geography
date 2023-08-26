@@ -63,21 +63,39 @@ def login_external_user():
 def single_login():
     print("single login") 
     driver.get("https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Ftufts.alma.exlibrisgroup.com%2Fview%2FemailLogin%3Finstitute%3D01TUN_INST%26jwt%3DeyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBbG1hIiwiYXVkIjoiUHJpbW8iLCJleHAiOjE2OTMwOTMzNzksImp0aSI6Ik9QSHBnNXFSbEZRWjVDUVhiUGFxM2ciLCJpYXQiOjE2OTMwODk3NzksIm5iZiI6MTY5MzA4OTY1OSwic3ViIjoicGF0cm9uIiwiaWQiOiIyMTE5MjU0ODI5MDAwMzg1MSIsIm5hbWUiOiJDaGFybGVzLCBEYXZpZCIsImVtYWlsIjoidmFzcXVlemRAb3JlZ29uc3RhdGUuZWR1IiwicHJvdmlkZXIiOiJFTUFJTCIsImZpcnN0X25hbWUiOiJEYXZpZCIsImxhc3RfbmFtZSI6IkNoYXJsZXMifQ.TGOloKdYD2xLHiedNJiHsM62Jrxc6fXLKqoxcMfrKuw%26backUrl%3Dhttps%253A%252F%252Ftufts.primo.exlibrisgroup.com%252Fprimaws%252FsuprimaLogin%253Fsortby%253Drank%2526vid%253D01TUN_INST%253A01TUN%2526lang%253Den%2526target-url%253Dhttps%25253A%25252F%25252Ftufts.primo.exlibrisgroup.com%25252Fdiscovery%25252Fsearch%25253Fsortby%25253Drank%252526vid%25253D01TUN_INST%25253A01TUN%252526lang%25253Den&data=05%7C01%7Cvasquezd%40oregonstate.edu%7C7567c95eff17406b9bd208dba685cd10%7Cce6d05e13c5e4d6287a84c4a2713c113%7C0%7C0%7C638286865856140715%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=%2BDGfY8G4tN8GpUeAlFW%2BZux%2BORKQxoVCePxKR9zqoUc%3D&reserved=0")
-    for i in range(4,0,-1):
-        print(str(i)+'0 seconds left')
-        time.sleep(10)
-    print("done")
+    time.sleep(2)
+    driver.get("https://tufts.primo.exlibrisgroup.com/discovery/search?sortby=rank&vid=01TUN_INST:01TUN")
+    time.sleep(4)
+    driver.find_element(By.ID, "searchBar").click()
+    time.sleep(2)
+    driver.find_element(By.ID, "searchBar").send_keys("nexis uni")
+    time.sleep(2)
+    driver.find_element(By.ID, "searchBar").send_keys(Keys.ENTER)
+    time.sleep(4)
+    driver.find_element(By.CSS_SELECTOR, "#alma991017244849703851availabilityLine0 > .availability-status").click()
+    time.sleep(6)
+    driver.switch_to.window(driver.window_handles[1])
+    driver.find_element(By.CSS_SELECTOR, ".btn-library > .login").click()
+    time.sleep(1)
 
+    driver.find_element(By.ID, "user").click()
+    time.sleep(1)
 
+    driver.find_element(By.ID, "user").send_keys("862295360")
+    time.sleep(1)
 
-    
+    driver.find_element(By.NAME, "submit").click()
 
-
-        
+    time.sleep(30)
 
 if __name__ == "__main__":
     main()
 
+
+
+
+
+#APPENDIX: Code and Notes
 '''
 #STEP 1: Navigate to Single Search (Includes Dates)
 #STEP 2: Navigate to Second Level Search 
@@ -91,7 +109,6 @@ if __name__ == "__main__":
     #Step 6A: Get Result Count (for the specific basin and time frame)
     #Step 6B: Paginate the Results
     #Step 6C: Download These to the correct folder
-
 
 
 #MAIN 
@@ -171,5 +188,11 @@ def get_result_count():
     
     return result_count
 
+    
+    for i in range(4,0,-1):
+        print(str(i)+'0 seconds left')
+        time.sleep(10)
+    print("done")
+    
 
 '''
