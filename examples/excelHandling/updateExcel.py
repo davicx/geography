@@ -2,7 +2,8 @@ import pandas as pd
 import time
 
 
-data = pd.read_csv('/Users/david/Desktop/David/www/geography/code/excelHandling/excel/updateExcel.csv', index_col=0)
+#data = pd.read_csv('/Users/david/Desktop/David/www/geography/code/excelHandling/excel/updateExcel.csv', index_col=0)
+data = pd.read_csv('/Users/dvas22/Desktop/David/www/geography/examples/excelHandling/excel/updateExcel.csv', index_col=0)
 
 
 def main():
@@ -11,15 +12,25 @@ def main():
         start_date = row['start_date']
         end_date = row['end_date']
         finished = row['finished']
-    
+
         if finished != 1:
-            run_search(index)
+            print("The data was downloaded marking complete")
+            update_status(index)
             time.sleep(1)
         else:     
             print("The basin ", basin, " from ", start_date, " to ", end_date, " is already done so we are skipping")
             time.sleep(1)
-        print(" ")
 
+def update_status(index):
+    data.loc[index, ['finished']] = [1]
+    df = pd.DataFrame(data)  
+    df.to_csv('/Users/dvas22/Desktop/David/www/geography/examples/excelHandling/excel/updateExcel.csv')
+
+if __name__ == "__main__":
+    main()  
+
+
+'''
 def run_search(index):
     data.loc[index, ['finished']] = [1] 
     writeStatus()
@@ -27,11 +38,8 @@ def run_search(index):
 def writeStatus(): 
     print("The data was downloaded marking complete")
     df = pd.DataFrame(data)  
-    df.to_csv('/Users/david/Desktop/David/www/geography/code/excelHandling/excel/updateExcel.csv')
-
-
-if __name__ == "__main__":
-    main()  
+    #df.to_csv('/Users/david/Desktop/David/www/geography/code/excelHandling/excel/updateExcel.csv')
+    df.to_csv('/Users/dvas22/Desktop/David/www/geography/examples/excelHandling/updateExcel.py')
 
 
 
@@ -39,7 +47,7 @@ if __name__ == "__main__":
 
 
 
-'''
+
 error = False
 error = True
     if error == True:
