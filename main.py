@@ -10,6 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+from chromedriver_py import binary_path  
 
 import os
 import sys
@@ -19,11 +20,17 @@ import time
 options = Options()
 options.page_load_strategy = 'normal'
 options.add_argument("--start-maximized")
-options.add_argument("user-data-dir=/tmp/david")
+#options.add_argument("user-data-dir=/tmp/david")
+options.add_argument("user-data-dir=/tmp/david2")
 prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geography/downloads'}
 options.add_experimental_option('prefs', prefs)
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+#Login Type 1: 
+#driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+#Login Type 2: 
+svc = webdriver.ChromeService(executable_path=binary_path)
+driver = webdriver.Chrome(service=svc, options=options)
 
 
 #Set login status 
@@ -32,10 +39,10 @@ logged_in = True
 def main():
     if logged_in == False:
         #login_internal_user()
-        #login_external_user()
+        login_external_user()
         time.sleep(60)
     else: 
-        single_login()
+        #single_login()
         basin_code = "Aral"
         search_terms = "Aral OR Syr Daria OR Naryn OR Amu Daria OR Syr Darya OR Amu Darya OR Akhangaran OR Chirchik"
         single_basin_search(basin_code, search_terms)
@@ -45,12 +52,179 @@ def main():
 def single_basin_search(basin_code, search_terms):
     print("Starting a single basin search for ", basin_code)
     time.sleep(1)
-    driver.get("https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=8346dc40-81b7-47ac-9469-cb518c95d880&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=c0d34a78-a8aa-4c9b-8ad0-d00c56ca39bd")
+    search_link = "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=8346dc40-81b7-47ac-9469-cb518c95d880&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=c0d34a78-a8aa-4c9b-8ad0-d00c56ca39bd"
+    driver.get(search_link)
     time.sleep(4)
-    group_duplicates()
-    basin_count = get_result_count()
-    time.sleep(5)
+
+    #STEP 1: Group Duplicates and Get Result Count 
+    basin_count = group_duplicates()
     print("basin count ", basin_count)
+
+    #STEP 2: Set Date Range 
+    change_date(search_link, "01/01/2000", "02/01/2000")
+    #change_date(search_link, "02/01/2000", "03/01/2000")
+
+    #STEP 3: Set Sort by to Date (oldest to Newest)
+
+    #STEP 4: Download Excel  
+
+    #STEP 5: Download PDF 
+
+
+
+
+   
+#FUNCTIONS B: Utility Functions 
+#Function B1: Get Result Count 
+def get_result_count():
+    count_element = driver.find_element(By.CLASS_NAME, "countrendered")
+    result_count = count_element.get_attribute('data-actualresultscount')
+
+    return result_count
+
+#Function B2: Get Result Count and Toggle the Group Duplicates to On 
+def group_duplicates():
+    print("STEP 1: Get Result Count and Toggle the Group Duplicates to On ") 
+    
+    #Step 1: Get both of the results with the Group Duplicates Toggled on and off
+    basin_result_count_one_raw = get_result_count()
+    driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
+    time.sleep(5)
+    basin_result_count_two_raw = get_result_count()
+
+    print("Types of basin counts")
+    print(type(basin_result_count_one_raw))
+    print(type(basin_result_count_two_raw))
+    print("Types of basin counts")
+    
+    #Convert Basin Count One to Int 
+    if(isinstance(basin_result_count_one_raw, str)):
+        basin_result_count_one = int(basin_result_count_one_raw)
+        basin_result_count_one_string = basin_result_count_one_raw
+    
+    if(isinstance(basin_result_count_one_raw, int)):
+        basin_result_count_one = basin_result_count_one_raw
+        basin_result_count_one_string = str(basin_result_count_one_raw)
+    
+    #Convert Basin Count Two to Int 
+    if(isinstance(basin_result_count_two_raw, str)):
+        basin_result_count_two = int(basin_result_count_two_raw)
+        basin_result_count_two_string = basin_result_count_two_raw
+    
+    if(isinstance(basin_result_count_two_raw, int)):
+        basin_result_count_two = basin_result_count_two_raw
+        basin_result_count_two_string = str(basin_result_count_two_raw)
+
+
+    #Step 2: Set Group duplicats to the lower of the two 
+    if basin_result_count_two > basin_result_count_one:
+        driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
+        time.sleep(5)    
+
+    #print("Count 1- Current Page Count ", basin_result_count_two_string)
+    #print("Count 2- Current Page Count ", basin_result_count_two_string)
+    basin_result_count = min(basin_result_count_one, basin_result_count_two)
+
+    time.sleep(5)
+    if basin_result_count < 1000:
+        print("We can just download")
+    else:
+        print("Paginate")
+
+    print("STEP 1: Finished ")
+
+    return basin_result_count
+
+
+#Function B3: Set Date Range 
+def change_date(search_link, start_date, end_date):
+    print("STEP 3: Set Sort by to Date (oldest to Newest)")
+    driver.execute_script("window.scrollTo(0,120)")
+    time.sleep(1)
+    driver.execute_script("window.scrollTo(0,400)")
+    time.sleep(2)
+    print("Scrolled Down")
+
+    #Step 1: Open the timeline 
+    #May need to open and close if timeline selector value does not show up sometimes it loads slow or does not load
+    driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
+    time.sleep(4)
+    #timeline_opened = False
+    #if timeline_opened == False: 
+
+    '''
+    #This seems to work
+    driver.execute_script("window.scrollTo(0,10)")
+    driver.execute_script("window.scrollTo(0,400)")
+    driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
+    driver.find_element(By.CSS_SELECTOR, ".min-val").click()
+    driver.find_element(By.CSS_SELECTOR, ".min-val").send_keys("open")
+    driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
+    driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
+    driver.find_element(By.CSS_SELECTOR, ".min-val").click()
+    driver.find_element(By.CSS_SELECTOR, ".min-val").send_keys("open")
+    '''
+    set_min_date(search_link, start_date)
+    set_max_date(search_link, end_date)
+
+
+
+#Function B4: Set Minimum Date Value
+def set_min_date(search_link, start_date):
+    min_count = 0
+
+    #Try to open the timeline window if it does not open get the page again to reset 
+    #selenium.common.exceptions.ElementNotInteractableException
+    while min_count < 5:
+        try:
+            driver.find_element(By.CSS_SELECTOR, ".min-val").click()
+            time.sleep(1)  
+            min_count = 10 
+        except NoSuchElementException:  
+            print("NoSuchElementException couldn't find min value ", min_count)
+            driver.get(search_link)
+            time.sleep(4) 
+            min_count = min_count + 1
+    
+    #Clear out the current minimum date
+    for x in range(12):
+        driver.find_element(By.CSS_SELECTOR, ".min-val").send_keys(Keys.BACKSPACE)
+        time.sleep(.2)
+    time.sleep(1)
+
+    #Put the new date in
+    driver.find_element(By.CSS_SELECTOR, ".min-val").send_keys(start_date)
+    time.sleep(2)
+    #If fails return false 
+
+
+
+#Function B5: Set Maximum Date Value
+def set_max_date(search_link, end_date):
+    max_count = 0
+
+    try:
+        driver.find_element(By.CSS_SELECTOR, ".max-val").click()
+        time.sleep(1)   
+    except NoSuchElementException:  
+        print("NoSuchElementException couldn't find min value ", max_count)
+        driver.get(search_link)
+        time.sleep(4) 
+        max_count = max_count + 1
+        #driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
+
+    for x in range(12):
+        driver.find_element(By.CSS_SELECTOR, ".max-val").send_keys(Keys.BACKSPACE)
+        time.sleep(.2)   
+    time.sleep(1)
+ 
+    driver.find_element(By.CSS_SELECTOR, ".max-val").send_keys(end_date)
+    time.sleep(2)
+    
+    driver.find_element(By.CSS_SELECTOR, ".save").click()
+    time.sleep(4)
+  
+
 
 
 
@@ -90,7 +264,6 @@ def login_external_user():
 
     time.sleep(4)
    
-
 #Function A3: Login that runs once (if the browser crashed you will have to login again)
 def single_login():
     print("single login") 
@@ -119,45 +292,7 @@ def single_login():
     driver.find_element(By.NAME, "submit").click()
 
     time.sleep(4)
-    
-#FUNCTIONS B: Utility Functions 
-#Function B1: Get Result Count 
-def get_result_count():
-    count_element = driver.find_element(By.CLASS_NAME, "countrendered")
-    result_count = count_element.get_attribute('data-actualresultscount')
-
-    return result_count
-
-#Function B2: Get Result Count and Toggle the Group Duplicates to On 
-def group_duplicates():
-    print("STEP A2: Get Result Count and Toggle the Group Duplicates to On ") 
-    
-    #Step 1: Get both of the results with the Group Duplicates Toggled on and off
-    basin_result_count_one = get_result_count()
-    driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
-    time.sleep(5)
-    basin_result_count_two = get_result_count()
-    
-    #Step 2: Set Group duplicats to the lower of the two 
-    if basin_result_count_two > basin_result_count_one:
-        driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
-        time.sleep(5)    
-
-    print("Count 1- Current Page Count ", basin_result_count_two)
-    print("Count 2- Current Page Count ", basin_result_count_two)
-    basin_result_count_raw = min(basin_result_count_one, basin_result_count_two)
-    basin_result_count = int(basin_result_count_raw)
-
-    time.sleep(5)
-    if basin_result_count < 1000:
-        print("We can just download")
-    else:
-        print("Paginate")
-
-    print("STEP A2: Finished ")
-
-    return basin_result_count
-
+ 
 if __name__ == "__main__":
     main()
 
