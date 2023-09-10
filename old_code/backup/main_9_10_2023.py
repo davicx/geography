@@ -22,8 +22,7 @@ options.page_load_strategy = 'normal'
 options.add_argument("--start-maximized")
 options.add_argument("user-data-dir=/tmp/david")
 #options.add_argument("user-data-dir=/tmp/david2")
-#prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geography/downloads'}
-prefs = {'download.default_directory' : '/Users/david/Desktop/David/www/geography/downloads/temp'}
+prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geography/downloads'}
 options.add_experimental_option('prefs', prefs)
 #options.add_experimental_option("detach", True)
 
@@ -38,7 +37,7 @@ driver = webdriver.Chrome(service=svc, options=options)
 external_user = True
 
 #Set login status 
-logged_in = True  
+logged_in = False  
 
 def main():
     if logged_in == False:
@@ -46,17 +45,12 @@ def main():
             login_external_user()
         else:
             login_tufts_user()
+        
         time.sleep(60)
-
     else: 
-        #single_login()
-        #single_basin_search()
-        original_file_name = "aral.ZIP"
-        original_file_path = "/Users/david/Desktop/David/www/geography/downloads/temp/"
-        new_file_name = "aralMOVED.ZIP"
-        new_file_path = "/Users/david/Desktop/David/www/geography/downloads/aral/excel/"
-
-        move_rename_file(original_file_name, original_file_path, new_file_name, new_file_path)
+        driver.get("https://www.google.com/")
+        single_login()
+        single_basin_search()
         time.sleep(60)
 
 
@@ -76,8 +70,8 @@ def single_basin_search():
     time.sleep(4)
 
     #STEP 2: Group Duplicates and Get Result Count 
-    #basin_count = group_duplicates()
-    #print("basin count ", basin_count)
+    basin_count = group_duplicates()
+    print("basin count ", basin_count)
 
     #STEP 3: Set Date Range 
     #change_date(search_link, "01/01/2000", "02/01/2010")
@@ -86,11 +80,8 @@ def single_basin_search():
 
     #STEP 3: Set Sort by to Date (oldest to Newest)
 
-
     #STEP 4: Download Excel  
-    basin_result_count = 100
     download_excel(basin_code, basin_result_count)
-
 
     #STEP 5: Download PDF 
 
@@ -277,50 +268,13 @@ def download_excel(basin_code, basin_result_count):
     print("Function C1: Finished downloads from ", min, " to ", max)
     time.sleep(60)
 
-#Function C2: Move and Rename File 
+#Function C2: Move and Rename Excel File 
 
 
 #FUNCTIONS D: Download PDF Files  
 
-#Function: Move and Rename a File
-def move_rename_file(original_file_name, original_file_path, new_file_name, new_file_path):
-    download_wait_count = 0
-    total_wait_seconds = 0
-    
-    while download_wait < 10:
-        try:
-            original_file_full = original_file_path + original_file_name
-            new_file_full = new_file_path + new_file_name
-
-            os.rename(original_file_full, new_file_full)
-            print("The file was sucesfully moved")
-            download_wait = 20
-            time.sleep(5)
-
-        except FileNotFoundError:
-            download_wait_count = download_wait_count + 1
-            total_wait_seconds = total_wait_seconds + 1
-            print("The file has not finished downloading yet pausing to sleep")
-            print("Total Wait ", total_wait_seconds * 5)
-            wait_seconds(5)
 
 
-#Function: Wait for period of seconds with no messages
-def wait_seconds(total_wait_seconds):
-    countdown_seconds = range(total_wait_seconds, 1, -1)
-
-    for time_left in countdown_seconds:
-        time.sleep(1)
-
-#Function: Wait for period of seconds with messages
-def wait_seconds_message(total_wait_seconds):
-    countdown_seconds = range(total_wait_seconds, 1, -1)
-
-    for time_left in countdown_seconds:
-        print(time_left , "seconds left in wait period") 
-        time.sleep(1)
-    print("1 second left in wait period")
-    print("")
 
 #FUNCTIONS A: Login Related Functions (there are three login functions one for a Tufts user, one for an external user and one that will run once if the login session is not working)
 #Function A1: Login an internal Tufts User 
@@ -412,3 +366,103 @@ if __name__ == "__main__":
 
 
 #APPENDIX: Code and Notes
+'''
+#STEP 1: Navigate to Single Search (Includes Dates)
+#STEP 2: Navigate to Second Level Search 
+#STEP 3: Check Group Duplicates
+#STEP 4: Check Sort by Oldest to Newest 
+#STEP 5: Download Excel (1000)
+    #Step 5A: Get Result Count (for the specific basin and time frame)
+    #Step 5B: Paginate the Results
+    #Step 5C: Download These to the correct folder
+#STEP 6: Download PDF (250)
+    #Step 6A: Get Result Count (for the specific basin and time frame)
+    #Step 6B: Paginate the Results
+    #Step 6C: Download These to the correct folder
+
+
+#MAIN 
+        basin_code = "Aral"
+        search_terms = "Aral OR Syr Daria OR Naryn OR Amu Daria OR Syr Darya OR Amu Darya OR Akhangaran OR Chirchik"
+        print("START SINGLE BASIN SEARCH: Starting a search for the basin " + basin_code)
+        single_basin_search(basin_code, search_terms)
+
+
+def single_basin_search(basin_code, search_terms):
+    first_level_search(basin_code, search_terms)
+
+
+#STEP 1: Navigate to Single Search (Includes Dates)
+def first_level_search(basin_code, search_terms): 
+    print("#STEP 1: Navigate to Single Search")
+    landing_page = 'https://advance-lexis-com.oregonstate.idm.oclc.org/bisacademicresearchhome/?pdmfid=1516831&crid=0f1105ae-7bcf-49e0-b0bd-1f5d6657e6ec&ecomp=zxryk&prid=86dd402e-b3c1-43d7-a5b0-308dbc0270c9'
+    
+    first_level_page_part_one = 'https://advance-lexis-com.oregonstate.idm.oclc.org/search/?pdmfid=1516831&crid=b1785a07-3220-42ca-b9e0-cfa91bb98ae1&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead('
+    first_level_page_part_two = ')+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%E2%80%9D+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=9e480b29-a32c-4d80-a750-04f0297661a9'
+    first_level_page = first_level_page_part_one + search_terms + first_level_page_part_two
+
+    driver.get(landing_page)
+    time.sleep(4)
+    driver.get(first_level_page)
+    time.sleep(4)
+    print("#STEP 1: Finished")
+
+    time.sleep(60)
+    
+
+#FUNCTIONS
+#Function 1: Login a User
+def login():
+    print("Login") 
+    driver.get("https://library.oregonstate.edu/")
+    time.sleep(3)
+
+    element = driver.find_element(By.ID,"term-1search")
+    element.send_keys("nexis uni")
+    element.send_keys(Keys.RETURN)
+    time.sleep(10)
+    driver.find_element(By.CSS_SELECTOR, "#SEARCH_RESULT_RECORDID_alma99492178701865 mark").click()
+    time.sleep(6)
+    driver.find_element(By.CSS_SELECTOR, ".item-title:nth-child(1)").click()
+    time.sleep(12)
+    driver.switch_to.window(driver.window_handles[1])
+    time.sleep(720)
+    driver.find_element(By.CSS_SELECTOR, ".advanced-search").click()
+    print("login: was run you can now start the search")
+    time.sleep(720)
+
+#Function 2: Login a User
+def login_inside():
+    print("Login") 
+    driver.get("https://library.oregonstate.edu/")
+    time.sleep(3)
+
+    element = driver.find_element(By.ID,"term-1search")
+    element.send_keys("nexis uni")
+    element.send_keys(Keys.RETURN)
+    time.sleep(10)
+    driver.find_element(By.CSS_SELECTOR, "#SEARCH_RESULT_RECORDID_alma99492178701865 mark").click()
+    time.sleep(6)
+    driver.find_element(By.CSS_SELECTOR, ".item-title:nth-child(1)").click()
+    time.sleep(8)
+    driver.switch_to.window(driver.window_handles[1])
+    time.sleep(20)
+    #driver.find_element(By.CSS_SELECTOR, ".advanced-search").click()
+    print("login: was run you can now start the search")
+  
+def get_result_count():
+    result_count_raw = driver.find_element(By.CSS_SELECTOR, ".countrendered")
+    result_count = result_count_raw.text
+
+    time.sleep(6)
+    
+    return result_count
+
+    
+    for i in range(4,0,-1):
+        print(str(i)+'0 seconds left')
+        time.sleep(10)
+    print("done")
+    
+
+'''
