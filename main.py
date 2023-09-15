@@ -40,8 +40,8 @@ external_user = True
 
 
 def main():
-    single_login()
-    #login_tufts_user()
+    #single_login()
+    login_tufts_user()
     single_basin_search()
     time.sleep(60)
 
@@ -90,7 +90,7 @@ def single_basin_search():
     print("MAIN: Finished a single basin search for ", basin_code)
 
 
-#STEP 2: Get Result Count and Toggle the Group Duplicates to On 
+#STEP 2: Get Result Count and Toggle the Group Duplicates to On (DONE) 
 def group_duplicates():
     print("STEP 2: Get Result Count and Toggle the Group Duplicates to On ") 
 
@@ -324,6 +324,9 @@ def download_excel(basin_code, basin_result_count):
 
 
 #STEP 6: Download PDF 
+
+
+
 
 
 
