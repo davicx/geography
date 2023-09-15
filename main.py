@@ -38,21 +38,12 @@ driver = webdriver.Chrome(service=svc, options=options)
 #Set Tufts or External User 
 external_user = True
 
-#Set login status 
-logged_in = True  
 
 def main():
-    if logged_in == False:
-        if external_user == True:
-            login_external_user()
-        else:
-            login_tufts_user()
-        time.sleep(60)
-
-    else: 
-        single_login()
-        single_basin_search()
-        time.sleep(60)
+    single_login()
+    #login_tufts_user()
+    single_basin_search()
+    time.sleep(60)
 
 
 #STEP 1 Single Basin Search
@@ -73,29 +64,29 @@ def single_basin_search():
     print("STEP 1: Finished")
     time.sleep(4)
 
-    #STEP 2: Group Duplicates and Get Result Count 
+    #STEP 2: Group Duplicates and Get Result Count (DAVID)
     #basin_count = group_duplicates()
     #print("basin count ", basin_count)
 
-    #STEP 3: Set Date Range 
-    change_date(search_link, "01/01/2000", "02/01/2010")
-    print("Changed Date one!")
+    #STEP 3: Set Date Range (DAVID)
+    #change_date(search_link, "01/01/2000", "02/01/2010")
+    #print("Changed Date one!")
     #Have to refresh the page each time, yay!!
-    time.sleep(4)
-    driver.get(search_link)
-    time.sleep(4)
-    change_date(search_link, "02/01/2011", "03/01/2021")
-    print("we got here! ")
+    #time.sleep(4)
+    #driver.get(search_link)
+    #time.sleep(4)
+    #change_date(search_link, "02/01/2011", "03/01/2021")
+    #print("we got here! ")
 
-    #STEP 4: Set Sort by to Date (oldest to Newest)
+    #STEP 4: Set Sort by to Date (oldest to Newest) (SELENA)
+    print("")
 
-    #STEP 5: Download Excel  
+    #STEP 5: Download Excel  (DAVID or SELENA)
     #basin_result_count = 100
     #download_excel(basin_code, basin_result_count)
 
 
-    #STEP 6: Download PDF 
-
+    #STEP 6: Download PDF  (DAVID or SELENA)
     print("MAIN: Finished a single basin search for ", basin_code)
 
 
