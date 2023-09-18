@@ -17,6 +17,9 @@ import sys
 import pandas as pd
 import time
 
+''''
+
+
 #STEP 3: Check Result and Group Duplicates
 def check_excel_result_count(basin_code):
     print("FUNCTION A3: Check the Basin Count") 
@@ -121,7 +124,7 @@ def download_excel(basin_code, basin_result_count):
             download_wait = download_wait + 1
             time.sleep(5)
 
-    '''
+    
     download_wait = 0
 
     while download_wait < 10:
@@ -138,7 +141,7 @@ def download_excel(basin_code, basin_result_count):
             download_wait = download_wait + 1
             time.sleep(5)
   
-    '''
+
     print("STEP 3: Excel Downloads for ", basin_code, " FINISHED")
     time.sleep(1)
 
@@ -320,3 +323,5 @@ def get_result_count():
     result_count = count_element.get_attribute('data-actualresultscount')
 
     return result_count
+
+'''
