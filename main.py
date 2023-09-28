@@ -40,8 +40,8 @@ external_user = True
 
 
 def main():
-    #single_login()
-    login_tufts_user()
+    single_login()
+    #login_tufts_user()
     single_basin_search()
     time.sleep(60)
 
@@ -64,31 +64,31 @@ def single_basin_search():
     print("STEP 1: Finished")
     time.sleep(4)
 
-    #STEP 2: Group Duplicates and Get Result Count (DAVID)
+
+    #STEP 2: Group Duplicates and Get Result Count 
     #basin_count = group_duplicates()
     #print("basin count ", basin_count)
 
-    #STEP 3: Set Date Range (DAVID)
-    #change_date(search_link, "01/01/2000", "02/01/2010")
-    #print("Changed Date one!")
+    #STEP 3: Set Date Range
+    #30 June 2008 to 1 July 2023 
+    change_date(search_link, "01/01/2000", "02/01/2010")
+    print("Changed Date one!")
     #Have to refresh the page each time, yay!!
-    #time.sleep(4)
-    #driver.get(search_link)
-    #time.sleep(4)
-    #change_date(search_link, "02/01/2011", "03/01/2021")
-    #print("we got here! ")
+    time.sleep(4)
+    driver.get(search_link)
+    time.sleep(4)
+    change_date(search_link, "02/01/2011", "03/01/2021")
+    print("we got here! ")
 
     #STEP 4: Set Sort by to Date (oldest to Newest) (SELENA)
-    print("")
-
+    
     #STEP 5: Download Excel  (DAVID or SELENA)
     #basin_result_count = 100
     #download_excel(basin_code, basin_result_count)
 
 
     #STEP 6: Download PDF  (DAVID or SELENA)
-    print("MAIN: Finished a single basin search for ", basin_code)
-
+    #print("MAIN: Finished a single basin search for ", basin_code)
 
 #STEP 2: Get Result Count and Toggle the Group Duplicates to On (DONE) 
 def group_duplicates():
@@ -148,16 +148,7 @@ def change_date(search_link, start_date, end_date):
     print("Scrolled Down")
 
     #Step 1: Check if Min Val is Visibile (will be when the timeline button is clicked)
-    timeline_opened = check_timeline_opened()
-    print("timeline_opened status")
-    print(timeline_opened)
-    print("timeline_opened ")
-
-    #if the timeline is not opened then open it 
-    if timeline_opened == False:
-        #TO DO: Handle when this doesn't open
-        open_timeline_button()
-
+    attempt_to_open_timeline()
 
     set_min_date(search_link, start_date)
     set_max_date(search_link, end_date)
@@ -182,15 +173,17 @@ def set_min_date(search_link, start_date):
         except NoSuchElementException:  
             print("NoSuchElementException couldn't find min value ", min_count)
             driver.get(search_link)
-            time.sleep(4) 
-            min_count = min_count + 1
+            time.sleep(4)
 
+            attempt_to_open_timeline()
+                    
+            min_count = min_count + 1
+        
     #Clear out the current date 
     for x in range(12):
         min_val_button.click()
         min_val_button.send_keys(Keys.BACKSPACE)
-        time.sleep(.2)
-        time.sleep(1)
+        time.sleep(.1)
 
     #Put the new date in
     min_val_button.send_keys(start_date)
@@ -210,10 +203,10 @@ def set_max_date(search_link, end_date):
         print("NoSuchElementException couldn't find max value ", max_count)
         driver.get(search_link)
         time.sleep(4) 
+        attempt_to_open_timeline()
         max_count = max_count + 1
-        #driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
-
-    
+        
+ 
     for x in range(12):
         driver.find_element(By.CSS_SELECTOR, ".max-val").send_keys(Keys.BACKSPACE)
         time.sleep(.2)   
@@ -223,61 +216,58 @@ def set_max_date(search_link, end_date):
     print("Max date set")
 
     time.sleep(2)
- 
+
 #Function 3D: Open the Timeline Button
 def open_timeline_button():
-    print("Trying to open the timeline")
-    #timeline_opened = False
+    timeline_opened = check_timeline_opened()
+    print("Check timeline status")
+    print(timeline_opened)
 
-    try:
-        driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
-        print("Found and clicked the timeline button: podfiltersbuttondatestr-news")
-        time.sleep(8)  
-    except NoSuchElementException:  
-        print("NoSuchElementException couldn't find the timeline open button")
+    if timeline_opened == False:
+        print("The timeline is closed so we will open the timeline")
 
-    '''
-    try:
-        min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
-        print("NoSuchElementException min_val_button found")
-        timeline_opened = True
-    except NoSuchElementException:  
-        print("NoSuchElementException min_val_button NOT found")
+        #Open the Timeline
+        try:
+            driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
+            print("Found and opened the timeline")
 
-    try:
-        min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
-        print("ElementNotInteractableException min_val_button touchable")
-    except:  
-        timeline_opened = True
-        print("ElementNotInteractableException min_val_button NOT touchable")
-    print("________________________")
+            time.sleep(8)  
+        except NoSuchElementException:  
+            print("Couldn't find the timeline open button")
 
+    else: 
+        print("Timeline is opened")
+
+    timeline_opened = check_timeline_opened()
+    print("Final check on timeline ")
+    print(timeline_opened)
+    time.sleep(6)
     return timeline_opened
-    '''
+
+#Function 3E: Open the Timeline Button 
+def attempt_to_open_timeline():
+    print("Attempt to Open Timeline we will scroll to and try to click the button")
+    timeline_opened = check_timeline_opened()
+    print("timeline_opened status")
+    print(timeline_opened)
+    print("timeline_opened ")
+
+    #if the timeline is not opened then open it 
+    if timeline_opened == False:
+        #TO DO: Handle when this doesn't open
+        open_timeline_button()
 
 #Function 3E: Check if timeline open or closed 
 def check_timeline_opened():
-    print("________________________")
     timeline_opened = False
 
     try:
         min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
-        print("min_val_button found")
         timeline_opened = True
+        print("The timeline is opened")
     except NoSuchElementException:  
         timeline_opened = False
-        print("NoSuchElementException min_val_button NOT found")
-
-    try:
-        min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
-        print("min_val_button touchable")
-        timeline_opened = True
-    except:  
-        timeline_opened = False
-        print("ElementNotInteractableException min_val_button NOT touchable")
-
-    print("________________________")
-
+        print("The timeline is not opened")
     return timeline_opened
 
 #STEP 4: Set Sort by to Date (oldest to Newest)
@@ -320,6 +310,7 @@ def download_excel(basin_code, basin_result_count):
 
     driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
     print("Function C1: Finished downloads from ", min, " to ", max)
+    #WRITE DONE TO CSV FILE
     time.sleep(60)
 
 
@@ -467,8 +458,86 @@ if __name__ == "__main__":
 
 
 
+def open_timeline_button_original():
+    print("Trying to open the timeline")
+    #timeline_opened = False
+
+
+    try:
+        driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
+        print("Found and clicked the timeline button: podfiltersbuttondatestr-news")
+        time.sleep(8)  
+    except NoSuchElementException:  
+        print("NoSuchElementException couldn't find the timeline open button")
+
+    #New below to open and close NEED TO MAKE THIS CHECK AND WORK
+    try:
+        driver.find_element(By.CSS_SELECTOR, ".min-val")   
+        time.sleep(1)  
+    except NoSuchElementException:  
+        print("It seems timeline is not opened will try again")
+        #Retry Close 
+        try:
+            driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
+            print("Closing: podfiltersbuttondatestr-news")
+            time.sleep(8)  
+        except NoSuchElementException:  
+            print("NoSuchElementException couldn't find the timeline open button")
+        try:
+            driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
+            print("Try to open podfiltersbuttondatestr-news")
+            time.sleep(8)  
+        except NoSuchElementException:  
+            print("NoSuchElementException couldn't find the timeline open button")
+
+    '''
+    try:
+        min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
+        print("NoSuchElementException min_val_button found")
+        timeline_opened = True
+    except NoSuchElementException:  
+        print("NoSuchElementException min_val_button NOT found")
+
+    try:
+        min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
+        print("ElementNotInteractableException min_val_button touchable")
+    except:  
+        timeline_opened = True
+        print("ElementNotInteractableException min_val_button NOT touchable")
+    print("________________________")
+
+    return timeline_opened
+    '''
 
 #APPENDIX: Code and Notes
+'''
+def check_timeline_opened():
+    print("________________________")
+    timeline_opened = False
+
+    try:
+        min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
+        print("min_val_button found")
+        timeline_opened = True
+    except NoSuchElementException:  
+        timeline_opened = False
+        print("NoSuchElementException min_val_button NOT found")
+
+    try:
+        min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
+        print("min_val_button touchable")
+        timeline_opened = True
+    except:  
+        timeline_opened = False
+        print("ElementNotInteractableException min_val_button NOT touchable")
+
+    print("________________________")
+
+    return timeline_opened
+
+
+'''
+
 
     #NOTES
 '''

@@ -4,29 +4,14 @@ import pandas as pd
 import time
 
 #TO DO
-#PART 1: Get Login to Work for Tufts
-#PART 2: Change the Set Sort by to Date (oldest to Newest)
-#PART 3: Simple Read and Write to Excel
-#PART 4: Create Date Loop Functions that work by year, month, day and week (do this last I think its tricky)
 
-#INSTRUCTIONS 
-#PART 1 and PART 2: These are what you have been doing if you have any questions let me know! 
 
-#PART 3: Simple Read and Write to Excel
-'''
-Part 3A
-Try to read data from an excel file code example: 
-/Users/dvas22/Desktop/David/www/geography/examples/excelHandling/openCSV.py
+#30 June 2008 to 1 July 2023 
+month_day_data = monthrange(2023, 9)
 
-Part 3B
-Try to update the excel file 
-/Users/dvas22/Desktop/David/www/geography/examples/excelHandling/excel/updateExcel.csv
-There is an example of this code here:
-/Users/dvas22/Desktop/David/www/geography/examples/excelHandling/updateExcel.py
-'''
+print(month_day_data[1])
 
-#PART 4: Create Date Loop Functions that work by year, month, day and week
-#Search runs from 30 June 2008 and 1 July 2023 and date is formatted "02/01/2011"
+#6/30/2008 ti 7/1/2023
 
 #Example Loop by Year
 def print_by_year():
@@ -43,17 +28,64 @@ def print_by_year():
         year_end_year = str(year)
         year_end = year_end_month + "/" + year_end_day + "/" + year_end_year
         
-        print(year_start, " ", year_end)
+        print(year_start)
 
-
-print_by_year()
 
 
 def print_by_month():
-    print("need this ")
-    
+    print("")  
+    print("")  
+    print("")  
+    print("")  
+    print("")  
+    for year in range(2008, 2023):
+        #Loop from 1 to 12
+        for i in range(12):
+            #Get first day of month for each year
+            month_start = str(i + 1) + "/01/" + str(year)
+            
+            #Get last day of month 
+            last_day_of_month =  monthrange(year, i + 1)
+            month_end = str(i + 1) + "/" + str(last_day_of_month[1]) + "/" + str(year)
+            #print(month_start + "," + month_end)
+
+            print(month_end)  
+        #print(" ")
+        #print("Starting a new year")
+            
+
+
+
+
+print_by_month()
+
+
+
+def print_by_ten_days():
+    #1 to 10
+    #10 to 20
+    #20 to last day of month
+    print("")
+
 def print_by_day():
-    print("need this ")
+    print("day")
+    
+
+
+'''
+     #print("Loop ", year, month)
+        date_range = monthrange(year, month)
+        print("month number: ",  month, " " , date_range[1])
+
+    #Simple Get days in a month 
+    date_range = monthrange(2011, 2)
+    #print(date_range[0])
+    #print(date_range[1])
+    #print(" ")
+    date_range = monthrange(2023, 9)
+    #print(date_range[0])
+    #print(date_range[1])
+    #print(" ")'''
 
 
 
@@ -61,7 +93,7 @@ def print_by_day():
 
 
 
-#MESSY NOTES BELOW
+
 
 #FIRST MAJOR PART
 #Step 1: Open aral.csv in status folder 
@@ -88,20 +120,6 @@ def print_by_day():
 #data = pd.read_csv('/Users/david/Desktop/David/www/geography/code/excelHandling/excel/updateExcel.csv', index_col=0)
 #data = pd.read_csv('/Users/dvas22/Desktop/David/www/geography/examples/excelHandling/excel/updateExcel.csv', index_col=0)
 
-'''
-     #print("Loop ", year, month)
-        date_range = monthrange(year, month)
-        print("month number: ",  month, " " , date_range[1])
-
-    #Simple Get days in a month 
-    date_range = monthrange(2011, 2)
-    #print(date_range[0])
-    #print(date_range[1])
-    #print(" ")
-    date_range = monthrange(2023, 9)
-    #print(date_range[0])
-    #print(date_range[1])
-    #print(" ")'''
 
 
 '''
@@ -124,4 +142,14 @@ def update_status(index):
     data.loc[index, ['finished']] = [1]
     df = pd.DataFrame(data)  
     df.to_csv('/Users/dvas22/Desktop/David/www/geography/examples/excelHandling/excel/updateExcel.csv')
+'''
+
+
+
+'''
+month_start = str(i + 1) + "/01/" + str(year)
+last_day_of_month =  monthrange(year, i + 1)
+month_end = str(i + 1) + "/" + str(last_day_of_month[1]) + "/" + str(year)
+print(month_start + " : " + month_end)
+time.sleep(1)         
 '''
