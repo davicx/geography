@@ -46,15 +46,27 @@ driver = webdriver.Chrome(service=svc, options=options)
 #USER: Set Tufts or External User 
 external_user = True
 
-#BASE PATH
-#base_path = "/Users/dvas22/Desktop/David/www/geography/"
-base_path = "/Users/david/Desktop/David/www/geography"
-
 #BASIN 
 basin_code = "Aral"
 search_terms = "Aral OR Syr Daria OR Naryn OR Amu Daria OR Syr Darya OR Amu Darya OR Akhangaran OR Chirchik"
 
 
+#FILE PATHS
+#base_path = "/Users/dvas22/Desktop/David/www/geography/"
+base_path = "/Users/david/Desktop/David/www/geography/"
+
+#Search Link
+if external_user == True:
+    search_link = "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=8346dc40-81b7-47ac-9469-cb518c95d880&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=c0d34a78-a8aa-4c9b-8ad0-d00c56ca39bd"
+else:
+    search_link =  "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=928f5e0f-556b-4f46-bf5d-1c43de32c3f8&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=0b27b868-b378-4485-8a1f-7dd4553471f9"
+
+#Download Folder
+download_folder_temp = "/Users/david/Downloads/"
+download_folder = "/Users/david/Desktop/David/www/geography/downloads/aral/excel/"
+
+#BASIN STATUS
+status_data = pd.read_csv(base_path + 'status/amur.csv', index_col=0)
 
 def main():
     #single_login()
@@ -63,76 +75,80 @@ def main():
     time.sleep(360)
 
 
-#MAIN: Single Basin Search
+#Single Basin Search
 def single_basin_search():
     print("MAIN: Starting a single basin search for ", basin_code)
-    base_search(basin_code, search_terms)
-    #group_duplicates()
-
-    time.sleep(360)
-
-
-
-
-#STEP 1: Navigate to first level search
-def base_search(): 
-    print("STEP 1: Get Basin Search")
-    if external_user == True:
-        search_link = "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=8346dc40-81b7-47ac-9469-cb518c95d880&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=c0d34a78-a8aa-4c9b-8ad0-d00c56ca39bd"
-    else:
-        search_link =  "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=928f5e0f-556b-4f46-bf5d-1c43de32c3f8&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=0b27b868-b378-4485-8a1f-7dd4553471f9"
     
-    #driver.get(search_link)
-    print("STEP 1: Finished")
-    time.sleep(4)
-
-
-
-    #STEP 2: Group Duplicates and Get Result Count 
-    #basin_count = group_duplicates()
-    #print("basin count ", basin_count)
-
-    #STEP 3: Set Date Range
-    data = pd.read_csv('/Users/dvas22/Desktop/David/www/geography/status/amur.csv', index_col=0)
-
-    for index, row in data.iterrows():
+    for index, row in status_data.iterrows():
         basin = row['basin']
         start_date = row['start_date']
         end_date = row['end_date']
         finished = row['finished']
 
+        #Keep running main program for each date period
         if finished != 1:
-            print("The data was downloaded marking complete")
+
+            #STEP 1: Base Search 
+            base_search()
+
+            #STEP 2: Group Duplicates
+            #group_duplicates()
+
+            #STEP 3: Set Date Range
+            change_date(search_link, start_date, end_date)
+
+            #STEP 4: Set Sort by to Date (oldest to Newest)
+            set_sort_by_date()
+
+            #STEP 5: Get Current Result Count
+            #Check don't do if over 1000
+            result_count = get_result_count()
+            print(result_count)
+
+            #STEP 7: Download Excel 
+            download_outcome = download_excel(basin_code, 1, result_count)
+
+            #STEP 7: Mark complete
+            if download_outcome == True:
+                #update_status(index)
+                print("Mark Done")
+            else: 
+                print("Mark not done")
+
             #update_status(index)
-            time.sleep(1)
+            print("FINISHED ONE DATE- Mark complete")
+            time.sleep(12)
         else:     
             print("The basin ", basin, " from ", start_date, " to ", end_date, " is already done so we are skipping")
             time.sleep(1)
 
-        #LOOP through here 
+#TEMP
+'''
+def update_status_success(index, basin_count):
+    print("update_status")
+    status_data.loc[index, ['finished']] = [1]
+    df = pd.DataFrame(data)  
+    df.to_csv('/Users/dvas22/Desktop/David/www/geography/status/year_loop.csv')
 
+def update_status_failure(index, basin_count):
+    print("update_status")
+    status_data.loc[index, ['finished']] = [1]
+    df = pd.DataFrame(data)  
+    df.to_csv('/Users/dvas22/Desktop/David/www/geography/status/year_loop.csv')
 
-    #30 June 2008 to 1 July 2023 
-    #change_date(search_link, "01/01/2000", "02/01/2010")
-    #print("Changed Date one!")
-    #Have to refresh the page each time, yay!!
-    #time.sleep(4)
-    #driver.get(search_link)
-    #time.sleep(4)
-    #change_date(search_link, "02/01/2011", "03/01/2021")
-    #print("we got here! ")
+def update_status_over_limit(index, basin_count):
+    print("update_status")
+    status_data.loc[index, ['finished']] = [1]
+    df = pd.DataFrame(data)  
+    df.to_csv('/Users/dvas22/Desktop/David/www/geography/status/year_loop.csv')s
+'''
 
-    #STEP 4: Set Sort by to Date (oldest to Newest) (SELENA)
-    
-    #STEP 5: Download Excel 
-    basin_result_count = 800
-    min = 1
-    max = 500
-    download_excel(basin_code, min, max)
-
-
-    #STEP 6: Download PDF  (DAVID or SELENA)
-    #print("MAIN: Finished a single basin search for ", basin_code)
+#STEP 1: Navigate to first level search
+def base_search(): 
+    print("STEP 1: Navigate to first level search")
+    driver.get(search_link)
+    print("STEP 1: Finished")
+    time.sleep(4)
 
 #STEP 2: Get Result Count and Toggle the Group Duplicates to On (DONE) 
 def group_duplicates():
@@ -180,8 +196,8 @@ def group_duplicates():
 
     return basin_result_count
 
+
 #STEP 3: Set Date Range
-#Function 3A: Set both Max and Min dates 
 def change_date(search_link, start_date, end_date):
     print("STEP 3: Set Date Range")
     print("DATE FROM ", start_date, " to ", end_date)
@@ -201,7 +217,7 @@ def change_date(search_link, start_date, end_date):
     time.sleep(4)
     print("STEP 3: Finished")
 
-#Function 3B: Set Min date 
+#Function 3A: Set Min date 
 def set_min_date(search_link, start_date):
     print("Starting set_min_date")
     print(start_date)
@@ -234,7 +250,7 @@ def set_min_date(search_link, start_date):
     print("Min date set")
     time.sleep(2)
 
-#Function 3C: Set Max date 
+#Function 3B: Set Max date 
 def set_max_date(search_link, end_date):
     print("Starting set_max_date ")
     print(end_date)
@@ -261,7 +277,7 @@ def set_max_date(search_link, end_date):
 
     time.sleep(2)
 
-#Function 3D: Open the Timeline Button
+#Function 3C: Open the Timeline Button
 def open_timeline_button():
     timeline_opened = check_timeline_opened()
     print("Check timeline status")
@@ -288,7 +304,7 @@ def open_timeline_button():
     time.sleep(6)
     return timeline_opened
 
-#Function 3E: Open the Timeline Button 
+#Function 3D: Open the Timeline Button 
 def attempt_to_open_timeline():
     print("Attempt to Open Timeline we will scroll to and try to click the button")
     timeline_opened = check_timeline_opened()
@@ -314,23 +330,33 @@ def check_timeline_opened():
         print("The timeline is not opened")
     return timeline_opened
 
-#STEP 4: Set Sort by to Date (oldest to Newest)
+
+#STEP 5: Get Current Result Count
+def get_result_count():
+    result_count = -1
+    try:
+        count_element = driver.find_element(By.CLASS_NAME, "countrendered")
+        result_count = count_element.get_attribute('data-actualresultscount')
+        time.sleep(1)
+    except NoSuchElementException:  
+        print("Could not get the result count")
+
+    return result_count
+
+#STEP 6: Set Sort by to Date (oldest to Newest)
 def set_sort_by_date(): 
-    print("STEP 4: Set Sort by to Date (oldest to Newest)")
+    print("STEP 6: Set Sort by to Date (oldest to Newest)")
+    print("STEP 6: FINISHED- needs to be done")
 
-#STEP 5: Download Excel  
+#STEP 7: Download Excel  
 def download_excel(basin_code, min_raw, max_raw):
-    print("STEP 5: Download Excel Files") 
-    final_file_location = "/Users/dvas22/Desktop/David/www/geography/downloads/" + basin_code + "/excel"
-
     min = str(min_raw)
     max = str(max_raw)
-
-    print("Starting Downloads 1: Excel files for ", min, ": from ", 0, " to ", max)
+    print("STEP 7: Download Excel Files") 
+    print("Starting Downloads: Excel files for ", min, ": from ", 0, " to ", max)
 
     download_start_stop = min + "-" + max
-    #download_file_name = "ResultsList_" + basin_code + "_202207_" + min + "_" + max
-    download_file_name = "aral"
+    download_file_name = "ResultsList_" + basin_code + "_202207_" + min + "_" + max
 
     driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
     time.sleep(6)
@@ -356,14 +382,48 @@ def download_excel(basin_code, min_raw, max_raw):
 
     driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
     print("Function C1: Finished downloads from ", min, " to ", max)
-    #WRITE DONE TO CSV FILE
-    #move_rename_file(original_file_name, original_file_path, new_file_name, new_file_path)
-    time.sleep(60)
+    
+    download_outcome = move_rename_file(download_file_name, download_folder_temp, download_file_name, download_folder)
+    print("Download Outcome")
+    print(download_outcome)
+    print("STEP 7: FINISHED")
 
+    time.sleep(6)
+    return download_outcome
 
-#STEP 6: Download PDF 
+#Function 7A: Move and Rename a File
+def move_rename_file(original_file_name, original_file_path, new_file_name, new_file_path):
+    download_wait_count = 0
+    total_wait_seconds = 0
+    
+    while download_wait_count < 20:
+        try:
+            original_file_full = original_file_path + original_file_name + ".ZIP"
+            new_file_full = new_file_path + new_file_name + ".ZIP"
 
+            print("original_file_full")
+            print(original_file_full)
+            print("new_file_full")
+            print(new_file_full)
+            #print("ResultsList_Aral_202207_1_220")
 
+            os.rename(original_file_full, new_file_full)
+            print("The file was sucesfully moved")
+            download_wait_count = 20
+            time.sleep(5)
+
+        except FileNotFoundError:
+            download_wait_count = download_wait_count + 1
+            total_wait_seconds = total_wait_seconds + 1
+            print("The file has not finished downloading yet pausing to sleep")
+            print("Total Wait ", total_wait_seconds * 5)
+            wait_seconds(5)
+    
+    #Return true if the files were downloaded and moved 
+    if download_wait_count < 20:
+        return True
+    else:
+        return False
 
 
 
@@ -452,43 +512,14 @@ def single_login():
     time.sleep(4)
  
 #FUNCTIONS B: Utility Functions 
-#Function B1: Get Result Count 
-def get_result_count():
-    count_element = driver.find_element(By.CLASS_NAME, "countrendered")
-    result_count = count_element.get_attribute('data-actualresultscount')
-
-    return result_count
-
-#Function B2: Move and Rename a File
-def move_rename_file(original_file_name, original_file_path, new_file_name, new_file_path):
-    download_wait_count = 0
-    total_wait_seconds = 0
-    
-    while download_wait < 10:
-        try:
-            original_file_full = original_file_path + original_file_name
-            new_file_full = new_file_path + new_file_name
-
-            os.rename(original_file_full, new_file_full)
-            print("The file was sucesfully moved")
-            download_wait = 20
-            time.sleep(5)
-
-        except FileNotFoundError:
-            download_wait_count = download_wait_count + 1
-            total_wait_seconds = total_wait_seconds + 1
-            print("The file has not finished downloading yet pausing to sleep")
-            print("Total Wait ", total_wait_seconds * 5)
-            wait_seconds(5)
-
-#Function B3: Wait for period of seconds with no messages
+#Function B1: Wait for period of seconds with no messages
 def wait_seconds(total_wait_seconds):
     countdown_seconds = range(total_wait_seconds, 1, -1)
 
     for time_left in countdown_seconds:
         time.sleep(1)
 
-#Function B4: Wait for period of seconds with messages
+#Function B2: Wait for period of seconds with messages
 def wait_seconds_message(total_wait_seconds):
     countdown_seconds = range(total_wait_seconds, 1, -1)
 
@@ -505,139 +536,49 @@ if __name__ == "__main__":
 
 
 
-def open_timeline_button_original():
-    print("Trying to open the timeline")
-    #timeline_opened = False
-
-
-    try:
-        driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
-        print("Found and clicked the timeline button: podfiltersbuttondatestr-news")
-        time.sleep(8)  
-    except NoSuchElementException:  
-        print("NoSuchElementException couldn't find the timeline open button")
-
-    #New below to open and close NEED TO MAKE THIS CHECK AND WORK
-    try:
-        driver.find_element(By.CSS_SELECTOR, ".min-val")   
-        time.sleep(1)  
-    except NoSuchElementException:  
-        print("It seems timeline is not opened will try again")
-        #Retry Close 
-        try:
-            driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
-            print("Closing: podfiltersbuttondatestr-news")
-            time.sleep(8)  
-        except NoSuchElementException:  
-            print("NoSuchElementException couldn't find the timeline open button")
-        try:
-            driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
-            print("Try to open podfiltersbuttondatestr-news")
-            time.sleep(8)  
-        except NoSuchElementException:  
-            print("NoSuchElementException couldn't find the timeline open button")
-
-    '''
-    try:
-        min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
-        print("NoSuchElementException min_val_button found")
-        timeline_opened = True
-    except NoSuchElementException:  
-        print("NoSuchElementException min_val_button NOT found")
-
-    try:
-        min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
-        print("ElementNotInteractableException min_val_button touchable")
-    except:  
-        timeline_opened = True
-        print("ElementNotInteractableException min_val_button NOT touchable")
-    print("________________________")
-
-    return timeline_opened
-    '''
-
-#APPENDIX: Code and Notes
-'''
-def check_timeline_opened():
-    print("________________________")
-    timeline_opened = False
-
-    try:
-        min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
-        print("min_val_button found")
-        timeline_opened = True
-    except NoSuchElementException:  
-        timeline_opened = False
-        print("NoSuchElementException min_val_button NOT found")
-
-    try:
-        min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
-        print("min_val_button touchable")
-        timeline_opened = True
-    except:  
-        timeline_opened = False
-        print("ElementNotInteractableException min_val_button NOT touchable")
-
-    print("________________________")
-
-    return timeline_opened
-
 
 '''
 
+    #STEP 2: Group Duplicates and Get Result Count 
+    #basin_count = group_duplicates()
+    #print("basin count ", basin_count)
 
-    #NOTES
-'''
-    try:
-        driver.find_element(By.CSS_SELECTOR, ".min-val").click()
-        time.sleep(1)  
-        min_count = 10 
-    except NoSuchElementException:  
-        print("NoSuchElementException couldn't find min value ", min_count)
-        driver.get(search_link)
-        time.sleep(4) 
-        min_count = min_count + 1
-#This seems to work
-driver.execute_script("window.scrollTo(0,10)")
-driver.execute_script("window.scrollTo(0,400)")
-driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
-driver.find_element(By.CSS_SELECTOR, ".min-val").click()
-driver.find_element(By.CSS_SELECTOR, ".min-val").send_keys("open")
-driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
-driver.find_element(By.ID, "podfiltersbuttondatestr-news").click()
-driver.find_element(By.CSS_SELECTOR, ".min-val").click()
-driver.find_element(By.CSS_SELECTOR, ".min-val").send_keys("open")
-'''
+    #STEP 3: Set Date Range
+    data = pd.read_csv('/Users/dvas22/Desktop/David/www/geography/status/amur.csv', index_col=0)
 
+    for index, row in data.iterrows():
+        basin = row['basin']
+        start_date = row['start_date']
+        end_date = row['end_date']
+        finished = row['finished']
+
+        if finished != 1:
+            print("The data was downloaded marking complete")
+            #update_status(index)
+            time.sleep(1)
+        else:     
+            print("The basin ", basin, " from ", start_date, " to ", end_date, " is already done so we are skipping")
+            time.sleep(1)
+
+        #LOOP through here 
 
 
-'''
-#sort of works 
-def set_min_date(search_link, start_date):
-    min_count = 0
+    #30 June 2008 to 1 July 2023 
+    #change_date(search_link, "01/01/2000", "02/01/2010")
+    #print("Changed Date one!")
+    #Have to refresh the page each time, yay!!
+    #time.sleep(4)
+    #driver.get(search_link)
+    #time.sleep(4)
+    #change_date(search_link, "02/01/2011", "03/01/2021")
+    #print("we got here! ")
 
-    #Try to open the timeline window if it does not open get the page again to reset 
-    #selenium.common.exceptions.ElementNotInteractableException
-    while min_count < 5:
-        try:
-            driver.find_element(By.CSS_SELECTOR, ".min-val").click()
-            time.sleep(1)  
-            min_count = 10 
-        except NoSuchElementException:  
-            print("NoSuchElementException couldn't find min value ", min_count)
-            driver.get(search_link)
-            time.sleep(4) 
-            min_count = min_count + 1
+    #STEP 4: Set Sort by to Date (oldest to Newest) (SELENA)
     
-    #Clear out the current minimum date
-    for x in range(12):
-        driver.find_element(By.CSS_SELECTOR, ".min-val").send_keys(Keys.BACKSPACE)
-        time.sleep(.2)
-    time.sleep(1)
-
-    #Put the new date in
-    driver.find_element(By.CSS_SELECTOR, ".min-val").send_keys(start_date)
-    time.sleep(2)
-    #If fails return false 
+    #STEP 5: Download Excel 
+    basin_result_count = 800
+    min = 1
+    max = 500
+    download_excel(basin_code, min, max)
 
 '''
