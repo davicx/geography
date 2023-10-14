@@ -5,11 +5,19 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from chromedriver_py import binary_path # this will get you the path variable
 
-
 import time
 
+'''
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from chromedriver_py import binary_path # this will get you the path variable
+import time
 
-#EXAMPLE 1: 
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+
 options = Options()
 options.page_load_strategy = 'normal'
 options.add_argument("--start-maximized")
@@ -23,9 +31,27 @@ svc = webdriver.ChromeService(executable_path=binary_path)
 driver = webdriver.Chrome(service=svc, options=options)
 driver.get("https://www.python.org")
 
+time.sleep(60)
+
+#EXAMPLE 1: 
+'''
+'''
+options = Options()
+options.page_load_strategy = 'normal'
+options.add_argument("--start-maximized")
+
+options.add_argument("user-data-dir=Users/<username>/Library/Application Support/Google/Chrome/Default")
+prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geography/downloads'}
+options.add_experimental_option('prefs', prefs)
+
+
+svc = webdriver.ChromeService(executable_path=binary_path)
+driver = webdriver.Chrome(service=svc, options=options)
+driver.get("https://www.python.org")
+
+'''
 
 #EXAMPLE 2: 
-'''
 options = Options()
 options.page_load_strategy = 'normal'
 options.add_argument("--start-maximized")
@@ -42,6 +68,6 @@ driver.get("https://advance-lexis-com.ezproxy.library.tufts.edu/practice/?pdmfid
 time.sleep(20)
 driver.get("https://advance-lexis-com.ezproxy.library.tufts.edu/practice/?pdmfid=1516831&crid=b9ff301d-2c5b-415b-9c45-94c6cc6dc472&config=00JAAzNzdlNTFkNS00MDk2LTQzMTItYWM4Mi1kZjM0NGVlNDNkNzEKAFBvZENhdGFsb2eMH3E8B5wUwBgbm9pcVO5K&ecomp=ybJgkgk&prid=4f1f54e8-ca88-46d3-8193-9642eb75d530")
 print(driver.title)
-'''
+
 
 time.sleep(30)

@@ -1,4 +1,4 @@
-[1926:259:0903/162231.986876:WARNING:chrome_main_delegate.cc(596)] This is Chrome version 116.0.5845.140 (not a warning)
-[1926:259:0903/162232.172188:INFO:chrome_browser_cloud_management_controller.cc(168)] Starting CBCM Controller Initialization
-[1926:259:0903/162232.172232:INFO:chrome_browser_cloud_management_controller.cc(196)] No machine level policy manager exists.
-[1926:259:0903/162233.333626:INFO:CONSOLE(1)] "Uncaught (in promise) Error: No ad placements found.", source: https://media.ethicalads.io/media/client/v1.4.0/ethicalads.min.js (1)
+[3158:259:1014/154213.359113:WARNING:chrome_main_delegate.cc(613)] This is Chrome version 118.0.5993.70 (not a warning)
+[3158:259:1014/154213.498169:INFO:policy_logger.cc(142)] :components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc(168) Starting CBCM Controller Initialization
+[3158:259:1014/154213.498207:INFO:policy_logger.cc(142)] :components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc(196) No machine level policy manager exists.
+[3158:259:1014/154214.645233:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
