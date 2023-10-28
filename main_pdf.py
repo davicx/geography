@@ -18,12 +18,34 @@ import sys
 import pandas as pd
 import time
 
+
+#DRIVER
+#Driver Type 1: 
+#driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+options = Options()
+options.page_load_strategy = 'normal'
+options.add_argument("--start-maximized")
+
+#options.add_argument("user-data-dir=Users/<username>/Library/Application Support/Google/Chrome/Default")
+options.add_argument("user-data-dir=/tmp/david2")
+prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geography/downloads'}
+prefs = {'download.prompt_for_download' : False}
+options.add_experimental_option('prefs', prefs)
+
+service = Service()
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+
+#Driver Type 2: 
+'''
+driver = webdriver.Chrome(service=svc, options=options)
+
 options = Options()
 options.page_load_strategy = 'normal'
 options.add_argument("--start-maximized")
 
 #options.add_argument("user-data-dir=/tmp/david")
-options.add_argument("user-data-dir=/tmp/david")
+options.add_argument("user-data-dir=/tmp/david2")
 #download_directory = /Users/dvas22/Downloads 
 #download_directory = /Users/dvas22/Desktop/David/www/geography/downloads
  
@@ -35,14 +57,7 @@ prefs = {'download.prompt_for_download' : False}
 options.add_experimental_option('prefs', prefs)
 #options.add_experimental_option("detach", True)
 svc = webdriver.ChromeService(executable_path=binary_path)
-
-
-#DRIVER
-#Driver Type 1: 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-
-#Driver Type 2: 
-#driver = webdriver.Chrome(service=svc, options=options)
+'''
 
 #USER: Set Tufts or External User 
 external_user = True
@@ -54,9 +69,8 @@ search_terms = "Aral OR Syr Daria OR Naryn OR Amu Daria OR Syr Darya OR Amu Dary
 
 #FILE PATHS
 #Base Path
-#base_path_prefix = "/Users/dvas22/"
-
-base_path_prefix = "/Users/david/"
+base_path_prefix = "/Users/dvas22/"
+#base_path_prefix = "/Users/david/"
 
 #Main 
 base_path = base_path_prefix + "Desktop/David/www/geography/"
@@ -64,12 +78,6 @@ base_path = base_path_prefix + "Desktop/David/www/geography/"
 #Download Folder
 download_folder_temp = base_path_prefix + "Downloads/"
 download_folder = base_path + "downloads/aral/excel/"
-download_folder_pdf = base_path + "downloads/aral/pdf/"
-
-#Download Folder TEMP
-#('/Users/dvas22/Desktop/David/www/geography/status/year_loop.csv')
-#download_folder_temp = "/Users/david/Downloads/"
-#download_folder = "/Users/david/Desktop/David/www/geography/downloads/aral/excel/"
 
 
 #Search Link
@@ -80,10 +88,10 @@ else:
 
 
 #BASIN STATUS
-status_data = pd.read_csv(base_path + 'status/amur.csv', index_col=0)
+status_data = pd.read_csv(base_path + 'status/pdf/amur.csv', index_col=0)
 
 def main():
-    #single_login()
+    single_login()
     #login_tufts_user()
     single_basin_search()
     time.sleep(360)
@@ -111,7 +119,7 @@ def single_basin_search():
             #change_date(search_link, start_date, end_date)
 
             #STEP 4: Set Sort by to Date (oldest to Newest)
-            set_sort_by_date()
+            #set_sort_by_date()
 
             #STEP 5: Get Current Result Count
             #result_count = get_result_count()
