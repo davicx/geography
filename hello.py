@@ -7,6 +7,7 @@ from chromedriver_py import binary_path # this will get you the path variable
 
 import time
 
+#EXAMPLE 3
 '''
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -26,15 +27,13 @@ options.add_argument("user-data-dir=Users/<username>/Library/Application Support
 prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geography/downloads'}
 options.add_experimental_option('prefs', prefs)
 
-
 svc = webdriver.ChromeService(executable_path=binary_path)
 driver = webdriver.Chrome(service=svc, options=options)
-driver.get("https://www.python.org")
-
+driver.get("https://www.google.com/")
 time.sleep(60)
+'''
 
 #EXAMPLE 1: 
-'''
 '''
 options = Options()
 options.page_load_strategy = 'normal'
@@ -47,8 +46,7 @@ options.add_experimental_option('prefs', prefs)
 
 svc = webdriver.ChromeService(executable_path=binary_path)
 driver = webdriver.Chrome(service=svc, options=options)
-driver.get("https://www.python.org")
-
+driver.get("https://www.google.com/")
 '''
 
 #EXAMPLE 2: 
@@ -62,11 +60,10 @@ options.add_experimental_option('prefs', prefs)
 
 service = Service()
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-driver.get("https://advance-lexis-com.ezproxy.library.tufts.edu/practice/?pdmfid=1516831&crid=b9ff301d-2c5b-415b-9c45-94c6cc6dc472&config=00JAAzNzdlNTFkNS00MDk2LTQzMTItYWM4Mi1kZjM0NGVlNDNkNzEKAFBvZENhdGFsb2eMH3E8B5wUwBgbm9pcVO5K&ecomp=ybJgkgk&prid=4f1f54e8-ca88-46d3-8193-9642eb75d530")
-#driver.get("https://www.python.org")
+driver.get("https://www.google.com/")
 
 time.sleep(20)
-driver.get("https://advance-lexis-com.ezproxy.library.tufts.edu/practice/?pdmfid=1516831&crid=b9ff301d-2c5b-415b-9c45-94c6cc6dc472&config=00JAAzNzdlNTFkNS00MDk2LTQzMTItYWM4Mi1kZjM0NGVlNDNkNzEKAFBvZENhdGFsb2eMH3E8B5wUwBgbm9pcVO5K&ecomp=ybJgkgk&prid=4f1f54e8-ca88-46d3-8193-9642eb75d530")
+driver.get("https://www.google.com/")
 print(driver.title)
 
 
