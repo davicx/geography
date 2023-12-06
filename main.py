@@ -34,10 +34,7 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 
 #USER: Set Tufts or External User 
 external_user = True
-
-#BASIN 
-#basin_code = "Aral"
-basin_code = "Buzi"
+basin_code = "aral"
 
 #FILE PATHS
 #Base Path
@@ -46,32 +43,21 @@ base_path_prefix = "/Users/dvas22/"
 
 geography_folder = base_path_prefix + "Desktop/David/www/geography/"
 download_folder_temp = base_path_prefix + "Downloads/"
-
-#Basin Specific 
-#Aral
-#download_folder = geography_folder + "downloads/aral/excel/"
-#status_file = geography_folder + 'status/excel/aral.csv'
-
-#Buzi
-download_folder = geography_folder + "downloads/buzi/excel/"
-status_file = geography_folder + 'status/excel/buzi.csv'
+download_folder = geography_folder + "downloads/aral/excel/"
+status_file = geography_folder + 'status/excel/aral.csv'
 
 
 #Search Link
 if external_user == True:
-    #Aral
-    search_link_aral = "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=8346dc40-81b7-47ac-9469-cb518c95d880&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=c0d34a78-a8aa-4c9b-8ad0-d00c56ca39bd"
-    #Buzi
-    search_link = "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=fadf1216-572a-4c28-98fb-300dace432b1&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Buzi+OR+Rio+Revue+OR+Chibudzana+OR+Nyanhombo+OR+CAPS(Rio)+OR+Sterkstroom)+and+not+ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=qxLg9kk&earg=pdpsf&prid=d5c8c1b3-0b77-4d31-9b94-bbb0258bba71"
+    search_link = "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=8346dc40-81b7-47ac-9469-cb518c95d880&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=c0d34a78-a8aa-4c9b-8ad0-d00c56ca39bd"
 else:
     search_link =  "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=928f5e0f-556b-4f46-bf5d-1c43de32c3f8&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=0b27b868-b378-4485-8a1f-7dd4553471f9"
-
 
 #BASIN STATUS
 status_data = pd.read_csv(status_file, index_col=0)
 
 def main():
-    single_login()
+    #single_login()
     #login_tufts_user()
     single_basin_search() 
     time.sleep(360)
@@ -87,21 +73,24 @@ def single_basin_search():
         end_date = row['end_date']
         finished = row['finished']
 
+        if finished == 2:
+             print(basin_code, " is done!")
+             time.sleep(1)
+             quit()
+
         if finished != 1:
 
             #STEP 1: Base Search 
             base_search()
 
             #STEP 2: Set Date Range
-            #change_date(search_link, start_date, end_date)
+            change_date(search_link, start_date, end_date)
 
             #STEP 3: Group Duplicates
-            #group_duplicates()
+            group_duplicates()
 
             #STEP 4: Set Sort by to Date (oldest to Newest)
             set_sort_by_date()
-
-            time.sleep(360)
 
             #STEP 5: Get Current Result Count
             result_count = get_result_count()
@@ -109,23 +98,20 @@ def single_basin_search():
 
             if result_count_int < 1000:
 
-                #STEP 7: Download Excel 
+                #STEP 6: Download Excel 
                 download_outcome = download_excel(basin_code, 1, result_count)
 
-                #Step 7A: Mark complete
+                #Step 7: Mark complete
                 if download_outcome == True:
                     update_status_success(index, result_count)
-                    print("Mark Done")
                 else: 
                     update_status_failure(index, result_count)
-                    print("Mark not done")
 
                 print("FINISHED ONE DATE- Mark complete")
                 time.sleep(12)
 
             else: 
                 update_status_over_limit(index, result_count)
-                print("Mark Over 1000")
 
         else:     
             print("The basin ", basin, " from ", start_date, " to ", end_date, " is already done so we are skipping")
@@ -133,14 +119,33 @@ def single_basin_search():
 
 #STEP 1: Navigate to first level search
 def base_search(): 
-    print("STEP 1: Navigate to first level search")
+    print("STEP 1: Base Search- Navigate to first level search")
     driver.get(search_link)
     print("STEP 1: Finished")
     time.sleep(4)
 
-#STEP 2: Get Result Count and Toggle the Group Duplicates to On (DONE) 
+#STEP 2: Set Date Range
+def change_date(search_link, start_date, end_date):
+    print("STEP 2: Set Date Range")
+    print("DATE FROM ", start_date, " to ", end_date)
+    driver.execute_script("window.scrollTo(0,120)")
+    time.sleep(2)
+    driver.execute_script("window.scrollTo(0,400)")
+    time.sleep(2)
+
+    #Step 1: Check if Min Val is Visibile (will be when the timeline button is clicked)
+    attempt_to_open_timeline()
+
+    set_min_date(search_link, start_date)
+    set_max_date(search_link, end_date)
+
+    driver.find_element(By.CSS_SELECTOR, ".save").click()
+    time.sleep(4)
+    print("STEP 2: Finished")
+
+#STEP 3: Get Result Count and Toggle the Group Duplicates to On (DONE) 
 def group_duplicates():
-    print("STEP 2: Get Result Count and Toggle the Group Duplicates to On ") 
+    print("STEP 3: Group Duplicates- Get Result Count and Toggle the Group Duplicates to On ") 
 
     #We have to trigger this first due to a small glitch that prevents the basin count from showing up 
     driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
@@ -152,13 +157,6 @@ def group_duplicates():
     time.sleep(5)
     basin_result_count_two_raw = get_result_count()
 
-    print("Types of basin counts")
-    print(basin_result_count_one_raw)
-    print(type(basin_result_count_one_raw))
-    print(basin_result_count_two_raw)
-    print(type(basin_result_count_two_raw))
-    print("Types of basin counts")
-
     if type(basin_result_count_one_raw) == None:
         print("The basin count was not available so quit")
         quit() 
@@ -169,7 +167,7 @@ def group_duplicates():
    
     #Step 2: Set Group duplicats to the lower of the two 
     if basin_result_count_two > basin_result_count_one:
-        print("basin_result_count_two was greater then basin_result_count_one so click the toggle again")
+        #print("basin_result_count_two was greater then basin_result_count_one so click the toggle again")
         driver.find_element(By.CSS_SELECTOR, ".custom-control-indicator").click()
         time.sleep(5)    
     else: 
@@ -178,31 +176,11 @@ def group_duplicates():
     basin_result_count = min(basin_result_count_one, basin_result_count_two)
     time.sleep(5)
 
-    print("STEP 2: Finished ")
+    print("STEP 3: Finished ")
 
     return basin_result_count
 
-#STEP 3: Set Date Range
-def change_date(search_link, start_date, end_date):
-    print("STEP 3: Set Date Range")
-    print("DATE FROM ", start_date, " to ", end_date)
-    driver.execute_script("window.scrollTo(0,120)")
-    time.sleep(2)
-    driver.execute_script("window.scrollTo(0,400)")
-    time.sleep(2)
-    print("Scrolled Down")
-
-    #Step 1: Check if Min Val is Visibile (will be when the timeline button is clicked)
-    attempt_to_open_timeline()
-
-    set_min_date(search_link, start_date)
-    set_max_date(search_link, end_date)
-
-    driver.find_element(By.CSS_SELECTOR, ".save").click()
-    time.sleep(4)
-    print("STEP 3: Finished")
-
-#Function 3A: Set Min date 
+#Function 2A: Set Min date 
 def set_min_date(search_link, start_date):
     print("Starting set_min_date")
     print(start_date)
@@ -234,7 +212,7 @@ def set_min_date(search_link, start_date):
     print("Min date set")
     time.sleep(2)
 
-#Function 3B: Set Max date 
+#Function 2B: Set Max date 
 def set_max_date(search_link, end_date):
     print("Starting set_max_date ")
     print(end_date)
@@ -261,7 +239,7 @@ def set_max_date(search_link, end_date):
 
     time.sleep(2)
 
-#Function 3C: Open the Timeline Button
+#Function 2C: Open the Timeline Button
 def open_timeline_button():
     timeline_opened = check_timeline_opened()
     print("Check timeline status")
@@ -288,13 +266,10 @@ def open_timeline_button():
     time.sleep(6)
     return timeline_opened
 
-#Function 3D: Open the Timeline Button 
+#Function 2D: Open the Timeline Button 
 def attempt_to_open_timeline():
     print("Attempt to Open Timeline we will scroll to and try to click the button")
     timeline_opened = check_timeline_opened()
-    print("timeline_opened status")
-    print(timeline_opened)
-    print("timeline_opened ")
 
     #if the timeline is not opened then open it 
     if timeline_opened == False:
@@ -308,25 +283,20 @@ def check_timeline_opened():
     try:
         min_val_temp = driver.find_element(By.CSS_SELECTOR, ".min-val")   
         timeline_opened = True
-        print("The timeline is opened")
+        #print("The timeline is opened")
     except NoSuchElementException:  
         timeline_opened = False
-        print("The timeline is not opened")
+        #print("The timeline is not opened")
     return timeline_opened
 
+#STEP 1: Base Search 
+#STEP 2: Set Date Range
+#STEP 3: Group Duplicates
+#STEP 4: Set Sort by to Date (oldest to Newest)
 #STEP 5: Get Current Result Count
-def get_result_count():
-    result_count = -1
-    try:
-        count_element = driver.find_element(By.CLASS_NAME, "countrendered")
-        result_count = count_element.get_attribute('data-actualresultscount')
-        time.sleep(1)
-    except NoSuchElementException:  
-        print("Could not get the result count")
+#STEP 6: Download Excel and Mark complete
 
-    return result_count
-
-#STEP 6: Set Sort by to Date (oldest to Newest)
+#STEP 4: Set Sort by to Date (oldest to Newest)
 def set_sort_by_date(): 
     print("STEP 6: Set Sort by to Date (oldest to Newest)")
 
@@ -342,9 +312,22 @@ def set_sort_by_date():
     except NoSuchElementException:  
         print("NoSuchElementException couldn't click dropdownmenu")
 
+    time.sleep(2)
     print("STEP 6: FINISHED- needs to be done")
 
-#STEP 7: Download Excel  
+#STEP 5: Get Current Result Count
+def get_result_count():
+    result_count = -1
+    try:
+        count_element = driver.find_element(By.CLASS_NAME, "countrendered")
+        result_count = count_element.get_attribute('data-actualresultscount')
+        time.sleep(1)
+    except NoSuchElementException:  
+        print("Could not get the result count")
+
+    return result_count
+
+#STEP 6: Download Excel  
 def download_excel(basin_code, min_raw, max_raw):
     min = str(min_raw)
     max = str(max_raw)
@@ -390,7 +373,7 @@ def download_excel(basin_code, min_raw, max_raw):
     print("download_outcome")
     return True
 
-#Function 7A: Move and Rename a File
+#Function 6A: Move and Rename a File
 def move_rename_file(original_file_name, original_file_path, new_file_name, new_file_path):
     download_wait_count = 0
     total_wait_seconds = 0
@@ -400,12 +383,6 @@ def move_rename_file(original_file_name, original_file_path, new_file_name, new_
         try:
             original_file_full = original_file_path + original_file_name + ".ZIP"
             new_file_full = new_file_path + new_file_name + ".ZIP"
-
-            print("original_file_full")
-            print(original_file_full)
-            print("new_file_full")
-            print(new_file_full)
-            #print("ResultsList_Aral_202207_1_220")
 
             os.rename(original_file_full, new_file_full)
             print("The file was sucesfully moved")
@@ -425,6 +402,7 @@ def move_rename_file(original_file_name, original_file_path, new_file_name, new_
         return True
     else:
         return False
+
 
 
 #### UTILITY FUNCTIONS ####   
@@ -527,7 +505,6 @@ def wait_seconds_message(total_wait_seconds):
         time.sleep(1)
     print("1 second left in wait period")
     print("")
-
 
 #FUNCTIONS C: Excel Functions 
 #Function C1: Update as success
