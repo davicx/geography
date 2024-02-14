@@ -24,6 +24,15 @@ class BasinClass:
             
             return search_link
 
+        elif self.currentUser.lower() == "newb":
+            if self.external_user == True:
+                search_link = "#"
+            else:
+                search_link =  "tufts_url"
+            
+            return search_link
+
+
         elif self.currentUser.lower() == "other":
             print("other")
             return "search_link"

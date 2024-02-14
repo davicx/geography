@@ -23,8 +23,8 @@ import time
 
 #USER INFORMATION: User and Basin Information Setup (sSet this for yourself and the current basin)
 external_user = True
-basin_code = "aral"
-master_user = "david2"
+basin_code = "newb" 
+master_user = "david"
 
 #SETUP: 
 #PART 1: Chrome Configuration 
