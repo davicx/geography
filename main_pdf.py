@@ -1,5 +1,5 @@
 from classes.UserClass import UserClass
-from classes.BasinClass import BasinClass
+from classes.BasinClass_full import BasinClass
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service

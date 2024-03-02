@@ -1,6 +1,6 @@
 import time
 from classes.UserClass import UserClass
-from classes.BasinClass import BasinClass
+from classes.BasinClass_full import BasinClass
 
 currentUser = UserClass("aral", "david", True)
 currentBasin = BasinClass("aral", True)

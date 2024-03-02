@@ -1,3 +1,6 @@
+#Example Mac Path: "/Users/dvas22/Desktop/David/www/geography/"
+#Example PC Path: "C:/Users/Melissa/Documents/EventsAutomation/geography/examples/excelHandling/excel/basinData.csv"
+
 class UserClass:
     def __init__(self, basin, currentUser, externalUser):
         self.currentUser = currentUser
@@ -38,6 +41,7 @@ class UserClass:
             status_file = geography_folder + "status" + download_type_path + self.basin + ".csv"
 
             paths = {
+                "user_name": "davey",
                 "geography_folder": geography_folder,
                 "download_folder_temp": download_folder_temp,
                 "download_folder": download_folder,
@@ -56,6 +60,7 @@ class UserClass:
             status_file = geography_folder + "status" + download_type_path + self.basin + ".csv"
 
             paths = {
+                "user_name": "davey",
                 "geography_folder": geography_folder,
                 "download_folder_temp": download_folder_temp,
                 "download_folder": download_folder,
@@ -65,17 +70,44 @@ class UserClass:
             return paths
 
         elif self.currentUser.lower() == "selena":
-            print("TO DO: Add user paths")
+            base_path_prefix = "/Users/selenawallace/"
+            geography_folder = base_path_prefix + "Documents/Data_Science/geography/"
+            download_folder_temp = base_path_prefix + "Downloads/"
+            download_folder = geography_folder + "downloads/" + self.basin + download_type_path
+            status_file = geography_folder + "status" + download_type_path + self.basin + ".csv"
 
-        elif self.currentUser.lower() == "melissa":
-            print("TO DO: Add user paths")
+            paths = {
+                "user_name": "swalla05",
+                "geography_folder": geography_folder,
+                "download_folder_temp": download_folder_temp,
+                "download_folder": download_folder,
+                "status_file": status_file,
+            }
+
+            return paths
 
         elif self.currentUser.lower() == "alex":
             print("TO DO: Add user paths")
         
         elif self.currentUser.lower() == "student_name":
             print("TO DO: Add user paths")
-        
+         
+        elif self.currentUser.lower() == "melissa":
+            base_path_prefix = "C://Users/Melissa"
+            geography_folder = base_path_prefix + "/Documents/EventsAutomation/geography"
+            download_folder_temp = base_path_prefix + "/Downloads"
+            download_folder = geography_folder + "/downloads/" + self.basin + download_type_path
+            status_file = geography_folder + "/status" + download_type_path + self.basin + ".csv"
+            print (geography_folder)
+            paths = {
+                "user_name": "melissa",
+                "geography_folder": geography_folder,
+                "download_folder_temp": download_folder_temp,
+                "download_folder": download_folder,
+                "status_file": status_file,
+            }
+
+            return paths
         else: 
             print("user not found")
 

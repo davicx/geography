@@ -23,7 +23,7 @@ import time
 
 #USER INFORMATION: User and Basin Information Setup (sSet this for yourself and the current basin)
 external_user = True
-basin_code = "newb" 
+basin_code = "aral" 
 master_user = "david"
 
 #SETUP: 
@@ -49,6 +49,7 @@ currentUser.getName()
 paths = currentUser.getPath("excel")
 
 #Base Paths 
+user_name = paths["user_name"]
 geography_folder = paths["geography_folder"]
 download_folder_temp = paths["download_folder_temp"]
 download_folder = paths["download_folder"]
@@ -61,9 +62,9 @@ search_link = currentBasin.get_basin_path()
 status_data = pd.read_csv(status_file, index_col=0)
 
 def main():
-    single_login()
-    #login_tufts_user()
-    single_basin_search() 
+    #single_login()
+    login_tufts_user(user_name)
+    #single_basin_search() 
     time.sleep(360)
 
 
@@ -128,15 +129,6 @@ def single_basin_search():
             print("The basin ", basin, " from ", start_date, " to ", end_date, " is already done so we are skipping")
             time.sleep(1)
 
-'''
-#STEP 1: Base Search 
-#STEP 2: Set Date Range
-#STEP 3: Group Duplicates
-#STEP 4: Set Sort by to Date (oldest to Newest)
-#STEP 5: Get Current Result Count
-#STEP 6: Download Excel 
-#STEP 7: Mark complete
-'''
 #STEP 1: Navigate to first level search
 def base_search(): 
     print("STEP 1: Navigate to first level search")
@@ -422,13 +414,16 @@ def move_rename_file(original_file_name, original_file_path, new_file_name, new_
 #### UTILITY FUNCTIONS ####   
 #FUNCTIONS A: Login Related Functions (there are three login functions one for a Tufts user, one for an external user and one that will run once if the login session is not working)
 #Function A1: Login an internal Tufts User 
-def login_tufts_user():
+def login_tufts_user(user_name):
     time.sleep(3)
+    print("Logging in user with userName " + user_name)
+    #"swalla05"
+    time.sleep(60)
     driver.get("https://login.ezproxy.library.tufts.edu/login?auth=tufts&url=http://www.nexisuni.com")
     time.sleep(3)
     driver.find_element(By.CSS_SELECTOR, ".btn-shib > .login").click()
     time.sleep(3)
-    driver.find_element(By.ID, "username").send_keys("swalla05")
+    driver.find_element(By.ID, "username").send_keys(user_name)
     driver.find_element(By.ID, "password").send_keys("")
     time.sleep(10)
     try:
@@ -443,6 +438,8 @@ def login_tufts_user():
     except NoSuchElementException:  
         print("Logged In trust-browser-button")
     time.sleep(60)
+
+
     
 #Function A2: Login an External User with Temporary Access
 def login_external_user():
