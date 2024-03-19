@@ -10,12 +10,12 @@ import time
 
 #PATHS: 
 #MAC 
-data_dir = "user-data-dir=Users/username/Library/Application Support/Google/Chrome/Default"
-default_download = "/Users/dvas22/Desktop/David/www/geography/downloads"
+#data_dir = "user-data-dir=Users/username/Library/Application Support/Google/Chrome/Default"
+#default_download = "/Users/dvas22/Desktop/David/www/geography/downloads"
 
 #PC
-#data_dir = "user-data-dir=C://Users/Melissa/Library/Application Support/Google/Chrome/Default"
-#default_download = "/Users/dvas22/Desktop/David/www/geography/downloads"
+data_dir = "user-data-dir=C://Users/Melissa/Library/Application Support/Google/Chrome/Default"
+default_download = "C://Users/Melissa/Documents/EventsAutomation/geography/downloads"
 
 options = Options()
 options.page_load_strategy = 'normal'

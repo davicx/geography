@@ -93,14 +93,16 @@ class UserClass:
             print("TO DO: Add user paths")
          
         elif self.currentUser.lower() == "melissa":
+            #C://Users/Melissa/Downloads
+            #C:\Users\Melissa\Downloads
             base_path_prefix = "C://Users/Melissa"
             geography_folder = base_path_prefix + "/Documents/EventsAutomation/geography"
-            download_folder_temp = base_path_prefix + "/Downloads"
+            download_folder_temp = base_path_prefix + "/Downloads/"
             download_folder = geography_folder + "/downloads/" + self.basin + download_type_path
             status_file = geography_folder + "/status" + download_type_path + self.basin + ".csv"
-            print (geography_folder)
+
             paths = {
-                "user_name": "melissa",
+                "user_name": "mmccra01",
                 "geography_folder": geography_folder,
                 "download_folder_temp": download_folder_temp,
                 "download_folder": download_folder,
