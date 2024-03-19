@@ -22,9 +22,9 @@ import pandas as pd
 import time
 
 #USER INFORMATION: User and Basin Information Setup (sSet this for yourself and the current basin)
-external_user = True
-basin_code = "aral" 
-master_user = "david"
+external_user = False
+basin_code = "bakr" 
+master_user = "melissa"
 
 #SETUP: 
 #PART 1: Chrome Configuration 
@@ -34,7 +34,7 @@ options.add_argument("--start-maximized")
 
 #options.add_argument("user-data-dir=Users/<username>/Library/Application Support/Google/Chrome/Default")
 #prefs = {'download.default_directory' : '/Users/dvas22/Desktop/David/www/geography/downloads'}
-options.add_argument("user-data-dir=/tmp/david2")
+options.add_argument("user-data-dir=/tmp/storedLoginInformation3")
 prefs = {'download.prompt_for_download' : False}
 options.add_experimental_option('prefs', prefs)
 
@@ -62,10 +62,16 @@ search_link = currentBasin.get_basin_path()
 status_data = pd.read_csv(status_file, index_col=0)
 
 def main():
-    #single_login()
+    
+    #OSU Login
+    #single_login() #this is for non Tufts users 
+    
+    #Tufts Login:
     login_tufts_user(user_name)
-    #single_basin_search() 
-    time.sleep(360)
+    
+    #Run Main Program
+    single_basin_search() 
+    time.sleep(60)
 
 
 #Single Basin Search
@@ -73,7 +79,8 @@ def single_basin_search():
     print("MAIN: Starting a single basin search for ", basin_code)
     
     for index, row in status_data.iterrows():
-        basin = row['basin']
+        #basin = row['Basin_Name']
+        basin = row['BCODE'] 
         start_date = row['start_date']
         end_date = row['end_date']
         finished = row['finished']
@@ -132,6 +139,7 @@ def single_basin_search():
 #STEP 1: Navigate to first level search
 def base_search(): 
     print("STEP 1: Navigate to first level search")
+    print(search_link)
     driver.get(search_link)
     print("STEP 1: Finished")
     time.sleep(4)
@@ -374,9 +382,9 @@ def download_excel(basin_code, min_raw, max_raw):
     download_outcome = move_rename_file(download_file_name, download_folder_temp, download_file_name, download_folder)
 
     time.sleep(6)
-    #print("download_outcome")
-    #print(download_outcome)
-    #print("download_outcome")
+    print("download_outcome")
+    print(download_outcome)
+    print("download_outcome")
     print("STEP 7: FINISHED")
 
     return True
@@ -391,6 +399,12 @@ def move_rename_file(original_file_name, original_file_path, new_file_name, new_
         try:
             original_file_full = original_file_path + original_file_name + ".ZIP"
             new_file_full = new_file_path + new_file_name + ".ZIP"
+
+            print("Original Download Location")
+            print(original_file_full)
+
+            print("Moving file to Geography Download Folder Location")
+            print(new_file_full)
 
             os.rename(original_file_full, new_file_full)
             print("Step 6: The file was sucesfully moved")
@@ -417,15 +431,15 @@ def move_rename_file(original_file_name, original_file_path, new_file_name, new_
 def login_tufts_user(user_name):
     time.sleep(3)
     print("Logging in user with userName " + user_name)
-    #"swalla05"
-    time.sleep(60)
     driver.get("https://login.ezproxy.library.tufts.edu/login?auth=tufts&url=http://www.nexisuni.com")
     time.sleep(3)
     driver.find_element(By.CSS_SELECTOR, ".btn-shib > .login").click()
     time.sleep(3)
     driver.find_element(By.ID, "username").send_keys(user_name)
     driver.find_element(By.ID, "password").send_keys("")
-    time.sleep(10)
+
+    #Wait for user to manually put in user name 60 seconds
+    time.sleep(30)
     try:
         driver.find_element(By.NAME, "_eventId_proceed").click()
         time.sleep(10)
@@ -437,7 +451,7 @@ def login_tufts_user(user_name):
         time.sleep(10)
     except NoSuchElementException:  
         print("Logged In trust-browser-button")
-    time.sleep(60)
+    time.sleep(20)
 
 
     
