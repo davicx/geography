@@ -64,7 +64,7 @@ search_basin = SearchBasinClass(basin_code)
 #search_term = currentBasin.get_search_term()
 #search_term = search_basin.get_search_term()
 if search_basin.search_term is not None:
-    search_term = search_basin.search_term
+    search_term_variable = search_basin.search_term
     print(f"Search term for basin code {search_basin.basin_code}: {search_term}")
 else:
     print("Failed to retrieve search term.")
