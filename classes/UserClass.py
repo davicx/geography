@@ -114,15 +114,15 @@ class UserClass:
         elif self.currentUser.lower() == "sukriti": 
             #TO DO: Set these three to match your computer
             base_path_prefix = "/Users/sukritimahipal/"
-            geography_folder = base_path_prefix + "Documents/Events_automation/geography/"
-            download_folder_temp = base_path_prefix + "This should point to where Chrome downloads files by default"
+            geography_folder = base_path_prefix + "Downloads/Events_automation/geography/"
+            download_folder_temp = base_path_prefix + "Downloads/"
 
             #These will set by default
             download_folder = geography_folder + "downloads/" + self.basin + download_type_path
             status_file = geography_folder + "status" + download_type_path  + self.basin + ".csv"
 
             paths = {
-                "user_name": "login username here",
+                "user_name": "smaphip01",
                 "geography_folder": geography_folder,
                 "download_folder_temp": download_folder_temp,
                 "download_folder": download_folder,
@@ -130,59 +130,39 @@ class UserClass:
             }
 
             return paths
-
-        elif self.currentUser.lower() == "rachel": 
-            #TO DO: Set these three to match your computer
-            base_path_prefix = "/Users/rachelskinner/"
-            geography_folder = base_path_prefix + "Downloads/Events_Data/geography/"
-            download_folder_temp = base_path_prefix + "This should point to where Chrome downloads files by default"
-
-            #These will set by default
-            download_folder = geography_folder + "downloads/" + self.basin + download_type_path
-            status_file = geography_folder + "status" + download_type_path  + self.basin + ".csv"
-
-            paths = {
-                "user_name": "login username here",
-                "geography_folder": geography_folder,
-                "download_folder_temp": download_folder_temp,
-                "download_folder": download_folder,
-                "status_file": status_file,
-            }
-
-            return paths
-
-        elif self.currentUser.lower() == "raunaq": 
-            #TO DO: Set these three to match your computer
-            base_path_prefix = "/Users/computer name here/"
-            geography_folder = base_path_prefix + "Documents/Events_automation/geography/"
-            download_folder_temp = base_path_prefix + "This should point to where Chrome downloads files by default"
-
-            #These will set by default
-            download_folder = geography_folder + "downloads/" + self.basin + download_type_path
-            status_file = geography_folder + "status" + download_type_path  + self.basin + ".csv"
-
-            paths = {
-                "user_name": "login username here",
-                "geography_folder": geography_folder,
-                "download_folder_temp": download_folder_temp,
-                "download_folder": download_folder,
-                "status_file": status_file,
-            }
-
-            return paths
-
+        
         elif self.currentUser.lower() == "molly": 
             #TO DO: Set these three to match your computer
-            base_path_prefix = "C://Users/computers name here"
+            base_path_prefix = "/Users/mollyburger/"
             geography_folder = base_path_prefix + "Documents/Events/Events_automation/geography/"
-            download_folder_temp = base_path_prefix + "This should point to where Chrome downloads files by default"
+            download_folder_temp = base_path_prefix + "Downloads/"
 
             #These will set by default
             download_folder = geography_folder + "downloads/" + self.basin + download_type_path
             status_file = geography_folder + "status" + download_type_path  + self.basin + ".csv"
 
             paths = {
-                "user_name": "login username here",
+                "user_name": "mburge04",
+                "geography_folder": geography_folder,
+                "download_folder_temp": download_folder_temp,
+                "download_folder": download_folder,
+                "status_file": status_file,
+            }
+
+            return paths
+        
+        elif self.currentUser.lower() == "raunaq": 
+            #TO DO: Set these three to match your computer
+            base_path_prefix = "/Users/raunaqchandrashekar/"
+            geography_folder = base_path_prefix + "Downloads/Events_Automation/geography/"
+            download_folder_temp = base_path_prefix + "Downloads/"
+
+            #These will set by default
+            download_folder = geography_folder + "downloads/" + self.basin + download_type_path
+            status_file = geography_folder + "status" + download_type_path  + self.basin + ".csv"
+
+            paths = {
+                "user_name": "rchand03",
                 "geography_folder": geography_folder,
                 "download_folder_temp": download_folder_temp,
                 "download_folder": download_folder,
