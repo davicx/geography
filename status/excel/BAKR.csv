@@ -1,5 +1,5 @@
 index,BCODE,Basin_Name,start_date,end_date,time_duration,basin_count,over_one_thousand,file_name,finished
-1,BAKR,Baker,06/30/2008,04/30/2010,,803,,ResultsList_bakr_202207_result_min_1_result_max_803_start_date_06/30/2008_end_date_04/30/2010,1.0
+1,BAKR,Baker,06/30/2008,04/30/2010,,,,,
 2,BAKR,Baker,05/01/2010,09/30/2011,,,,,
 3,BAKR,Baker,10/01/2011,08/31/2012,,,,,
 4,BAKR,Baker,09/01/2012,12/31/2012,,,,,
