@@ -122,7 +122,7 @@ class UserClass:
             status_file = geography_folder + "status" + download_type_path  + self.basin + ".csv"
 
             paths = {
-                "user_name": "smaphip01",
+                "user_name": "smahip01",
                 "geography_folder": geography_folder,
                 "download_folder_temp": download_folder_temp,
                 "download_folder": download_folder,
