@@ -139,7 +139,6 @@ def single_basin_search():
 #STEP 1: Navigate to first level search
 def base_search(): 
     print("STEP 1: Navigate to first level search")
-    print(search_link)
     driver.get(search_link)
     print("STEP 1: Finished")
     time.sleep(4)
@@ -165,7 +164,7 @@ def change_date(search_link, start_date, end_date):
 
 #Function 2A: Open the Timeline Button 
 def attempt_to_open_timeline():
-    print("Step 2A: Attempt to Open Timeline we will scroll to and try to click the button")
+    print("Function 2A: Attempt to Open Timeline we will scroll to and try to click the button")
     timeline_opened = check_timeline_opened()
 
     #if the timeline is not opened then open it 
@@ -176,7 +175,7 @@ def attempt_to_open_timeline():
 
 #Function 2B: Set Min date 
 def set_min_date(search_link, start_date):
-    print("Starting set_min_date")
+    print("Function 2B: Starting set_min_date")
     print(start_date)
     min_count = 0
 
@@ -187,7 +186,7 @@ def set_min_date(search_link, start_date):
             time.sleep(1)  
             min_count = 10 
         except NoSuchElementException:  
-            print("NoSuchElementException couldn't find min value ", min_count)
+            print("Function 2B: NoSuchElementException couldn't find min value ", min_count)
             driver.get(search_link)
             time.sleep(4)
 
@@ -208,7 +207,7 @@ def set_min_date(search_link, start_date):
 
 #Function 2C: Set Max date 
 def set_max_date(search_link, end_date):
-    print("Starting set_max_date ")
+    print("Function 2C: Starting to Set Timeline Max date")
     print(end_date)
     max_count = 0
 
@@ -216,7 +215,7 @@ def set_max_date(search_link, end_date):
         driver.find_element(By.CSS_SELECTOR, ".max-val").click()
         time.sleep(1)   
     except NoSuchElementException:  
-        print("NoSuchElementException couldn't find max value ", max_count)
+        print("Function 2C: NoSuchElementException couldn't find max value ", max_count)
         driver.get(search_link)
         time.sleep(4) 
         attempt_to_open_timeline()
@@ -229,18 +228,17 @@ def set_max_date(search_link, end_date):
     time.sleep(1)
  
     driver.find_element(By.CSS_SELECTOR, ".max-val").send_keys(end_date)
-    print("Max date set")
+    print("Function 2C: Finished Setting Timeline Max date")
 
     time.sleep(2)
 
 #Function 2D: Open the Timeline Button
 def open_timeline_button():
+    print("Function 2D: Will try to open the timeline button")
     timeline_opened = check_timeline_opened()
-    #print("Check timeline status")
-    #print(timeline_opened)
 
     if timeline_opened == False:
-        print("The timeline is closed so we will open the timeline")
+        print("Function 2D: The timeline is closed so we will open the timeline")
 
         #Open the Timeline
         try:
@@ -249,13 +247,13 @@ def open_timeline_button():
 
             time.sleep(8)  
         except NoSuchElementException:  
-            print("Couldn't find the timeline open button")
+            print("Function 2D: Couldn't find the timeline open button")
 
     else: 
-        print("Timeline is opened")
+        print("Function 2D:Timeline is opened")
 
     timeline_opened = check_timeline_opened()
-    print("Final check on timeline ")
+    print("Function 2D: Final check on timeline ")
     print(timeline_opened)
     time.sleep(6)
     return timeline_opened
@@ -288,7 +286,7 @@ def group_duplicates():
     basin_result_count_two_raw = get_result_count()
 
     if type(basin_result_count_one_raw) == None:
-        print("ERROR: The basin count was not available so quit")
+        print("STEP 3: Error The basin count was not available so quit")
         quit() 
     
     #Convert Basin Count One to Int 
@@ -318,13 +316,13 @@ def set_sort_by_date():
         driver.find_element(By.ID, "sortbymenulabel").click()
         time.sleep(3)
     except NoSuchElementException:  
-        print("NoSuchElementException couldn't find sortbymenulabel")
+        print("STEP 4: NoSuchElementException couldn't find sortbymenulabel")
 
     try:
         driver.find_element(By.CSS_SELECTOR, "#dropdownmenu > button:nth-child(5)").click()
         time.sleep(3)
     except NoSuchElementException:  
-        print("NoSuchElementException couldn't click dropdownmenu")
+        print("STEP 4: NoSuchElementException couldn't click dropdownmenu")
 
     time.sleep(2)
     print("STEP 4: FINISHED")
@@ -377,15 +375,13 @@ def download_excel(basin_code, min_raw, max_raw):
     time.sleep(3)
 
     driver.find_element(By.CSS_SELECTOR, ".button-group > .primary").click()
-    #print("Function C1: Finished downloads from ", min, " to ", max)
     
     download_outcome = move_rename_file(download_file_name, download_folder_temp, download_file_name, download_folder)
 
     time.sleep(6)
-    print("download_outcome")
+    print("STEP 6: Download Excel download_outcome")
     print(download_outcome)
-    print("download_outcome")
-    print("STEP 7: FINISHED")
+    print("STEP 6: FINISHED")
 
     return True
 
@@ -400,14 +396,14 @@ def move_rename_file(original_file_name, original_file_path, new_file_name, new_
             original_file_full = original_file_path + original_file_name + ".ZIP"
             new_file_full = new_file_path + new_file_name + ".ZIP"
 
-            print("Original Download Location")
+            print("Function 6A: Original Download Location and Filename")
             print(original_file_full)
 
-            print("Moving file to Geography Download Folder Location")
+            print("Function 6A: New Download Location and Filename")
             print(new_file_full)
 
             os.rename(original_file_full, new_file_full)
-            print("Step 6: The file was sucesfully moved")
+            print("Function 6A: The file was sucesfully moved")
             download_wait_count = 20
             time.sleep(5)
             return True
@@ -415,8 +411,8 @@ def move_rename_file(original_file_name, original_file_path, new_file_name, new_
         except FileNotFoundError:
             download_wait_count = download_wait_count + 1
             total_wait_seconds = total_wait_seconds + 1
-            print("Step 6: The file has not finished downloading yet pausing to sleep")
-            print("Step 6: Total Wait ", total_wait_seconds * 5)
+            print("Function 6A: The file has not finished downloading yet pausing to sleep")
+            print("Function 6A: Total Wait ", total_wait_seconds * 5)
             wait_seconds(5)
     
     #Return true if the files were downloaded and moved 
@@ -453,7 +449,6 @@ def login_tufts_user(user_name):
         print("Logged In trust-browser-button")
     time.sleep(20)
 
-
     
 #Function A2: Login an External User with Temporary Access
 def login_external_user():
@@ -483,7 +478,8 @@ def login_external_user():
     driver.find_element(By.NAME, "submit").click()
 
     time.sleep(4)
-   
+
+
 #Function A3: Login that runs once (if the browser crashed you will have to login again)
 def single_login():
     print("single login") 
