@@ -72,7 +72,9 @@ def single_basin_search():
     print("MAIN: Starting a single basin search for ", basin_code)
     result_count = 999999
     
-    #LOOP OVER MAIN aral.csv all downloads doen yes or now
+    #START: Begin loopin over the status.csv file
+    #The files are in batches under 1000 and we will loop over this in increments of 100 and download the pdfs up to 1000 max
+    #If there are 290 total results we would loop 3 times and download 100, 100 and 90 pdf files and the stop for this time period
     for index, row in status_data.iterrows():
         basin = row['basin']
         key = row['key']
@@ -153,7 +155,6 @@ def bulk_download(index, result_count, start_count, stop_count):
 
 
 #STEP 7: Download PDF
-#loop over 1 to 100 out function true if all pdf for that year range worked
 def download_pdf(index, result_count, start_count, stop_count):
     print("LEVEL 2: download_pdf")
     total_pdf_downloads_int = stop_count - start_count + 1
@@ -576,95 +577,3 @@ def update_status_over_limit(index, result_count):
 if __name__ == "__main__":
     main()
 
-
-
-#APPENDIX
-'''
-def download_pdf_bulk(index, key, basin_code, start_count, stop_count):
-    print("LEVEL 1: download_pdf_bulk")
-    #download_pdf(min_raw, max_raw)
-    print("download_pdf(min_raw, max_raw)")
-    print(index, key)
-    print(basin_code)
-    print("We will download bulk from ", start_count, " to ", stop_count)
-    time.sleep(1)
-'''
-
-
-'''
-    #move base search here maybe everything setup to download 
-    print("STEP 2: Set Date Function ", set_date)
-    change_date(search_link, start_date, end_date)
-
-    #STEP 3: Group Duplicates
-    #group_duplicates()
-
-    #STEP 4: Set Sort by to Date (oldest to Newest)
-    set_sort_by_date()
-
-    #STEP 5: Get Current Result Count
-    result_count = get_result_count()
-    result_count_int = int(result_count)
-
-    if result_count_int < 1000:
-
-        #STEP 7: Download PDF 
-        #Loop over 1 to 1000 
-
-        #Step 7A: Get the max count to stop at 
-        stop_count = min(stop_count_temp, result_count_int)
-
-        #Step 7B: Mark complete
-        run_last_search = False
-        count_difference = stop_count_temp - result_count_int
-
-        if count_difference > 1 or count_difference < 100:
-            run_last_search = True
-
-        if stop_count_temp < result_count_int or run_last_search == True:
-            download_outcome = download_pdf_bulk(index, key, basin_code, start_count, stop_count)
-            if download_outcome == True:
-                update_status_success(index, result_count)
-                print("Mark Done")
-            else: 
-                update_status_failure(index, result_count)
-                print("Mark not done")
-        #This means we finished the total records found so we can skip
-        else: 
-            update_status_success(index, result_count)
-            print("we finished the total records found so we can skip")
-        
-
-        print("FINISHED ONE DATE- Mark complete")
-        time.sleep(6)
-
-    else: 
-        update_status_over_limit(index, result_count)
-        print("Mark Over 1000")
-
-    '''
-
-
-
-#OLD
-
-'''
-#FILE PATHS
-#Base Path
-base_path_prefix = "/Users/dvas22/"
-#base_path_prefix = "/Users/david/"
-
-geography_folder = base_path_prefix + "Desktop/David/www/geography/"
-download_folder_temp = base_path_prefix + "Downloads/"
-download_folder = geography_folder + "downloads/aral/pdf/"
-status_file = geography_folder + 'status/pdf/aral.csv'
-
-#Search Link
-if external_user == True:
-    search_link = "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=8346dc40-81b7-47ac-9469-cb518c95d880&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=c0d34a78-a8aa-4c9b-8ad0-d00c56ca39bd"
-    #search_link-buzi = "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=8346dc40-81b7-47ac-9469-cb518c95d880&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=c0d34a78-a8aa-4c9b-8ad0-d00c56ca39bd"
-else:
-    search_link =  "https://advance-lexis-com.ezproxy.library.tufts.edu/search/?pdmfid=1516831&crid=928f5e0f-556b-4f46-bf5d-1c43de32c3f8&pdpsf=&pdpost=&pdstartin=urn%3Ahlct%3A16&pdsearchterms=hlead(*water*+OR+river*+OR+lake+OR+dam+OR+stream+OR+tributary+OR+diversion+OR+irrigation+OR+pollution+OR+water+quality+OR+flood!+OR+drought!+OR+channel+OR+canal+OR+hydroelect!+OR+reservoir+OR+groundwater+OR+aquifer+OR+drought+OR+recharge+OR+%22water+table%22+OR+%22bore+hole%22)+and+hlead(treaty+OR+agree!+OR+negotiat!+OR+resolution+OR+commission+OR+secretariat+OR+joint+management+OR+basin+management+OR+peace+OR+accord+OR+%22peace+accord%22+OR+settle!+OR+cooperat!+OR+collaborat!+OR+disput!+OR+conflict!+OR+disagree!+OR+sanction!+OR+war+OR+troops+OR+%22letter+of+protest%22+OR+hostility+OR+%22shots+fired%22+OR+boycott+OR+protest!+OR+appeal+OR+intent+OR+reject+OR+threat!+OR+force+OR+coerce+OR+assault+OR+fight+OR+demand+OR+disapprove+OR+diploma!+OR+statement+OR+memorandum)+and+hlead(Aral+OR+Syr+Daria+OR+Naryn+OR+Amu+Daria+OR+Syr+Darya+OR+Amu+Darya+OR+Akhangaran+OR+Chirchik)+and+not+hlead(ocean+OR+navigat!+OR+nuclear+OR+%22water+cannon%22+OR+%22light+water+reactor%22+OR+%22mineral+water%22+OR+%22hold+water%22+OR+%22cold+water%22+OR+%22hot+water%22+OR+%22water+canister%22+OR+%22water+tight%22+OR+%22+water+down%22+OR+%22flood+of+refugees%22+OR+Rivera+OR+Suez+OR+Panama+OR+oil+OR+drugs+OR+%22three+gorges%22+OR+waterski+OR+watermelon+OR+dishwater+OR+waterproof+OR+%22water+resistant%22+OR+%22water+bath%22)&pdsearchtype=SearchBox&pdtypeofsearch=searchboxclick&pdsf=&pdquerytemplateid=&pdtimeline=undefined%7Calldates&pdfromadvancedsearchpage=true&ecomp=yxLg9kk&earg=pdpsf&prid=0b27b868-b378-4485-8a1f-7dd4553471f9"
-'''
-#OLD ABOVE
-############
