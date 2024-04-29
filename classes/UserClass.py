@@ -110,6 +110,23 @@ class UserClass:
             }
 
             return paths
+        
+        elif self.currentUser.lower() == "melissa2":
+            base_path_prefix = "C://Users/mjmcc"
+            geography_folder = base_path_prefix + "/Documents/Events_automation/geography" 
+            download_folder_temp = base_path_prefix + "/Downloads/"
+            download_folder = geography_folder + "/downloads/" + self.basin + download_type_path
+            status_file = geography_folder + "/status" + download_type_path + self.basin + ".csv"
+
+            paths = {
+                "user_name": "mmccra01",
+                "geography_folder": geography_folder,
+                "download_folder_temp": download_folder_temp,
+                "download_folder": download_folder,
+                "status_file": status_file,
+            }
+
+            return paths
 
         elif self.currentUser.lower() == "sukriti": 
             #TO DO: Set these three to match your computer
