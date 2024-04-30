@@ -81,8 +81,14 @@ def single_basin_search():
     for index, row in status_data.iterrows():
         #basin = row['Basin_Name']
         basin = row['BCODE'] 
-        start_date = row['start_date']
-        end_date = row['end_date']
+        
+        #ORIGINAL: Original that does not convert date can be removed in new code is correct
+        #start_date = row['start_date']
+        #end_date = row['end_date']
+
+        #UPDATED: Uses new function to convert date types
+        start_date = convert_date(row['start_date'])
+        end_date = convert_date(row['end_date'])
         finished = row['finished']
 
         if finished == 2:
@@ -526,6 +532,41 @@ def wait_seconds_message(total_wait_seconds):
         time.sleep(1)
     print("1 second left in wait period")
     print("")
+
+
+#Function B3: Convert excel date to correct format
+def convert_date(date):
+   """Convert date format to match this output (add leading zeros and make year 4 digits)
+   Month/Day/Year
+   01/01/2000
+   """
+
+   date_list = date.split('/')
+   day = date_list[1]
+   month = date_list[0]
+   year = date_list[2]
+
+   # Convert Day
+   if len(day) < 2:
+       correct_day = "0" + day
+   else:
+       correct_day = day
+
+   # Convert Month
+   if len(month) < 2:
+       correct_month = "0" + month
+   else:
+       correct_month = month
+
+   # Convert Year
+   if len(year) < 3:
+       correct_year = "20" + year
+   else:
+       correct_year = year
+
+   correct_date = correct_month + "/" + correct_day + "/" + correct_year
+
+   return correct_date    
 
 #FUNCTIONS C: Excel Functions 
 #Function C1: Update as success
