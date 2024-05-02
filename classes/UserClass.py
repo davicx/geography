@@ -111,6 +111,26 @@ class UserClass:
 
             return paths
 
+        elif self.currentUser.lower() == "rachel": 
+            #TO DO: Set these three to match your computer
+            base_path_prefix = "/Users/rachelskinner/"
+            geography_folder = base_path_prefix + "Downloads/Events_Data/geography/"
+            download_folder_temp = base_path_prefix + "Downloads/"
+
+            #These will set by default
+            download_folder = geography_folder + "downloads/" + self.basin + download_type_path
+            status_file = geography_folder + "status" + download_type_path  + self.basin + ".csv"
+
+            paths = {
+                "user_name": "rskinn02",
+                "geography_folder": geography_folder,
+                "download_folder_temp": download_folder_temp,
+                "download_folder": download_folder,
+                "status_file": status_file,
+            }
+
+            return paths
+
         elif self.currentUser.lower() == "sukriti": 
             #TO DO: Set these three to match your computer
             base_path_prefix = "/Users/sukritimahipal/"
