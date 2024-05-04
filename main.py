@@ -541,32 +541,54 @@ def convert_date(date):
    01/01/2000
    """
 
-   date_list = date.split('/')
-   day = date_list[1]
-   month = date_list[0]
-   year = date_list[2]
+    # Split date
+   if "/" in date: 
+        date_list = date.split('/')
+        day = date_list[1]
+        month = date_list[0]
+        year = date_list[2]
 
-   # Convert Day
+   elif "-" in date:
+        date_list = date.split('-')
+        day = date_list[1]
+        month = date_list[0]
+        year = date_list[2]
+   else: 
+        day = "01"
+        month = "01"
+        year = "2000"
+        print(date, "Date is not in correct format. Please check the status sheet ")
+        sys.exit(1)
+
+   if len(date_list) < 2:
+        day = "01"
+        month = "01"
+        year = "2000"
+        print(date, "Date is not in correct format. Please check the status sheet ")
+        sys.exit(1)
+
+   # Convert Day  
    if len(day) < 2:
-       correct_day = "0" + day
+        correct_day = "0" + day
    else:
-       correct_day = day
+        correct_day = day
 
    # Convert Month
    if len(month) < 2:
        correct_month = "0" + month
    else:
-       correct_month = month
+        correct_month = month
 
-   # Convert Year
+    # Convert Year
    if len(year) < 3:
-       correct_year = "20" + year
+        correct_year = "20" + year
    else:
-       correct_year = year
+        correct_year = year
 
    correct_date = correct_month + "/" + correct_day + "/" + correct_year
 
    return correct_date    
+ 
 
 #FUNCTIONS C: Excel Functions 
 #Function C1: Update as success
