@@ -22,6 +22,6 @@ for file in files:
         df = pd.read_excel(input_file)
         
         # Write to CSV
-        df.to_csv(output_file, index=False)
+        df.to_csv(output_file, index=False, date_format='%m/%d/%Y')
 
 print("Conversion completed successfully.")
