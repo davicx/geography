@@ -1,4 +1,4 @@
 index,BCODE,Basin_Name,start_date,end_date,time_duration,basin_count,over_one_thousand,file_name,finished
-0,TIJU,Tijuana,2008-06-30,2017-06-30,,,,,
-1,TIJU,Tijuana,2017-07-01,2023-07-01,,,,,
-2,TIJU,Tijuana,2023-07-02,2024-03-15,,,,,
+0,TIJU,Tijuana,06/30/2008,06/30/2017,,,,,
+1,TIJU,Tijuana,07/01/2017,07/01/2023,,,,,
+2,TIJU,Tijuana,07/02/2023,03/15/2024,,,,,

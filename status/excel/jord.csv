@@ -1,7 +1,7 @@
 index,BCODE,Basin_Name,start_date,end_date,time_duration,basin_count,over_one_thousand,file_name,finished
-0,JORD,Jordan,06-30-2012,2012-09-30,,,,,
-1,JORD,Jordan,2012-10-01 00:00:00,2012-12-31,,,,,
-2,JORD,Jordan,2013-01-01 00:00:00,2013-03-31,,,,,
-3,JORD,Jordan,2013-04-01 00:00:00,2013-06-29,,,,,
-4,JORD,Jordan,2023-11-01 00:00:00,2023-12-31,,,,,
-5,JORD,Jordan,2024-01-01 00:00:00,2024-03-15,,,,,
+0,JORD,Jordan,06-30-2012,09/30/2012,,,,,
+1,JORD,Jordan,2012-10-01 00:00:00,12/31/2012,,,,,
+2,JORD,Jordan,2013-01-01 00:00:00,03/31/2013,,,,,
+3,JORD,Jordan,2013-04-01 00:00:00,06/29/2013,,,,,
+4,JORD,Jordan,2023-11-01 00:00:00,12/31/2023,,,,,
+5,JORD,Jordan,2024-01-01 00:00:00,03/15/2024,,,,,

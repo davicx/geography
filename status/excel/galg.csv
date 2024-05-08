@@ -1,4 +1,4 @@
 index,BCODE,Basin_Name,start_date,end_date,time_duration,basin_count,over_one_thousand,file_name,finished
-0,GALG,Gallego/Chico,2008-06-30,2018-06-30,,,,,
-1,GALG,Gallego/Chico,2018-07-01,2023-07-01,,,,,
-2,GALG,Gallego/Chico,2023-07-02,2024-03-15,,,,,
+0,GALG,Gallego/Chico,06/30/2008,06/30/2018,,,,,
+1,GALG,Gallego/Chico,07/01/2018,07/01/2023,,,,,
+2,GALG,Gallego/Chico,07/02/2023,03/15/2024,,,,,
