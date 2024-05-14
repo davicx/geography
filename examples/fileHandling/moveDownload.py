@@ -1,8 +1,6 @@
 import os
 import time
 
-
-
 def move_rename_file(original_file_name, original_file_path, new_file_name, new_file_path):
     download_wait_count = 0
     total_wait_seconds = 0
@@ -48,3 +46,19 @@ download_file_name = "ResultsList_" + "aral" + "_202207_" + "min" + "_" + "max" 
 
 
 move_rename_file(original_file_name, download_folder_temp, download_file_name, download_folder_pdf)
+
+
+def move_file(original_file_path, new_file_path):
+    original_file_path = "/Users/dvas22/Desktop/David/www/geography/examples/fileHandling/fileOriginalLocation/"
+    new_file_path = "/Users/dvas22/Desktop/David/www/geography/examples/fileHandling/fileNewLocation/"
+
+    try:
+        original_file_location = original_file_path + "pdf_name.PDF"
+        new_file_location = new_file_path + "pdf_new_name.PDF"
+
+        os.rename(original_file_location, new_file_location)
+        time.sleep(5)
+
+    except FileNotFoundError:
+        print("The file has not finished downloading yet")
+        time.sleep(5)

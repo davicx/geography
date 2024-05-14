@@ -1,2 +1,2 @@
 index,BCODE,Basin_Name,start_date,end_date,time_duration,basin_count,over_one_thousand,file_name,finished
-0,ARAL,Aral Sea,07/01/2023,03/15/2024,,,,,
+0,ARAL,Aral Sea,07/01/2023,03/15/2024,,364,,ResultsList_aral_202207_result_min_1_result_max_364_start_date_07/01/2023_end_date_03/15/2024,1.0

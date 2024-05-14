@@ -7,12 +7,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.common.exceptions import ElementNotInteractableException
 from chromedriver_py import binary_path  
 
@@ -22,9 +21,9 @@ import pandas as pd
 import time
 
 #USER INFORMATION: User and Basin Information Setup (sSet this for yourself and the current basin)
-external_user = False
-basin_code = "bakr" 
-master_user = "melissa"
+external_user = True
+basin_code = "aral" 
+master_user = "david2"
 
 #SETUP: 
 #PART 1: Chrome Configuration 
@@ -64,10 +63,10 @@ status_data = pd.read_csv(status_file, index_col=0)
 def main():
     
     #OSU Login
-    #single_login() #this is for non Tufts users 
+    single_login() #this is for non Tufts users 
     
     #Tufts Login:
-    login_tufts_user(user_name)
+    #login_tufts_user(user_name)
     
     #Run Main Program
     single_basin_search() 
@@ -81,12 +80,6 @@ def single_basin_search():
     for index, row in status_data.iterrows():
         #basin = row['Basin_Name']
         basin = row['BCODE'] 
-        
-        #ORIGINAL: Original that does not convert date can be removed in new code is correct
-        #start_date = row['start_date']
-        #end_date = row['end_date']
-
-        #UPDATED: Uses new function to convert date types
         start_date = convert_date(row['start_date'])
         end_date = convert_date(row['end_date'])
         finished = row['finished']
@@ -145,7 +138,14 @@ def single_basin_search():
 #STEP 1: Navigate to first level search
 def base_search(): 
     print("STEP 1: Navigate to first level search")
-    driver.get(search_link)
+
+    try:
+        driver.get(search_link)
+    except Exception as e:
+        print("ERROR: Step 1: Please check the search link and make sure that it is correct")
+        print("search_link: ", search_link)
+        sys.exit(1)
+    
     print("STEP 1: Finished")
     time.sleep(4)
 
@@ -357,6 +357,7 @@ def download_excel(basin_code, min_raw, max_raw):
 
     download_start_stop = min + "-" + max
     download_file_name = "ResultsList_" + basin_code + "_202207_" + min + "_" + max
+    #EXAMPLE: index_0_basin_code_aral_min_1_max_500_start_date_07/01/2023_end_date_03/15/2024
 
     driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
     time.sleep(6)
@@ -458,23 +459,26 @@ def login_tufts_user(user_name):
     
 #Function A2: Login an External User with Temporary Access
 def login_external_user():
-    print("single login") 
+    print("LOGIN") 
+    print("Step 1: Get base search link") 
     #driver.get("https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Ftufts.alma.exlibrisgroup.com%2Fview%2FemailLogin%3Finstitute%3D01TUN_INST%26jwt%3DeyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBbG1hIiwiYXVkIjoiUHJpbW8iLCJleHAiOjE2OTMwOTMzNzksImp0aSI6Ik9QSHBnNXFSbEZRWjVDUVhiUGFxM2ciLCJpYXQiOjE2OTMwODk3NzksIm5iZiI6MTY5MzA4OTY1OSwic3ViIjoicGF0cm9uIiwiaWQiOiIyMTE5MjU0ODI5MDAwMzg1MSIsIm5hbWUiOiJDaGFybGVzLCBEYXZpZCIsImVtYWlsIjoidmFzcXVlemRAb3JlZ29uc3RhdGUuZWR1IiwicHJvdmlkZXIiOiJFTUFJTCIsImZpcnN0X25hbWUiOiJEYXZpZCIsImxhc3RfbmFtZSI6IkNoYXJsZXMifQ.TGOloKdYD2xLHiedNJiHsM62Jrxc6fXLKqoxcMfrKuw%26backUrl%3Dhttps%253A%252F%252Ftufts.primo.exlibrisgroup.com%252Fprimaws%252FsuprimaLogin%253Fsortby%253Drank%2526vid%253D01TUN_INST%253A01TUN%2526lang%253Den%2526target-url%253Dhttps%25253A%25252F%25252Ftufts.primo.exlibrisgroup.com%25252Fdiscovery%25252Fsearch%25253Fsortby%25253Drank%252526vid%25253D01TUN_INST%25253A01TUN%252526lang%25253Den&data=05%7C01%7Cvasquezd%40oregonstate.edu%7C7567c95eff17406b9bd208dba685cd10%7Cce6d05e13c5e4d6287a84c4a2713c113%7C0%7C0%7C638286865856140715%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=%2BDGfY8G4tN8GpUeAlFW%2BZux%2BORKQxoVCePxKR9zqoUc%3D&reserved=0")
     time.sleep(2)
     driver.get("https://tufts.primo.exlibrisgroup.com/discovery/search?sortby=rank&vid=01TUN_INST:01TUN&lang=en")
     time.sleep(4)
     driver.find_element(By.ID, "searchBar").click()
     time.sleep(2)
+    print("Step 2: Search for Nexis Uni") 
     driver.find_element(By.ID, "searchBar").send_keys("nexis uni")
     time.sleep(2)
     driver.find_element(By.ID, "searchBar").send_keys(Keys.ENTER)
     time.sleep(4)
     driver.find_element(By.CSS_SELECTOR, "#alma991017244849703851availabilityLine0 > .availability-status").click()
     time.sleep(6)
+    print("Step 3: Move to new window") 
     driver.switch_to.window(driver.window_handles[1])
     driver.find_element(By.CSS_SELECTOR, ".btn-library > .login").click()
     time.sleep(1)
-
+    print("Step 4: Send Temporary Code") 
     driver.find_element(By.ID, "user").click()
     time.sleep(1)
 
@@ -482,8 +486,8 @@ def login_external_user():
     time.sleep(1)
 
     driver.find_element(By.NAME, "submit").click()
-
-    time.sleep(4)
+    print("Step 5: Finish pause to sleep")
+    time.sleep(8)
 
 
 #Function A3: Login that runs once (if the browser crashed you will have to login again)
