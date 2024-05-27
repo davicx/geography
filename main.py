@@ -110,18 +110,22 @@ def single_basin_search():
             if result_count_int < 1000:
 
                 #STEP 6: Download Excel 
-                download_outcome = download_excel(basin_code, 1, result_count)
+                #Step 6A: Create the file name 
+                #EXAMPLE: index_0__basincode_aral__min_1_max_400__startdate_07_01_2023_enddate_03_15_2024
+                file_name_index = "index_" + index
+                file_name_basin = "basin_code_" + basin_code
+                file_name_min_max = "min_1_max_" + str(result_count)
+                file_name_start_date = start_date.replace("/", "_")
+                file_name_end_date = end_date.replace("/", "_")
+                file_name_start_end_date = file_name_start_date + "_" + file_name_end_date
+
+                download_file_name = file_name_index + "__" + file_name_basin + "__" + file_name_min_max + "__" + file_name_start_end_date 
+
+                download_outcome = download_excel(download_file_name, 1, result_count)
 
                 #STEP 7: Mark complete
                 if download_outcome == True:
-                    file_min = "result_min_1" + "_"
-                    file_max = "result_max_" + result_count + "_"
-                    file_start_date = "start_date_" + start_date + "_"
-                    file_end_date = "end_date_" + end_date
-                    
-                    final_file_name = "ResultsList_" + basin_code + "_202207_" + file_min + file_max + file_start_date + file_end_date
-
-                    update_status_success(index, result_count, final_file_name)
+                    update_status_success(index, result_count, download_file_name)
                 else: 
                     update_status_failure(index, result_count)
 
@@ -349,15 +353,14 @@ def get_result_count():
     return result_count
 
 #STEP 6: Download Excel  
-def download_excel(basin_code, min_raw, max_raw):
+#def download_excel(basin_code, min_raw, max_raw):
+def download_excel(download_file_name, min_raw, max_raw):
     min = str(min_raw)
     max = str(max_raw)
     print("STEP 6: Download Excel Files") 
     print("Starting Downloads: Excel files for ", min, ": from ", 0, " to ", max)
 
     download_start_stop = min + "-" + max
-    download_file_name = "ResultsList_" + basin_code + "_202207_" + min + "_" + max
-    #EXAMPLE: index_0_basin_code_aral_min_1_max_500_start_date_07/01/2023_end_date_03/15/2024
 
     driver.find_element(By.CSS_SELECTOR, ".has_tooltip:nth-child(1) > .la-Download").click()
     time.sleep(6)

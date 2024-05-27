@@ -43,11 +43,6 @@ def writeStatus():
 
 
 
-
-
-
-
-
 error = False
 error = True
     if error == True:
