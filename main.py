@@ -112,7 +112,7 @@ def single_basin_search():
                 #STEP 6: Download Excel 
                 #Step 6A: Create the file name 
                 #EXAMPLE: index_0__basincode_aral__min_1_max_400__startdate_07_01_2023_enddate_03_15_2024
-                file_name_index = "index_" + index
+                file_name_index = "index_" + str(index)
                 file_name_basin = "basin_code_" + basin_code
                 file_name_min_max = "min_1_max_" + str(result_count)
                 file_name_start_date = start_date.replace("/", "_")
